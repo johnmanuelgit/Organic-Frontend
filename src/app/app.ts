@@ -1,12 +1,28 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, HostListener } from '@angular/core';
+import { RouterModule, RouterOutlet } from '@angular/router';
+import { Header } from "./header/header";
+import { Footer } from "./footer/footer";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone:true,
+  imports: [RouterOutlet, Header, Footer,CommonModule,RouterModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected title = 'Frontend';
+showbutton = false;
+  scrolltop() {
+    window.scrollTo({ top:0, behavior: 'smooth' });
+  }
+
+
+  @HostListener('window:scroll', [])
+  onScroll(): void {
+    const scrollPosition = window.innerHeight + window.scrollY;
+    const pageHeight = document.body.offsetHeight;
+
+    this.showbutton = (pageHeight - scrollPosition) <= 30;
+  }
 }

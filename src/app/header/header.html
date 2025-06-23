@@ -1,0 +1,60 @@
+<div class="flex absolute fixed items-center justify-between bg-[#f6f0e8] px-4 w-full h-20 shadow-md z-50"
+  [ngClass]="{'bg-[#f6f0e8]  shadow-md':isscrolled}">
+  <div class="flex items-end space-x-2 rounded-full w-70 h-70 md:w-180 md:h-190 bg-white mb-40 md:mb-90 md:-mx-80 -mx-20 md:-my-70 md:p-5 p-20 shadow-lg">
+   <img src="assets/nav-footer/home-logo.png" alt="Mango Basket Logo" class="md:-my-12 -my-30 mx-5 md:mx-80 md:w-40 md:h-40 md:py-2 hover:scale-105"[routerLink]="['/home']">
+  </div>
+  <!-- Menu Button for Mobile -->
+<button (click)="toggleMenu()" class=" absolute left-80 md:hidden text-xl text-[#8b0000] text-center p-10">
+  <i class="fas fa-bars"></i>
+</button>
+<!-- Nav Links -->
+<nav
+  [ngClass]="{ 'flex': isMenuOpen, 'hidden': !isMenuOpen }"
+  class="flex-col items-center gap-y-4 mt-120 mr-15 md:mr-0 md:mt-0 text-[#8b0000] font-small text-xl p-10 md:flex md:flex-row md:gap-x-8  bg-white md:bg-transparent rounded-2xl flex-wrap  "
+>
+  <a [routerLink]="['home']" routerLinkActive="active-link"
+    class="hover:underline decoration-3 underline-offset-4 hover:scale-110">Home</a>
+  <a [routerLink]="['products']" routerLinkActive="active-link"
+    class="hover:underline decoration-3 underline-offset-4 hover:scale-110">Shop</a>
+
+    <div class="relative group">
+  <button class="hover:underline decoration-3 underline-offset-4 hover:scale-110">
+    Categories
+  </button>
+  <div class="absolute hidden group-hover:block bg-white shadow-lg mt-1 rounded-md">
+    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Fruits</a>
+    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Vegetables</a>
+    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Grains & Pulses</a>
+    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Dairy</a>
+    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Herbal Products</a>
+    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Organic Snacks</a>
+  </div>
+</div>
+
+  <a [routerLink]="['about']" routerLinkActive="active-link"
+    class="hover:underline decoration-3 underline-offset-4 hover:scale-110">About Us</a>
+  <a [routerLink]="['blog']" routerLinkActive="active-link"
+    class="hover:underline decoration-3 underline-offset-4 hover:scale-110">Blog</a>
+  <a [routerLink]="['contact']" routerLinkActive="active-link"
+    class="hover:underline decoration-3 underline-offset-4 hover:scale-110">Contact Us</a>
+    <div class="relative">
+  <img src="assets/nav-footer/cart.svg" alt="Cart" class="relative w-6 h-6 hover:shadow-lg hover:scale-125 cursor-pointer"
+    [routerLink]="['cart']" />
+    <span *ngIf="cartCount > 0" class="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center">
+      {{ cartCount }}
+    </span>
+  </div>
+  <p class="hover:shadow-lg hover:scale-125 cursor-pointer" [routerLink]="['']">
+    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 18 18">
+      <path fill="#941a28"
+        d="M0,18V15.75c0-2.476,4.05-4.5,9-4.5s9,2.025,9,4.5V18ZM4.5,4.5A4.5,4.5,0,1,1,9,9,4.5,4.5,0,0,1,4.5,4.5Z">
+      </path>
+    </svg>
+  </p>
+    <p class="text-sm font-bold text-white p-2 bg-[#8b0000] rounded-full hover:shadow-lg hover:scale-125 cursor-pointer"[routerLink]="['/admin-login']">Admin</p>
+  <button [routerLink]="['products']"
+    class="px-4 cursor-pointer py-2 bg-orange-400 text-white rounded-full text-lg font-semibold hover:bg-orange-500 hover:scale-110">
+    Order Mangoes
+  </button>
+</nav>
+</div>
