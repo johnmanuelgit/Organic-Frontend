@@ -1,0 +1,168 @@
+<div class="w-full h-full bg-[url('assets/image/product-page-bg.png')] bg-cover flex overflow-x-hidden flex-wrap md:flex-nowrap">
+    <!-- blog.component.html -->
+    <div class="container  mx-auto space-y-5 mt-30 md:mt-0 p-5 md:p-35">
+      <div class="flex justify-between items-center">
+        <p class="flex gap-2 text-[#941a28] text-sm">
+          <a [routerLink]="['/home']" class="hover:underline">Home</a> > Return & Refund Policy
+        </p>
+      </div>
+
+      <h1 class="text-4xl font-bold text-left text-green-600 mb-6">Return & Refund Policy</h1>
+      <h1 class="text-3xl font-bold text-left text-[#941a28] mb-6">1. Cancellation Policy</h1>
+      <div class="w-full space-y-8 p-2">
+        <p class="text-left text-[#941a28] mb-6">While there is a option for a customer to cancel the order on their own, you can get in touch with Customer Care as soon as possible with your order number.</p>
+        <p class="text-left text-[#941a28] mb-6">As long as your order has not been processed, we can cancel it. In such a case we will refund any payments already made by you for the order as credits which could be used further anytime later for shopping. If we suspect any fraudulent transaction by any customer or any transaction which defies the terms & conditions of using the website, we at our sole discretion could cancel such orders.</p>
+        <p class="text-left text-[#941a28] mb-6">We will maintain a negative list of all fraudulent transactions and customers and would deny access to them or cancel any orders placed by them.</p>
+        <p class="text-left text-[#941a28] mb-6">Mango Basket shall not be liable for any delay/non-delivery of purchased goods by the vendors, trade organisations, manufacturers/shop etc. (vendors), flood, fire, wars, acts of God, communal riots or any cause that is beyond the control of Mango Basket.</p>
+        <h1 class="text-3xl font-bold text-left text-[#941a28] mb-6">2. Returns & Refund Policy</h1>
+        <p class="text-left text-[#941a28] mb-6">A. Orders once placed & processed through themangobasket.com can be cancelled in 12hrs.</p>
+        <p class="text-left text-[#941a28] mb-6">B. Estimated Delivery Time is the approximate 3-4 days to deliver the mango to the Customer. In the event of any delay or default in such delivery, Mango Basket will be in contact with the logistics partner and will share the detail with you.</p>
+        <p class="text-left text-[#941a28] mb-6">C.  If there is any shortfall in delivery or the mangoes such as they were damaged, pressed, squeezed or crushed, In such cases, you can send an email at <code>hello&#64;themangobasket.com </code>  or reach out to us at our social media handles and provide us required proof (image/video) so we can proceed with either refund or replacement.</p>
+        <p class="text-left text-[#941a28] mb-6">D. After mutual agreement of refund of payment, Mango Basket shall reverse the payment in the same mode the customer has paid. Such refund shall be fulfilled in 15 working days from the date of mutual agreement.</p>
+        <p class="text-left text-[#941a28] mb-6">E. We would like to inform you that due to extreme heat or any delay caused by courier service problems, there is a possibility of 1 or 2 mangoes in your order experiencing degradation or over ripening.</p>
+        <p class="text-left text-[#941a28] mb-6">F. In the unlikely event that the number of degraded mangoes exceeds more than the aforementioned amount, we will refund the amount of degraded mangoes to you.</p>
+        <h1 class="text-3xl font-bold text-left text-[#941a28] mb-6">3. Shipping Policy</h1>
+        <p class="text-left text-[#941a28] mb-6">A. We ship all over India, all orders are shipped through registered domestic courier companies or via speed post only. Orders are generally shipped on the same day or the next day but may take up to 7 working days depending on the number of processing orders and external factors from the date of placing the order and delivering of the shipment subject to the courier company/post office norms.</p>
+        <p class="text-left text-[#941a28] mb-6">B. We charge nominal flat Shipping charges for free all over India which are specified on the product page or informed explicitly by our customer care before the shipping.</p>
+        <p class="text-left text-[#941a28] mb-6">C. Packing charges are included and in this regards our customer dont have to pay us any extra penny.</p>
+        <p class="text-left text-[#941a28] mb-6">D. If anything happens to mangoes while they are in transit we take full responsibility of it and in this regards we have our refund and replacement policy in place which you can read it above.</p>
+      </div>
+    </div>
+    <div class="w-full  p-5 md:p-28">
+      <div class=" flex justify-end">
+        <input type="search" 
+         [(ngModel)]="searchQuery" 
+         (ngModelChange)="onSearchChange()"
+         placeholder="Search …"
+         class="relative py-2 px-2 w-full bg-white rounded-lg">
+
+        <button class="absolute w-10  h-10 rounded-r-lg bg-[#fb9901]"><img src="{{ imageUrl }}" alt="Mango Image"
+            class="w-full h-full object-cover p-2">
+        </button>
+      
+      </div>
+    
+      <div class="space-y-4 mt-4">
+        <h2 class="text-[#701011] text-4xl font-bold">Categories</h2>
+        <hr class="text-[#701011]">
+        <ul class="space-y-3">
+          <li class="flex gap-4 items-center">
+            <span class="w-3 h-3 bg-orange-500 rounded-full"></span>
+            <a href="https://themangobasket.com/alphonso-mango/">Alphonso Mango</a>
+          </li>
+          <li class="flex gap-4 items-center">
+            <span class="w-3 h-3 bg-orange-500 rounded-full"></span>
+            <a href="https://themangobasket.com/health/">Health</a>
+          </li>
+          <li class="flex gap-4 items-center">
+            <span class="w-3 h-3 bg-orange-500 rounded-full"></span>
+            <a href="https://themangobasket.com/how-to/">How To</a>
+          </li>
+          <li class="flex gap-4 items-center">
+            <span class="w-3 h-3 bg-orange-500 rounded-full"></span>
+            <a href="https://themangobasket.com/mangoes/">Mangoes</a>
+          </li>
+          <li class="flex gap-4 items-center">
+            <span class="w-3 h-3 bg-orange-500 rounded-full"></span>
+            <a href="https://themangobasket.com/nutrition/">Nutrition</a>
+          </li>
+        </ul>
+      </div>
+      <div class="space-y-4 mt-4">
+        <h2 class="text-[#701011] text-4xl font-bold">Popular Posts</h2>
+        <hr class="text-[#701011]">
+        <ul class="space-y-3">
+          <li class="flex gap-4 items-center text-[#701011]">
+            <span class="w-3 h-3 bg-orange-500 rounded-full"></span>
+            <a href="">Mango or Mangoes? Discover the Correct Plural Form</a>
+          </li>
+          <li class="flex gap-4 items-center text-[#701011]">
+            <span class="w-3 h-3 bg-orange-500 rounded-full"></span>
+            <a href="">Top 15 Benefits of Eating Mango at Night</a>
+          </li>
+          <li class="flex gap-4 items-center text-[#701011]">
+            <span class="w-3 h-3 bg-orange-500 rounded-full"></span>
+            <a href="">Health Benefits of Mango for Kids</a>
+          </li>
+          <li class="flex gap-4 items-center text-[#701011]">
+            <span class="w-3 h-3 bg-orange-500 rounded-full"></span>
+            <a href="">Eating Mangoes During Pregnancy : Health Benefits and Side Effects</a>
+          </li>
+          <li class="flex gap-4 items-center text-[#701011]">
+            <span class="w-3 h-3 bg-orange-500 rounded-full"></span>
+            <a href="">Mango 101: Nutrition Facts About Mangoes That Will Surprise You!</a>
+          </li>
+        </ul>
+      </div>
+      <div class="bg-white max-w-sm mx-auto rounded-lg p-8">
+        <h4 class="text-center text-[#701011]">
+          <span>Why</span> Mango Basket?
+        </h4>
+        <div class="flex flex-col text-[#701011] space-y-4">
+          <div class="flex space-x-25">
+            <div class="space-y-2">
+              <img
+                src="https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/Varieties-of-Mangoes.png.webp"
+                alt="Varieties of Mangoes">
+              <h4 class="aj-feature-title">Varieties of<br> Mangoes</h4>
+            </div>
+            <div class="space-y-2">
+              <img
+                src="https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/Directly-From-Farmers.png.webp"
+                alt="Directly From Farmers">
+              <h4 class="aj-feature-title">Directly From <br>Farmers</h4>
+            </div>
+          </div>
+          <div class="flex space-x-25">
+            <div class="space-y-2">
+              <img
+                src="https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/100-Organic-Mangoes.png.webp"
+                alt="100% Organic Mangoes">
+              <h4 class="">100% Organic Mangoes</h4>
+            </div>
+            <div class="space-y-2">
+              <img
+                src="https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/Carbide-Chemical-Free.png.webp"
+                alt="Carbide Chemical Free">
+              <h4 class="aj-feature-title">Carbide & Chemical Free</h4>
+            </div>
+          </div>
+          <div class="flex space-x-25">
+            <div class="space-y-2">
+              <img
+                src="https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/Delicious-Pulpy-Mangoes.png.webp"
+                alt="Delicious Pulpy Mangoes">
+              <h4 class="aj-feature-title">Delicious Pulpy</h4>
+            </div>
+            <div class="space-y-2">
+              <img
+                src="https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/All-Over-India-Mango-Delivery.png.webp"
+                alt="All Over India Mango Delivery">
+              <h4 class="aj-feature-title">All Over India Delivery</h4>
+            </div>
+          </div>
+        </div>
+  
+        <div class="text-center bg-orange-500 py-2 rounded-full mt-6">
+          <a [routerLink]="['/products']"
+            class="hover:underline text-white font-bold">Order
+            Now</a>
+        </div>
+      </div>
+      <div class="bg-[#f6f0e8] max-w-sm mx-auto rounded-lg shadow-2xl border-5 mt-10 border-[#f6f0e9] h-130">
+        <div class="p-5 space-y-7 flex flex-col items-center justify-between">
+          <h2 class="text-[#701011] font-bold text-lg">
+            SIGN UP FOR RECIPES, COUPONS AND OTHER MANGO NEWS</h2>
+          <img
+            src="https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/Basket-Of-Mangoes.png.webp"
+            alt="" class="w-full h-full object-cover">
+          <p>
+            <input type="text" placeholder="Full Name" class="w-full px-2 py-2 bg-white">
+          </p>
+          <p>
+            <input type="email" placeholder="Email" class="w-full px-2 py-2 bg-white">
+          </p>
+          <button class="bg-orange-500 text-white font-semibold px-2 p-2 rounded-full" (click)="subscribe()">Subscribe</button>
+          <p class="text-green-600"*ngIf="showMessage">{{message}}</p>
+        </div>
+      </div>

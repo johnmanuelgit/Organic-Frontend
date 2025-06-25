@@ -1,0 +1,49 @@
+<div class="w-full h-full bg-[url('assets/image/bg-Wiki.png')] bg-cover flex overflow-x-hidden flex-wrap md:flex-nowrap">
+    <!-- blog.component.html -->
+    <div class="container space-y-5 mt-30 md:mt-0 p-5 md:p-35">
+      <div class="flex justify-between items-center">
+        <p class="flex gap-2 text-[#941a28] text-sm">
+          <a [routerLink]="['/home']" class="hover:underline">Home</a> > Wiki
+        </p>
+      </div>
+      <h1 class="text-4xl font-bold text-left text-green-600 mb-6">Wiki</h1>
+      <p class="text-left text-[#941a28] mb-6">Mangoes are juicy, succulent, and just mouth-wateringly delicious! <br>But they’re not called the kind of fruits only for these aspects, there is so much<br> more! These sunshine gold-colored fruits offer a myriad of health benefits<br> as well. In this blog, we give you all the more reasons why eating mangoes<br> is the best decision you can make for your health.</p>
+      <button
+      class="px-8 py-3 bg-orange-500 text-white rounded-full md:text-lg md:font-semibold hover:bg-orange-600 hover:scale-110" [routerLink]="['/products']">
+      Order Now
+    </button>
+    <div class="min-h-screen bg-beige-100 flex items-center justify-center -ml-15 md:-ml-0">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
+          
+          <!-- Indian Mangos Box -->
+          <div class="bg-white rounded-2xl shadow-lg p-6 w-80 text-center">
+            <h2 class="text-2xl font-bold text-red-800 mb-4">Types of Indian mangos</h2>
+            <ul class="text-red-700 space-y-1">
+              <li><a [routerLink]="['/wiki']" class="hover:underline">Payri</a></li>
+              <li><a [routerLink]="['/wiki']" class="hover:underline">Banganapalli</a></li>
+              <li><a [routerLink]="['/wiki']" class="hover:underline">Kesar</a></li>
+              <li><a [routerLink]="['/wiki']" class="hover:underline">Neelum</a></li>
+              <li><a [routerLink]="['/wiki']" class="hover:underline">Dasheri</a></li>
+              <li><a [routerLink]="['/wiki']" class="hover:underline">Totapuri</a></li>
+              <li><a [routerLink]="['/wiki']" class="hover:underline">Himsagar</a></li>
+            </ul>
+          </div>
+      
+          <!-- US Mangos Box -->
+          <div class="bg-white rounded-2xl shadow-lg p-6 w-80 text-center">
+            <h2 class="text-2xl font-bold text-red-800 mb-4">Types of US mangos</h2>
+            <ul class="text-red-700 space-y-1">
+              <li><a [routerLink]="['/wiki']" class="hover:underline">Himsagar</a></li>
+              <li><a [routerLink]="['/wiki']" class="hover:underline">Neelum</a></li>
+              <li><a [routerLink]="['/wiki']" class="hover:underline">Payri</a></li>
+              <li><a [routerLink]="['/wiki']" class="hover:underline">Kesar</a></li>
+            </ul>
+          </div>
+      
+      
+        </div>
+      </div>
+      
+    </div>
+    
+    </div>

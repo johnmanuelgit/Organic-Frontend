@@ -1,0 +1,196 @@
+<div class="w-full h-full bg-[url('assets/image/product-page-bg.png')] bg-cover flex overflow-x-hidden flex-wrap md:flex-nowrap">
+    <!-- blog.component.html -->
+    <div class="container mx-auto space-y-5 p-5 mt-30 md:mt-0 md:p-35">
+      <div class="flex justify-between items-center">
+        <p class="flex gap-2 text-[#941a28] text-sm">
+          <a [routerLink]="['/home']" class="hover:underline">Home</a> > Terms & Conditions
+        </p>
+      </div>
+      <h1 class="text-4xl font-bold text-left text-green-600 mb-6">Terms & Conditions</h1>
+      <h1 class="text-3xl font-bold text-left text-[#941a28] mb-6">Terms & Conditions</h1>
+      <p class="text-left text-[#941a28] mb-6">Last updated on 18-04-2024 12:08:16</p>
+      <div class="w-full space-y-8 p-2">
+        <p class="text-left text-[#941a28] mb-6">These Terms and Conditions, along with privacy policy or other terms (“Terms”) constitute a binding
+            agreement by and between Mango Basket, ( “Website Owner” or “we” or “us” or “our”) and you (“you”
+            or “your”) and relate to your use of our website, goods (as applicable) or services (as applicable)
+            (collectively, “Services”).</p>
+        <p class="text-left text-[#941a28] mb-6">By using our website and availing the Services, you agree that you have read and accepted these Terms
+            (including the Privacy Policy). We reserve the right to modify these Terms at any time and without
+            assigning any reason. It is your responsibility to periodically review these Terms to stay informed of
+            updates.</p>
+        <p class="text-left text-[#941a28] mb-6">The use of this website or availing of our Services is subject to the following terms of use:
+            To access and use the Services, you agree to provide true, accurate and complete information to us
+            during and after registration, and you shall be responsible for all acts done through the use of your
+            registered account.</p>
+        <p class="text-left text-[#941a28] mb-6">Neither we nor any third parties provide any warranty or guarantee as to the accuracy, timeliness,
+            performance, completeness or suitability of the information and materials offered on this website
+            or through the Services, for any specific purpose.</p>
+        <p class="text-left text-[#941a28] mb-6">You acknowledge that such information and
+            materials may contain inaccuracies or errors and we expressly exclude liability for any such
+            inaccuracies or errors to the fullest extent permitted by law.</p>
+        <p class="text-left text-[#941a28] mb-6">Your use of our Services and the websiteis solely at your own risk and discretion.. You are
+            required to independently assess and ensure that the Services meet your requirements.</p>
+        <p class="text-left text-[#941a28] mb-6">The contents of the Website and the Services are proprietary to Us and you will not have any
+            authority to claim any intellectual property rights, title, or interest in its contents.</p>
+        <p class="text-left text-[#941a28] mb-6">You acknowledge that unauthorized use of the Website or the Services may lead to action against
+            you as per these Terms or applicable laws.</p>
+        <p class="text-left text-[#941a28] mb-6">You agree to pay us the charges associated with availing the Services.</p>
+        <p class="text-left text-[#941a28] mb-6">You agree and acknowledge that website and the Services may contain links to other third party
+            websites. On accessing these links, you will be governed by the terms of use, privacy policy and
+            such other policies of such third party websites.</p>
+        <p class="text-left text-[#941a28] mb-6">You understand that upon initiating a transaction for availing the Services you are entering into a
+            legally binding and enforceable contract with the us for the Services.</p>
+        <p class="text-left text-[#941a28] mb-6">You shall be entitled to claim a refund of the payment made by you in case we are not able to
+            provide the Service. The timelines for such return and refund will be according to the specific
+            Service you have availed or within the time period provided in our policies (as applicable). In case
+            you do not raise a refund claim within the stipulated time, than this would make you ineligible for
+            a refund.</p>
+        <p class="text-left text-[#941a28] mb-6">Notwithstanding anything contained in these Terms, the parties shall not be liable for any failure to
+            perform an obligation under these Terms if performance is prevented or delayed by a force majeure
+            event.</p>
+        <p class="text-left text-[#941a28] mb-6">These Terms and any dispute or claim relating to it, or its enforceability, shall be governed by and
+            construed in accordance with the laws of India.</p>
+        <p class="text-left text-[#941a28] mb-6">All disputes arising out of or in connection with these Terms shall be subject to the exclusive
+            jurisdiction of the courts in Pune, Maharashtra</p>
+        <p class="text-left text-[#941a28] mb-6">All concerns or communications relating to these Terms must be communicated to us using the
+            contact information provided on this website.</p>
+        
+      </div>
+   
+    </div>
+    <div class="w-full p-5 md:p-28">
+      <div class=" flex justify-end">
+        <input type="search" 
+         [(ngModel)]="searchQuery" 
+         (ngModelChange)="onSearchChange()"
+         placeholder="Search …"
+         class="relative py-2 px-2 w-full bg-white rounded-lg">
+  
+        <button class="absolute w-10  h-10 rounded-r-lg bg-[#fb9901]"><img src="{{ imageUrl }}" alt="Mango Image"
+            class="w-full h-full object-cover p-2">
+        </button>
+      </div>
+      <div class="space-y-4 mt-4">
+        <h2 class="text-[#701011] text-4xl font-bold">Categories</h2>
+        <hr class="text-[#701011]">
+        <ul class="space-y-3">
+          <li class="flex gap-4 items-center">
+            <span class="w-3 h-3 bg-orange-500 rounded-full"></span>
+            <a href="https://themangobasket.com/alphonso-mango/">Alphonso Mango</a>
+          </li>
+          <li class="flex gap-4 items-center">
+            <span class="w-3 h-3 bg-orange-500 rounded-full"></span>
+            <a href="https://themangobasket.com/health/">Health</a>
+          </li>
+          <li class="flex gap-4 items-center">
+            <span class="w-3 h-3 bg-orange-500 rounded-full"></span>
+            <a href="https://themangobasket.com/how-to/">How To</a>
+          </li>
+          <li class="flex gap-4 items-center">
+            <span class="w-3 h-3 bg-orange-500 rounded-full"></span>
+            <a href="https://themangobasket.com/mangoes/">Mangoes</a>
+          </li>
+          <li class="flex gap-4 items-center">
+            <span class="w-3 h-3 bg-orange-500 rounded-full"></span>
+            <a href="https://themangobasket.com/nutrition/">Nutrition</a>
+          </li>
+        </ul>
+      </div>
+      <div class="space-y-4 mt-4">
+        <h2 class="text-[#701011] text-4xl font-bold">Popular Posts</h2>
+        <hr class="text-[#701011]">
+        <ul class="space-y-3">
+          <li class="flex gap-4 items-center text-[#701011]">
+            <span class="w-3 h-3 bg-orange-500 rounded-full"></span>
+            <a href="">Mango or Mangoes? Discover the Correct Plural Form</a>
+          </li>
+          <li class="flex gap-4 items-center text-[#701011]">
+            <span class="w-3 h-3 bg-orange-500 rounded-full"></span>
+            <a href="">Top 15 Benefits of Eating Mango at Night</a>
+          </li>
+          <li class="flex gap-4 items-center text-[#701011]">
+            <span class="w-3 h-3 bg-orange-500 rounded-full"></span>
+            <a href="">Health Benefits of Mango for Kids</a>
+          </li>
+          <li class="flex gap-4 items-center text-[#701011]">
+            <span class="w-3 h-3 bg-orange-500 rounded-full"></span>
+            <a href="">Eating Mangoes During Pregnancy : Health Benefits and Side Effects</a>
+          </li>
+          <li class="flex gap-4 items-center text-[#701011]">
+            <span class="w-3 h-3 bg-orange-500 rounded-full"></span>
+            <a href="">Mango 101: Nutrition Facts About Mangoes That Will Surprise You!</a>
+          </li>
+        </ul>
+      </div>
+      <div class="bg-white max-w-sm mx-auto rounded-lg p-8">
+        <h4 class="text-center text-[#701011]">
+          <span>Why</span> Mango Basket?
+        </h4>
+        <div class="flex flex-col text-[#701011] space-y-4">
+          <div class="flex space-x-25">
+            <div class="space-y-2">
+              <img
+                src="https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/Varieties-of-Mangoes.png.webp"
+                alt="Varieties of Mangoes">
+              <h4 class="aj-feature-title">Varieties of<br> Mangoes</h4>
+            </div>
+            <div class="space-y-2">
+              <img
+                src="https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/Directly-From-Farmers.png.webp"
+                alt="Directly From Farmers">
+              <h4 class="aj-feature-title">Directly From <br>Farmers</h4>
+            </div>
+          </div>
+          <div class="flex space-x-25">
+            <div class="space-y-2">
+              <img
+                src="https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/100-Organic-Mangoes.png.webp"
+                alt="100% Organic Mangoes">
+              <h4 class="">100% Organic Mangoes</h4>
+            </div>
+            <div class="space-y-2">
+              <img
+                src="https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/Carbide-Chemical-Free.png.webp"
+                alt="Carbide Chemical Free">
+              <h4 class="aj-feature-title">Carbide & Chemical Free</h4>
+            </div>
+          </div>
+          <div class="flex space-x-25">
+            <div class="space-y-2">
+              <img
+                src="https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/Delicious-Pulpy-Mangoes.png.webp"
+                alt="Delicious Pulpy Mangoes">
+              <h4 class="aj-feature-title">Delicious Pulpy</h4>
+            </div>
+            <div class="space-y-2">
+              <img
+                src="https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/All-Over-India-Mango-Delivery.png.webp"
+                alt="All Over India Mango Delivery">
+              <h4 class="aj-feature-title">All Over India Delivery</h4>
+            </div>
+          </div>
+        </div>
+  
+        <div class="text-center bg-orange-500 py-2 rounded-full mt-6">
+          <a href="https://themangobasket.com/products/?utm_source=Blog_Posts&amp;utm_medium=Sidebar_Widget&amp;utm_campaign=Blog_Posts"
+            class="hover:underline text-white font-bold">Order
+            Now</a>
+        </div>
+      </div>
+      <div class="bg-[#f6f0e8] max-w-sm mx-auto rounded-lg shadow-2xl border-5 mt-10 border-[#f6f0e9] h-130">
+        <div class="p-5 space-y-7 flex flex-col items-center justify-between">
+          <h2 class="text-[#701011] font-bold text-lg">
+            SIGN UP FOR RECIPES, COUPONS AND OTHER MANGO NEWS</h2>
+          <img
+            src="https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/Basket-Of-Mangoes.png.webp"
+            alt="" class="w-full h-full object-cover">
+          <p>
+            <input type="text" placeholder="Full Name" class="w-full px-2 py-2 bg-white">
+          </p>
+          <p>
+            <input type="email" placeholder="Email" class="w-full px-2 py-2 bg-white">
+          </p>
+          <button class="bg-orange-500 text-white font-semibold px-2 p-2 rounded-full"(click)="subscribe()">Subscribe</button>
+          <p class="text-green-600"*ngIf="showMessage">{{message}}</p>
+        </div>
+      </div>

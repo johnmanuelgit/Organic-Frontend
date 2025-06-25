@@ -1,0 +1,28 @@
+[
+    {
+        "id":1,
+        "image":"assets/image/blog/blog-1.png",
+        "pagetitle":"Mango or Mangoes? Discover the Correct Plural Form"
+    
+    },
+    {
+        "id":2,
+        "image":"assets/image/blog/blog-2.png",
+        "pagetitle":"Top 15 Benefits of Eating Mango at Night"
+    },
+    {
+        "id":3,
+        "image":"assets/image/blog/blog-3.png",
+        "pagetitle":"Health Benefits of Mango for Kids"
+    },
+    {
+        "id":4,
+        "image":"assets/image/blog/blog-4.png",
+        "pagetitle":"Eating Mangoes During Pregnancy : Health Benefits and Side Effects"
+    },
+    {
+        "id":5,
+        "image":"assets/image/blog/blog-5.png",
+        "pagetitle":"Mango 101: Nutrition Facts About Mangoes That Will Surprise You!"
+    }
+]

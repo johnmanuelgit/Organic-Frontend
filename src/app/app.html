@@ -1,13 +1,12 @@
 <app-header></app-header>
+
+<mat-progress-spinner *ngIf="(isLoading$ | async)" mode="indeterminate"></mat-progress-spinner>
+
 <div class="overflow-x-hidden w-full">
 <router-outlet>
-<button
-  (click)="scrolltop()"
-  *ngIf="showbutton"
-  class="fixed  bottom-5 right-5 w-10 h-10 md:w-20 md:h-20 bg-stone-200 text-3xl md:text-5xl text-black rounded-full flex items-center justify-center shadow-lg transition-opacity duration-500 font-bold hover:bg-white z-50"
->
-  ↑
-</button>
+<button (click)="scrolltop()" *ngIf="showbutton" class="fixed  bottom-5 right-5 w-10 h-10 md:w-20 md:h-20 bg-stone-200 text-3xl md:text-5xl text-black rounded-full flex items-center justify-center shadow-lg transition-opacity duration-500 font-bold hover:bg-white z-50"> ↑ </button>
 </router-outlet>
 </div>
+
+
 <app-footer></app-footer>
