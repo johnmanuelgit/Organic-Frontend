@@ -1,1 +1,22 @@
-<p>product works!</p>
+<div *ngIf="product" class="max-w-4xl mx-auto p-4 bg-white rounded-xl shadow-md mt-10">
+  <div class="flex flex-col md:flex-row gap-8">
+    
+    <div class="flex-1 flex justify-center">
+      <img [src]="server + product.imageUrl" [alt]="product.name" class="max-h-96 object-contain">
+    </div>
+    
+    <div class="flex-1">
+      <h1 class="text-3xl font-bold text-[#701011] mb-4">{{ product.name }}</h1>
+      <p class="text-2xl font-bold text-[#701011] mb-6">₹{{ product.price }}</p>
+            <p class="text-gray-600 mb-4">{{ product.description }}</p>
+            <p>{{product.stock}}</p>
+
+      <button class="bg-[#701011] hover:bg-[#941a28] text-white font-medium py-3 px-6 rounded-lg transition">
+        Order Now
+      </button>
+    </div>
+    
+  </div>
+</div>
+
+<app-product-review></app-product-review>

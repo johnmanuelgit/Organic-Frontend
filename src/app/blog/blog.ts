@@ -20,7 +20,7 @@ interface blog {
   styleUrl: './blog.css'
 })
 export class Blog implements OnInit {
-  imageUrl: string = 'assets/icon/search-icon.svg';
+  imageUrl: string = 'assets/blog/search-icon.svg';
   blogs: blog[] = [];
   displayedBlogs: blog[] = [];
   currentPage: number = 1;

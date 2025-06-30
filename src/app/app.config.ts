@@ -4,6 +4,7 @@ import { routes } from './app.routes';
 import {  provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideToastr } from 'ngx-toastr';
 import { loaderInterceptor } from './interceptor/loader/loader-interceptor';
+import { httpInterceptor } from './interceptor/http/http-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,7 +15,12 @@ export const appConfig: ApplicationConfig = {
     provideToastr(),
   provideHttpClient(
     withInterceptors([loaderInterceptor])
+  ),
+  
+  provideHttpClient(
+    withInterceptors([httpInterceptor])
   )
+
 
   ]
 };

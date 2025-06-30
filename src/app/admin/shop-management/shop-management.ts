@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ServerLink } from '../../services/server-link/server-link';
 
 @Component({
   selector: 'app-shop-management',
@@ -20,9 +21,10 @@ export class ShopManagement{
   };
   selectedFile: File | null = null;
   editingId: string | null = null;
-  products:any=[]
+  products:any=[];
+  server:string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private serverlink:ServerLink) {this.server=this.serverlink.serverlinks}
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
@@ -39,8 +41,8 @@ onSubmit() {
   }
 
   const request = this.editingId
-    ? this.http.put(`http://localhost:3000/api/products/${this.editingId}`, formData)
-    : this.http.post('http://localhost:3000/api/products', formData);
+    ? this.http.put(`api/products/${this.editingId}`, formData)
+    : this.http.post('api/products', formData);
 
   request.subscribe({
     next: () => {
@@ -58,7 +60,7 @@ editProduct(product: any) {
 
 deleteProduct(id: string) {
   if (confirm('Are you sure?')) {
-    this.http.delete(`http://localhost:3000/api/products/${id}`).subscribe(() => {
+    this.http.delete(`api/products/${id}`).subscribe(() => {
       alert('Product deleted');
       this.loadProducts();
     });
@@ -73,7 +75,7 @@ resetForm() {
 }
 
 loadProducts() {
-  this.http.get<any[]>('http://localhost:3000/api/products').subscribe(data => {
+  this.http.get<any[]>('api/products').subscribe(data => {
     this.products = data;
   });
 }

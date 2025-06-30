@@ -65,7 +65,7 @@
       </div>
       <div *ngFor="let p of products" class="mb-4 p-4 bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
         <div class="flex items-start space-x-4">
-          <img *ngIf="p.imageUrl" [src]="'http://localhost:3000' + p.imageUrl" 
+          <img *ngIf="p.imageUrl" [src]="server + p.imageUrl" 
                class="w-20 h-20 object-cover rounded-md border border-gray-200">
           <div class="flex-1">
             <div class="flex justify-between items-start">

@@ -1,4 +1,4 @@
-<div class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+<div class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 mt-30">
   <!-- Header -->
   <header class="bg-white shadow-sm">
     <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
@@ -71,8 +71,8 @@
         </div>
       </a>
 
-      <!-- Members -->
-      <a *ngIf="hasModuleAccess('members')" [routerLink]="['/members']"
+      <!-- blog -->
+      <a *ngIf="hasModuleAccess('members')" [routerLink]="['/blog-manage']"
         class="group bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200 hover:border-indigo-300 transition-all duration-300 hover:shadow-md">
         <div class="p-6">
           <div class="flex items-start space-x-4">
@@ -85,9 +85,9 @@
               </svg>
             </div>
             <div>
-              <h3 class="font-semibold text-gray-800 group-hover:text-indigo-600 transition-colors duration-300">Members
+              <h3 class="font-semibold text-gray-800 group-hover:text-indigo-600 transition-colors duration-300">Blog
               </h3>
-              <p class="mt-1 text-sm text-gray-500">Manage all member records</p>
+              <p class="mt-1 text-sm text-gray-500">Blog Management</p>
             </div>
           </div>
           <div class="mt-4 flex justify-end">
@@ -104,7 +104,7 @@
       </a>
 
       <!-- LCF Tax -->
-      <a *ngIf="hasModuleAccess('lcf')" [routerLink]="['/shopmanage']"
+      <a *ngIf="hasModuleAccess('lcf')" [routerLink]="['/shop-manage']"
         class="group bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200 hover:border-indigo-300 transition-all duration-300 hover:shadow-md">
         <div class="p-6">
           <div class="flex items-start space-x-4">
@@ -117,7 +117,7 @@
               </svg>
             </div>
             <div>
-              <h3 class="font-semibold text-gray-800 group-hover:text-indigo-600 transition-colors duration-300">LCF Tax
+              <h3 class="font-semibold text-gray-800 group-hover:text-indigo-600 transition-colors duration-300">Shop Management
               </h3>
               <p class="mt-1 text-sm text-gray-500">Manage tax records and filings</p>
             </div>

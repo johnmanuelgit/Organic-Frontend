@@ -3,7 +3,6 @@ import { authGuard } from './authguard/auth/auth-guard';
 import { Home } from './home/home';
 import { Product } from './product/product';
 import { Contact } from './contact/contact';
-import { Cart } from './cart/cart';
 import { Login } from './login/login';
 import { Signup } from './signup/signup';
 import { About } from './about/about';
@@ -18,23 +17,31 @@ import { BlogPage } from './blog-page/blog-page';
 import { AdminLogin } from './admin/admin-login/admin-login';
 import { Dashboard } from './admin/dashboard/dashboard';
 import { ShopManagement } from './admin/shop-management/shop-management';
+import { Addtocart } from './addtocart/addtocart';
+import { Shop } from './shop/shop';
+import { ProductReview } from './product-review/product-review';
+import { BlogManagement } from './admin/blog-management/blog-management';
 
 export const routes: Routes = [
   { path: "", component: Home },
-  { path: "home", component: Home, canActivate: [authGuard] },
-  { path: "products", component: Product, canActivate: [authGuard] },
-  { path: "contact", component: Contact, canActivate: [authGuard] },
-  { path: "cart", component:Cart, canActivate: [authGuard] },
-  { path: "login", component: Login },
+  { path: "home", component: Home},
+   { path: "login", component: Login },
   { path: "signup", component: Signup },
-  { path: "about", component: About, canActivate: [authGuard] },
-  { path: "blog", component: Blog, canActivate: [authGuard] },
-  { path: "profile", component: Profile, canActivate: [authGuard] },
-  { path: "term&cond", component: Terms, canActivate: [authGuard] },
-  { path: "return&refund", component: ReturnRefund, canActivate: [authGuard] },
-  { path: "privacy", component: Privacy, canActivate: [authGuard] },
-  { path: "wiki", component: Wiki, canActivate: [authGuard] },
-  { path: "recipes", component: Recipes, canActivate: [authGuard] },
+  { path: "contact", component: Contact},
+    { path: "term&cond", component: Terms},
+  { path: "return&refund", component: ReturnRefund},
+  { path: "privacy", component: Privacy},
+  { path: "wiki", component: Wiki},
+  { path: "recipes", component: Recipes},
+    { path: "about", component: About},
+  { path: "blog", component: Blog},
+  {path:"shop",component:Shop},
+  { path: "cart", component:Addtocart, canActivate: [authGuard]},
+{ path: "profile", component: Profile, canActivate: [authGuard] },
+{ path: 'product/:id', component: Product},
+
+
+
   
   // product details page
 //   { path: "devgad", component: DevgadComponent, canActivate: [authGuard] },
@@ -50,5 +57,6 @@ export const routes: Routes = [
 
   { path: "admin-login", component: AdminLogin },
   { path: "admin-dash", component: Dashboard },
-  { path: "shop-manage", component: ShopManagement}
+  { path: "shop-manage", component: ShopManagement},
+  {path:"blog-manage",component:BlogManagement}
 ];

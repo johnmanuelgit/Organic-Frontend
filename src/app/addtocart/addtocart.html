@@ -1,0 +1,40 @@
+<div class="w-full h-full bg-[#f6f0e8] flex-wrap">
+    <div class="py-30 px-10 md:py-40 md:px-30">
+      <div class="container mx-auto px-4">
+        <div class="flex items-center text-sm text-[#8b0000]">
+          <a href="#" class="hover:underline">Home</a>
+          <span class="mx-2">›</span>
+          <span>Cart</span>
+        </div>
+      </div>
+      <div class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-lime-500 md:mb-8">Cart</h1>
+      </div>
+      <h2 class="text-2xl font-bold">Shopping Cart</h2>
+      <div *ngIf="cartItems.length === 0">Your cart is empty.</div>
+  
+      <div *ngFor="let item of cartItems">
+        <img [src]="item.image" class="w-20 h-20" />
+        <p>
+          {{ item.name }} - ₹{{ item.price }} x  <button (click)="decreaseQuantity(item)" class="md:px-3 md:py-1 px-1 py-1 border rounded">-</button> {{ item.quantity }} <button (click)="increaseQuantity(item)" class="md:px-3 md:py-1 px-1 py-1 border rounded">+</button>
+        </p>
+<button class="px-3 py-1 border rounded mt-5 md:mt-0" (click)="removeItem(item)">Remove</button>
+      </div>
+  
+      <p class="text-xl font-bold mt-4">Total Price: ₹{{ totalPrice }}</p>
+  
+      <button (click)="clearCart()" class="bg-red-500 text-white px-4 py-2 rounded mt-5">
+        Clear Cart
+      </button>
+     
+      <button (click)="buy()" class="bg-blue-500 text-white px-9 py-2 rounded ml-2">
+        Buy
+      </button>
+      <button
+        [routerLink]="['/products']"
+        class="flex items-center px-7 gap-2 py-3 mt-8 bg-orange-500 text-white rounded-full text-lg font-semibold hover:bg-orange-600 hover:scale-110"
+      >
+        Return To Shop
+      </button>
+    </div>
+  </div>

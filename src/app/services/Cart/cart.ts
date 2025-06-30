@@ -11,7 +11,7 @@ export class Cart {
   private cartItems: any[] = [];
   private cartSubject = new BehaviorSubject<any[]>([]);
   private cartItemsCountSubject = new BehaviorSubject<number>(0);
-  private apiUrl = 'https://bakendrepo.onrender.com/api/cart';
+  private apiUrl = 'api/cart';
   
   // Observable properties
   cartItemsCount$: Observable<number>;

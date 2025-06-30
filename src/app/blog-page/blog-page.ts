@@ -10,7 +10,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
   styleUrl: './blog-page.css'
 })
 export class BlogPage implements OnInit{
-  imageUrl:string='assets/icon/search-icon.svg';
+  imageUrl:string='assets/blog/search-icon.svg';
   blog: any;
   imageUrls: string = '';
   pagetitle:string='';
