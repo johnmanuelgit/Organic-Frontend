@@ -1,14 +1,5 @@
 <div class="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
   <div class="max-w-4xl mx-auto">
-    <!-- Notifications -->
-    <div *ngIf="successMessage" class="mb-6 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
-      {{ successMessage }}
-    </div>
-    
-    <div *ngIf="errorMessage" class="mb-6 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
-      {{ errorMessage }}
-    </div>
-
     <!-- Blog Creation/Edit Form -->
     <div class="bg-white shadow rounded-lg p-6 mb-10">
       <h2 class="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200">
@@ -18,7 +9,7 @@
       <form (ngSubmit)="onSubmit()" class="space-y-6">
         <div>
           <label for="title" class="block text-sm font-medium text-gray-700 mb-1">
-            Title *
+            Title
           </label>
           <input
             id="title"
@@ -28,60 +19,18 @@
             placeholder="Enter blog title..."
             required
             class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            [class.border-red-500]="formSubmitted && !blog.title"
           >
-          <p *ngIf="formSubmitted && !blog.title" class="mt-1 text-sm text-red-600">
-            Title is required
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label for="category" class="block text-sm font-medium text-gray-700 mb-1">
-              Category *
-            </label>
-            <select
-              id="category"
-              [(ngModel)]="blog.category"
-              name="category"
-              required
-              class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-              [class.border-red-500]="formSubmitted && !blog.category"
-            >
-              <option value="">Select a category</option>
-              <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
-            </select>
-            <p *ngIf="formSubmitted && !blog.category" class="mt-1 text-sm text-red-600">
-              Category is required
-            </p>
-          </div>
-
-          <div>
-            <label for="date" class="block text-sm font-medium text-gray-700 mb-1">
-              Date
-            </label>
-            <input
-              id="date"
-              type="date"
-              [(ngModel)]="blog.date"
-              name="date"
-              class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            >
-          </div>
         </div>
         
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1">
             Featured Image
           </label>
-          <div *ngIf="imagePreview" class="mb-4">
-            <img [src]="imagePreview" alt="Preview" class="h-40 object-cover rounded-md">
-          </div>
           <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
             <div class="space-y-1 text-center">
               <div class="flex text-sm text-gray-600">
                 <label for="image" class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none">
-                  <span>{{ imagePreview ? 'Change image' : 'Upload an image' }}</span>
+                  <span>{{ selectedFile ? 'Change file' : 'Upload a file' }}</span>
                   <input
                     id="image"
                     type="file"
@@ -93,29 +42,28 @@
                 <p class="pl-1">or drag and drop</p>
               </div>
               <p class="text-xs text-gray-500">
-                PNG, JPG, GIF up to 2MB
+                PNG, JPG, GIF up to 10MB
               </p>
             </div>
+          </div>
+          <div *ngIf="selectedFile" class="mt-2 text-sm text-gray-600">
+            Selected: {{ selectedFile.name }}
           </div>
         </div>
         
         <div>
-          <label for="content" class="block text-sm font-medium text-gray-700 mb-1">
-            Content *
+          <label for="description" class="block text-sm font-medium text-gray-700 mb-1">
+            Content
           </label>
           <textarea
-            id="content"
-            [(ngModel)]="blog.content"
-            name="content"
+            id="description"
+            [(ngModel)]="blog.description"
+            name="description"
             placeholder="Write your blog content here..."
             required
-            rows="8"
+            rows="6"
             class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            [class.border-red-500]="formSubmitted && !blog.content"
           ></textarea>
-          <p *ngIf="formSubmitted && !blog.content" class="mt-1 text-sm text-red-600">
-            Content is required
-          </p>
         </div>
         
         <div class="flex justify-end space-x-3">
@@ -129,19 +77,9 @@
           </button>
           <button
             type="submit"
-            [disabled]="loading"
-            class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
+            class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
-            <span *ngIf="loading" class="inline-flex items-center">
-              <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-              Processing...
-            </span>
-            <span *ngIf="!loading">
-              {{ isEditing ? 'Update Post' : 'Publish Post' }}
-            </span>
+            {{ isEditing ? 'Update Post' : 'Publish Post' }}
           </button>
         </div>
       </form>
@@ -153,12 +91,7 @@
         Recent Posts
       </h2>
       
-      <div *ngIf="loading && blogs.length === 0" class="text-center py-10">
-        <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
-        <p class="mt-2">Loading blogs...</p>
-      </div>
-      
-      <div *ngIf="blogs.length === 0 && !loading" class="text-center py-10">
+      <div *ngIf="blogs.length === 0" class="text-center py-10">
         <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
@@ -166,13 +99,13 @@
         <p class="mt-1 text-sm text-gray-500">Be the first to create one!</p>
       </div>
       
-      <div *ngFor="let blog of blogs" class="mb-8 last:mb-0 group">
+      <div *ngFor="let b of blogs" class="mb-8 last:mb-0 group">
         <div class="flex flex-col sm:flex-row gap-6">
           <div class="sm:w-1/3 relative">
-            <img [src]="blog.image" alt="Blog Image" class="w-full h-48 object-cover rounded-lg shadow-md">
+            <img [src]="server + b.image" alt="Blog Image" class="w-full h-48 object-cover rounded-lg shadow-md">
             <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex space-x-2">
               <button 
-                (click)="onEdit(blog.id)"
+                (click)="onEdit(b._id)"
                 class="p-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 title="Edit"
               >
@@ -181,7 +114,7 @@
                 </svg>
               </button>
               <button 
-                (click)="onDelete(blog.id)"
+                (click)="onDelete(b._id)"
                 class="p-2 bg-red-600 text-white rounded-full hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500"
                 title="Delete"
               >
@@ -189,24 +122,17 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                 </svg>
               </button>
-              <button 
-                (click)="viewBlog(blog.id)"
-                class="p-2 bg-green-600 text-white rounded-full hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
-                title="View"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                </svg>
-              </button>
             </div>
           </div>
           <div class="sm:w-2/3">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">{{ blog.title }}</h3>
-            <p class="text-gray-500 text-sm mb-2">
-              {{ blog.date }} | {{ blog.category }} | By {{ blog.author }}
-            </p>
-            <p class="text-gray-600 mb-4 line-clamp-3">{{ blog.content }}</p>
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">{{ b.title }}</h3>
+            <p class="text-gray-600 mb-4 line-clamp-3">{{ b.description }}</p>
+            <div class="flex items-center text-sm text-gray-500">
+              <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <span>Published on {{ b.createdAt | date }}</span>
+            </div>
           </div>
         </div>
       </div>
