@@ -5,25 +5,22 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-privacy',
-  imports: [CommonModule,FormsModule,RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './privacy.html',
-  styleUrl: './privacy.css'
+  styleUrl: './privacy.css',
 })
 export class Privacy {
-
- imageUrl: string = 'assets/icon/search-icon.svg';
+  imageUrl: string = 'assets/icon/search-icon.svg';
   searchQuery: string = '';
   message: string = '';
   showMessage: boolean = false;
   private timeoutId: any = null;
 
-
-  onSearchChange() {
-  }
+  onSearchChange() {}
 
   subscribe() {
     if (this.timeoutId) clearTimeout(this.timeoutId);
-    
+
     this.message = 'Subscribed Successfully';
     this.showMessage = true;
 

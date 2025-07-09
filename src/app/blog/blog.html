@@ -1,5 +1,5 @@
 <div class="w-full h-full flex flex-col lg:flex-row py-25 md:py-25 md:p-40">
-  <!-- Left: Blog Section -->
+  
   <div class="w-full lg:w-2/3 p-4 md:p-8 space-y-5">
     <div class="flex items-center text-sm text-[#941a28] gap-2">
       <a [routerLink]="['/home']" class="hover:underline">Home</a>> Blog
@@ -8,53 +8,75 @@
     <h1 class="text-3xl md:text-4xl font-bold text-green-600">BLOG</h1>
 
     <div class="space-y-6">
-      <div *ngFor="let blog of displayedBlogs" class="bg-white shadow-lg rounded-lg overflow-hidden">
-        <img [src]="blog.image" alt="Blog Image" class="w-full h-60 object-cover">
+      <div
+        *ngFor="let blog of displayedBlogs"
+        class="bg-white shadow-lg rounded-lg overflow-hidden"
+      >
+        <img
+          [src]="server + '/uploads/'+ blog.image"
+          alt="Blog Image"
+          class="w-full h-60 object-cover"
+        />
         <div class="p-4">
-          <h2 class="text-lg md:text-xl font-semibold text-gray-800">{{ blog.title }}</h2>
+          <h2 class="text-lg md:text-xl font-semibold text-gray-800">
+            {{ blog.title }}
+          </h2>
           <p class="text-gray-500 text-xs md:text-sm">
             {{ blog.date }} | {{ blog.category }} | By {{ blog.author }}
           </p>
-          <p class="text-gray-700 mt-2 text-sm">{{ blog.content | slice:0:100 }}...</p>
-          <a (click)="viewblog(blog.id)" class="text-blue-500 hover:underline text-sm">Read More</a>
+          <p class="text-gray-700 mt-2 text-sm">
+            {{ blog.content | slice:0:100 }}...
+          </p>
+          <button
+            (click)="viewblog(blog)"
+            class="text-blue-500 hover:underline text-sm"
+          >
+            Read More
+          </button>
         </div>
       </div>
     </div>
 
-    <!-- Pagination -->
+    
     <div class="flex flex-wrap justify-center mt-6 gap-2">
-      <button *ngFor="let page of [].constructor(totalPages); let i = index"
-              (click)="goToPage(i + 1)"
-              [class.bg-blue-500]="currentPage === i + 1"
-              [class.text-white]="currentPage === i + 1"
-              class="px-3 py-1 border rounded-lg hover:bg-blue-400 text-sm">
+      <button
+        *ngFor="let page of [].constructor(totalPages); let i = index"
+        (click)="goToPage(i + 1)"
+        [class.bg-blue-500]="currentPage === i + 1"
+        [class.text-white]="currentPage === i + 1"
+        class="px-3 py-1 border rounded-lg hover:bg-blue-400 text-sm"
+      >
         {{ i + 1 }}
       </button>
     </div>
   </div>
 
-  <!-- Right: Sidebar Section -->
+  
   <div class="w-full lg:w-1/3 p-4 md:p-8 space-y-6">
-    <!-- Search -->
+    
     <div class="relative flex items-center">
-      <input type="search"
-             [(ngModel)]="searchQuery"
-             (ngModelChange)="onSearchChange()"
-             placeholder="Search …"
-             class="w-full py-2 px-4 rounded-lg bg-white border border-gray-300">
+      <input
+        type="search"
+        [(ngModel)]="searchQuery"
+        (ngModelChange)="onSearchChange()"
+        placeholder="Search …"
+        class="w-full py-2 px-4 rounded-lg bg-white border border-gray-300"
+      />
       <button class="absolute right-0 h-full px-3 bg-[#fb9901] rounded-r-lg">
-        <img [src]="imageUrl" alt="Search" class="w-5 h-5">
+        <img [src]="imageUrl" alt="Search" class="w-5 h-5" />
       </button>
     </div>
 
-    <!-- Categories -->
+    
     <div>
       <h2 class="text-[#701011] text-2xl md:text-3xl font-bold">Categories</h2>
-      <hr class="my-2 border-[#701011]">
+      <hr class="my-2 border-[#701011]" />
       <ul class="space-y-3 text-sm">
         <li class="flex items-center gap-2">
           <span class="w-3 h-3 bg-orange-500 rounded-full"></span>
-          <a href="https://themangobasket.com/alphonso-mango/">Alphonso Mango</a>
+          <a href="https://themangobasket.com/alphonso-mango/"
+            >Alphonso Mango</a
+          >
         </li>
         <li class="flex items-center gap-2">
           <span class="w-3 h-3 bg-orange-500 rounded-full"></span>
@@ -75,10 +97,12 @@
       </ul>
     </div>
 
-    <!-- Popular Posts -->
+    
     <div>
-      <h2 class="text-[#701011] text-2xl md:text-3xl font-bold">Popular Posts</h2>
-      <hr class="my-2 border-[#701011]">
+      <h2 class="text-[#701011] text-2xl md:text-3xl font-bold">
+        Popular Posts
+      </h2>
+      <hr class="my-2 border-[#701011]" />
       <ul class="space-y-3 text-sm text-[#701011]">
         <li class="flex gap-2 items-center">
           <span class="w-3 h-3 bg-orange-500 rounded-full"></span>
@@ -103,42 +127,78 @@
       </ul>
     </div>
 
-    <!-- Why Mango Basket Section -->
+    
     <div class="bg-white rounded-lg p-6 text-center space-y-4">
-      <h4 class="text-[#701011] text-xl font-semibold">Why <span>Mango Basket?</span></h4>
+      <h4 class="text-[#701011] text-xl font-semibold">
+        Why <span>Mango Basket?</span>
+      </h4>
       <div class="grid grid-cols-2 gap-4">
         <div>
-          <img src="https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/Varieties-of-Mangoes.png.webp" alt="Varieties of Mangoes" class="w-full h-20 object-contain">
+          <img
+            src="https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/Varieties-of-Mangoes.png.webp"
+            alt="Varieties of Mangoes"
+            class="w-full h-20 object-contain"
+          />
           <h4 class="text-sm font-semibold">Varieties of Mangoes</h4>
         </div>
         <div>
-          <img src="https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/Directly-From-Farmers.png.webp" alt="Directly From Farmers" class="w-full h-20 object-contain">
+          <img
+            src="https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/Directly-From-Farmers.png.webp"
+            alt="Directly From Farmers"
+            class="w-full h-20 object-contain"
+          />
           <h4 class="text-sm font-semibold">Directly From Farmers</h4>
         </div>
         <div>
-          <img src="https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/100-Organic-Mangoes.png.webp" alt="Organic" class="w-full h-20 object-contain">
+          <img
+            src="https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/100-Organic-Mangoes.png.webp"
+            alt="Organic"
+            class="w-full h-20 object-contain"
+          />
           <h4 class="text-sm font-semibold">100% Organic</h4>
         </div>
         <div>
-          <img src="https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/Carbide-Chemical-Free.png.webp" alt="Free" class="w-full h-20 object-contain">
+          <img
+            src="https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/Carbide-Chemical-Free.png.webp"
+            alt="Free"
+            class="w-full h-20 object-contain"
+          />
           <h4 class="text-sm font-semibold">Chemical Free</h4>
         </div>
       </div>
-      <a href="https://themangobasket.com/products/?utm_source=Blog_Posts&utm_medium=Sidebar_Widget&utm_campaign=Blog_Posts"
-         class="inline-block bg-orange-500 text-white font-bold py-2 px-4 rounded-full mt-4">
+      <a
+        href="https://themangobasket.com/products/?utm_source=Blog_Posts&utm_medium=Sidebar_Widget&utm_campaign=Blog_Posts"
+        class="inline-block bg-orange-500 text-white font-bold py-2 px-4 rounded-full mt-4"
+      >
         Order Now
       </a>
     </div>
 
-    <!-- Newsletter Sign Up -->
+    
     <div class="bg-[#f6f0e8] rounded-lg shadow-xl p-6 space-y-4 text-center">
       <h2 class="text-[#701011] font-bold text-base md:text-lg">
         SIGN UP FOR RECIPES, COUPONS AND OTHER MANGO NEWS
       </h2>
-      <img src="https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/Basket-Of-Mangoes.png.webp" alt="" class="w-full h-28 object-contain">
-      <input type="text" placeholder="Full Name" class="w-full px-3 py-2 bg-white rounded border">
-      <input type="email" placeholder="Email" class="w-full px-3 py-2 bg-white rounded border">
-      <button class="bg-orange-500 text-white font-semibold py-2 px-4 rounded-full">Subscribe</button>
+      <img
+        src="https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/Basket-Of-Mangoes.png.webp"
+        alt=""
+        class="w-full h-28 object-contain"
+      />
+      <input
+        type="text"
+        placeholder="Full Name"
+        class="w-full px-3 py-2 bg-white rounded border"
+      />
+      <input
+        type="email"
+        placeholder="Email"
+        class="w-full px-3 py-2 bg-white rounded border"
+      />
+      <button
+        class="bg-orange-500 text-white font-semibold py-2 px-4 rounded-full"
+      >
+        Subscribe
+      </button>
     </div>
   </div>
 </div>

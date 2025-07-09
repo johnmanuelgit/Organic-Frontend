@@ -5,26 +5,25 @@ import { Cart } from '../services/Cart/cart';
 
 @Component({
   selector: 'app-header',
-  standalone:true,
-  imports: [CommonModule,RouterModule],
+  standalone: true,
+  imports: [CommonModule, RouterModule],
   templateUrl: './header.html',
-  styleUrl: './header.css'
+  styleUrl: './header.css',
 })
 export class Header implements OnInit {
- isscrolled = false;
- isMenuOpen = false;
- cartCount = 0;
- 
- constructor (private cartService:Cart){}
+  isscrolled = false;
+  isMenuOpen = false;
+  cartCount = 0;
 
- toggleMenu() {
-  this.isMenuOpen = !this.isMenuOpen;
-}
+  constructor(private cartService: Cart) {}
 
-ngOnInit() {
-  this.cartService.cartItemsCount$.subscribe(count => {
-    this.cartCount = count;
-  });
-}
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
 
+  ngOnInit() {
+    this.cartService.cartItemsCount$.subscribe((count) => {
+      this.cartCount = count;
+    });
+  }
 }

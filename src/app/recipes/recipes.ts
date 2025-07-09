@@ -5,24 +5,39 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-recipes',
-  imports: [CommonModule,FormsModule,RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './recipes.html',
-  styleUrl: './recipes.css'
+  styleUrl: './recipes.css',
 })
 export class Recipes {
-
- recipeCategories = [
+  recipeCategories = [
     { name: 'All Recipes', active: true },
     { name: 'Dessert', active: false },
     { name: 'Drinks', active: false },
-    { name: 'Refreshment', active: false }
+    { name: 'Refreshment', active: false },
   ];
 
   allRecipes = [
-    { name: 'Mango Wine', image: 'assets/image/recipe-1.webp', category: 'drinks' },
-    { name: 'Aamras', image: 'assets/image/recipe-2.webp', category: 'dessert' },
-    { name: 'Mango Kulfi', image: 'assets/image/recipe-3.webp', category: 'dessert,refreshment' },
-    { name: 'Aam Panna', image: 'assets/image/recipe-4.webp', category: 'refreshment' }
+    {
+      name: 'Mango Wine',
+      image: 'assets/image/recipe-1.webp',
+      category: 'drinks',
+    },
+    {
+      name: 'Aamras',
+      image: 'assets/image/recipe-2.webp',
+      category: 'dessert',
+    },
+    {
+      name: 'Mango Kulfi',
+      image: 'assets/image/recipe-3.webp',
+      category: 'dessert,refreshment',
+    },
+    {
+      name: 'Aam Panna',
+      image: 'assets/image/recipe-4.webp',
+      category: 'refreshment',
+    },
   ];
 
   recipes = [...this.allRecipes];
@@ -35,11 +50,12 @@ export class Recipes {
 
     const selected = this.recipeCategories[index].name.toLowerCase();
 
-    this.recipes = selected === 'all recipes'
-      ? [...this.allRecipes]
-      : this.allRecipes.filter(recipe =>
-          recipe.category.toLowerCase().includes(selected)
-        );
+    this.recipes =
+      selected === 'all recipes'
+        ? [...this.allRecipes]
+        : this.allRecipes.filter((recipe) =>
+            recipe.category.toLowerCase().includes(selected)
+          );
   }
 
   subscribeToNewsletter(event: Event, emailForm: any): void {
@@ -47,11 +63,10 @@ export class Recipes {
     if (emailForm.valid) {
       console.log('Subscribed with:', emailForm.value);
       this.subscriptionMessage = 'Subscribed successfully!';
-      emailForm.resetForm(); // Optional: Clear the form
+      emailForm.resetForm();
       setTimeout(() => {
-        this.subscriptionMessage = ''; // Auto-hide message after 5 seconds
+        this.subscriptionMessage = '';
       }, 5000);
     }
   }
 }
-

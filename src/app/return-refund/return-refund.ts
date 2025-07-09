@@ -5,21 +5,21 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-return-refund',
-  imports: [CommonModule,FormsModule,RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './return-refund.html',
-  styleUrl: './return-refund.css'
+  styleUrl: './return-refund.css',
 })
 export class ReturnRefund {
- imageUrl:string='assets/icon/search-icon.svg';
+  imageUrl: string = 'assets/icon/search-icon.svg';
   searchQuery: string = '';
   message: string = '';
   showMessage: boolean = false;
   private timeoutId: any = null;
 
-  onSearchChange(){}
+  onSearchChange() {}
   subscribe() {
     if (this.timeoutId) clearTimeout(this.timeoutId);
-    
+
     this.message = 'Subscribed Successfully';
     this.showMessage = true;
 
@@ -27,6 +27,4 @@ export class ReturnRefund {
       this.showMessage = false;
     }, 3000);
   }
-
 }
-

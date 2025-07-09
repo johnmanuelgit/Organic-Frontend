@@ -5,23 +5,25 @@ import {
   HttpHandler,
   HttpEvent,
   HttpResponse,
-  HttpErrorResponse
+  HttpErrorResponse,
 } from '@angular/common/http';
 import { Observable, tap, finalize } from 'rxjs';
 import { Loader } from '../../services/loader/loader';
-
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   constructor(private loaderService: Loader) {}
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(
+    req: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
     const token = localStorage.getItem('token');
     let clonedReq = req;
 
     if (token) {
       clonedReq = req.clone({
-        headers: req.headers.set('Authorization', `Bearer ${token}`)
+        headers: req.headers.set('Authorization', `Bearer ${token}`),
       });
     }
 
@@ -31,15 +33,15 @@ export class AuthInterceptor implements HttpInterceptor {
       tap({
         next: (event) => {
           if (event instanceof HttpResponse) {
-            console.log('✅ HTTP Response:', event);
+            console.log(' HTTP Response:', event);
           }
         },
         error: (error: HttpErrorResponse) => {
-          console.error('❌ HTTP Error:', error);
-        }
+          console.error('HTTP Error:', error);
+        },
       }),
       finalize(() => {
-        this.loaderService.hide(); // Hide loader after response/error
+        this.loaderService.hide();
       })
     );
   }

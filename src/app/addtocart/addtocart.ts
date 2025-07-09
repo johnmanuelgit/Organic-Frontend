@@ -6,9 +6,9 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-addtocart',
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './addtocart.html',
-  styleUrl: './addtocart.css'
+  styleUrl: './addtocart.css',
 })
 export class Addtocart implements OnInit {
   cartItems: any[] = [];
@@ -19,7 +19,6 @@ export class Addtocart implements OnInit {
   constructor(private cartService: Cart, private http: HttpClient) {}
 
   ngOnInit() {
-    // Get user details first
     const userString = localStorage.getItem('user');
     if (userString) {
       const user = JSON.parse(userString);
@@ -28,15 +27,13 @@ export class Addtocart implements OnInit {
       console.error('User not found in localStorage');
       this.userId = '';
     }
-    
-    // Subscribe to cart changes
-    this.cartService.getCartObservable().subscribe(items => {
+
+    this.cartService.getCartObservable().subscribe((items) => {
       this.cartItems = items;
       this.calculateTotal();
       this.isLoading = false;
     });
 
-    // Try to fetch from backend first if user is logged in
     if (this.userId) {
       this.cartService.fetchCartFromBackend().subscribe({
         next: (items: any) => {
@@ -44,7 +41,6 @@ export class Addtocart implements OnInit {
             this.cartItems = items;
             this.calculateTotal();
           } else {
-            // If no items in backend, use local storage
             this.cartItems = this.cartService.getCart();
             this.calculateTotal();
           }
@@ -52,14 +48,13 @@ export class Addtocart implements OnInit {
         },
         error: (err) => {
           console.error('Error fetching cart', err);
-          // Fallback to local storage
+
           this.cartItems = this.cartService.getCart();
           this.calculateTotal();
           this.isLoading = false;
-        }
+        },
       });
     } else {
-      // No user logged in, use local storage
       this.cartItems = this.cartService.getCart();
       this.calculateTotal();
       this.isLoading = false;
@@ -68,7 +63,7 @@ export class Addtocart implements OnInit {
 
   calculateTotal() {
     this.totalPrice = this.cartItems.reduce(
-      (total, item) => total + item.price * item.quantity, 
+      (total, item) => total + item.price * item.quantity,
       0
     );
   }
@@ -82,18 +77,17 @@ export class Addtocart implements OnInit {
     this.cartService.updateQuantity(item, item.quantity);
     this.calculateTotal();
   }
-  
+
   decreaseQuantity(item: any) {
     if (item.quantity > 1) {
       item.quantity -= 1;
       this.cartService.updateQuantity(item, item.quantity);
       this.calculateTotal();
     } else {
-      // Remove item if quantity drops to 0
       this.removeItem(item);
     }
   }
-  
+
   removeItem(item: any) {
     this.cartService.removeItem(item.name);
     this.calculateTotal();

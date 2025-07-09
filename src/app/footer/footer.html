@@ -1,139 +1,263 @@
 <footer class="w-full bg-[#941a28] text-white mt-20">
   <div class="max-w-screen-xl mx-auto px-6 py-12">
-    <!-- Main Footer Content -->
     <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-12">
-      
-      <!-- Navigation Links -->
       <div class="space-y-3">
         <h3 class="font-bold text-lg mb-6">Navigation</h3>
         <div class="flex flex-col space-y-3">
-          <a [routerLink]="['home']" class="hover:underline transition duration-200">Home</a>
-          <a [routerLink]="['products']" class="hover:underline transition duration-200">Products</a>
-          <a [routerLink]="['blog']" class="hover:underline transition duration-200">Blog</a>
-          <a [routerLink]="['/recipes']" class="hover:underline transition duration-200">Recipes</a>
-          <a [routerLink]="['/wiki']" class="hover:underline transition duration-200">Wiki</a>
-          <a [routerLink]="['contact']" class="hover:underline transition duration-200">Contact Us</a>
+          <a
+            [routerLink]="['home']"
+            class="hover:underline transition duration-200"
+            >Home</a
+          >
+          <a
+            [routerLink]="['products']"
+            class="hover:underline transition duration-200"
+            >Products</a
+          >
+          <a
+            [routerLink]="['blog']"
+            class="hover:underline transition duration-200"
+            >Blog</a
+          >
+          <a
+            [routerLink]="['/recipes']"
+            class="hover:underline transition duration-200"
+            >Recipes</a
+          >
+          <a
+            [routerLink]="['/wiki']"
+            class="hover:underline transition duration-200"
+            >Wiki</a
+          >
+          <a
+            [routerLink]="['contact']"
+            class="hover:underline transition duration-200"
+            >Contact Us</a
+          >
         </div>
       </div>
-      
-      <!-- Policies -->
+
       <div class="space-y-3">
         <h3 class="font-bold text-lg mb-6">Policies</h3>
         <div class="flex flex-col space-y-3">
-          <a [routerLink]="['/term&cond']" class="hover:underline transition duration-200">Terms & Conditions</a>
-          <a [routerLink]="['/return&refund']" class="hover:underline transition duration-200">Return & Refund Policy</a>
-          <a [routerLink]="['/privacy']" class="hover:underline transition duration-200">Privacy Policy</a>
-          <a [routerLink]="['/shipping']" class="hover:underline transition duration-200">Shipping Policy</a>
+          <a
+            [routerLink]="['/term&cond']"
+            class="hover:underline transition duration-200"
+            >Terms & Conditions</a
+          >
+          <a
+            [routerLink]="['/return&refund']"
+            class="hover:underline transition duration-200"
+            >Return & Refund Policy</a
+          >
+          <a
+            [routerLink]="['/privacy']"
+            class="hover:underline transition duration-200"
+            >Privacy Policy</a
+          >
+          <a
+            [routerLink]="['/shipping']"
+            class="hover:underline transition duration-200"
+            >Shipping Policy</a
+          >
         </div>
       </div>
-      
-      <!-- Contact Info -->
+
       <div class="space-y-3">
         <h3 class="font-bold text-lg mb-6">Contact Us</h3>
         <div class="flex flex-col space-y-3">
           <p class="flex items-start">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 mr-2 mt-0.5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                clip-rule="evenodd"
+              />
             </svg>
             123 Mango Street, Fruitville, FL 34232
           </p>
           <p class="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 mr-2"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
+              />
             </svg>
             (123) 456-7890
           </p>
           <p class="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 mr-2"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
+              />
+              <path
+                d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
+              />
             </svg>
             infothemangobasket.com
           </p>
         </div>
       </div>
-      
-      <!-- Social Media -->
+
       <div class="space-y-6">
         <h3 class="font-bold text-lg mb-6">Connect With Us</h3>
         <div class="flex space-x-5">
-          <!-- Twitter -->
-          <a href="https://twitter.com/themangobasket/" target="_blank" class="hover:opacity-80 transition duration-200">
-            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="white">
+          <a
+            href="https://twitter.com/themangobasket/"
+            target="_blank"
+            class="hover:opacity-80 transition duration-200"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="36"
+              height="36"
+              viewBox="0 0 24 24"
+              fill="white"
+            >
               <circle cx="12" cy="12" r="12" fill="#941a28" />
-              <path d="M19.633 7.997c.013.176.013.353.013.529 0 5.385-4.096 11.6-11.6 11.6-2.31 0-4.457-.676-6.263-1.845.33.038.647.051.989.051a8.203 8.203 0 0 0 5.09-1.754 4.09 4.09 0 0 1-3.822-2.841c.254.038.508.063.774.063.381 0 .75-.05 1.099-.14a4.087 4.087 0 0 1-3.277-4.01v-.051a4.132 4.132 0 0 0 1.845.519A4.086 4.086 0 0 1 4.14 6.172a11.605 11.605 0 0 0 8.42 4.27 4.607 4.607 0 0 1-.101-.937A4.086 4.086 0 0 1 16.546 5.5a8.063 8.063 0 0 0 2.59-.989 4.077 4.077 0 0 1-1.796 2.254 8.172 8.172 0 0 0 2.344-.635 8.68 8.68 0 0 1-2.051 2.118z"/>
+              <path
+                d="M19.633 7.997c.013.176.013.353.013.529 0 5.385-4.096 11.6-11.6 11.6-2.31 0-4.457-.676-6.263-1.845.33.038.647.051.989.051a8.203 8.203 0 0 0 5.09-1.754 4.09 4.09 0 0 1-3.822-2.841c.254.038.508.063.774.063.381 0 .75-.05 1.099-.14a4.087 4.087 0 0 1-3.277-4.01v-.051a4.132 4.132 0 0 0 1.845.519A4.086 4.086 0 0 1 4.14 6.172a11.605 11.605 0 0 0 8.42 4.27 4.607 4.607 0 0 1-.101-.937A4.086 4.086 0 0 1 16.546 5.5a8.063 8.063 0 0 0 2.59-.989 4.077 4.077 0 0 1-1.796 2.254 8.172 8.172 0 0 0 2.344-.635 8.68 8.68 0 0 1-2.051 2.118z"
+              />
             </svg>
           </a>
-          
-          <!-- LinkedIn -->
-          <a href="https://www.linkedin.com/company/mango-basket/" target="_blank" class="hover:opacity-80 transition duration-200">
-            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="white">
+
+          <a
+            href="https://www.linkedin.com/company/mango-basket/"
+            target="_blank"
+            class="hover:opacity-80 transition duration-200"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="36"
+              height="36"
+              viewBox="0 0 24 24"
+              fill="white"
+            >
               <circle cx="12" cy="12" r="12" fill="#941a28" />
-              <path d="M6.94 9.5h2.127v7.106H6.94V9.5zm1.065-3.306a1.232 1.232 0 1 1 0 2.465 1.232 1.232 0 0 1 0-2.465zM10.99 9.5h2.037v.973c.283-.538 1.014-1.078 1.966-1.078 2.102 0 2.491 1.38 2.491 3.172v4.038h-2.127v-3.571c0-.854-.015-1.955-1.2-1.955-1.203 0-1.387.939-1.387 1.91v3.616H10.99V9.5z"/>
+              <path
+                d="M6.94 9.5h2.127v7.106H6.94V9.5zm1.065-3.306a1.232 1.232 0 1 1 0 2.465 1.232 1.232 0 0 1 0-2.465zM10.99 9.5h2.037v.973c.283-.538 1.014-1.078 1.966-1.078 2.102 0 2.491 1.38 2.491 3.172v4.038h-2.127v-3.571c0-.854-.015-1.955-1.2-1.955-1.203 0-1.387.939-1.387 1.91v3.616H10.99V9.5z"
+              />
             </svg>
           </a>
-          
-          <!-- Instagram -->
-          <a href="https://www.instagram.com/themangobasket/" target="_blank" class="hover:opacity-80 transition duration-200">
-            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="white">
+
+          <a
+            href="https://www.instagram.com/themangobasket/"
+            target="_blank"
+            class="hover:opacity-80 transition duration-200"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="36"
+              height="36"
+              viewBox="0 0 24 24"
+              fill="white"
+            >
               <circle cx="12" cy="12" r="12" fill="#941a28" />
-              <path d="M12 7.2a4.8 4.8 0 1 0 4.8 4.8A4.805 4.805 0 0 0 12 7.2Zm0 7.2a2.4 2.4 0 1 1 2.4-2.4A2.4 2.4 0 0 1 12 14.4Zm4.2-7.8a1.2 1.2 0 1 1-1.2-1.2 1.2 1.2 0 0 1 1.2 1.2ZM18 8.4v7.2A2.4 2.4 0 0 1 15.6 18H8.4A2.4 2.4 0 0 1 6 15.6V8.4A2.4 2.4 0 0 1 8.4 6h7.2A2.4 2.4 0 0 1 18 8.4Z"/>
+              <path
+                d="M12 7.2a4.8 4.8 0 1 0 4.8 4.8A4.805 4.805 0 0 0 12 7.2Zm0 7.2a2.4 2.4 0 1 1 2.4-2.4A2.4 2.4 0 0 1 12 14.4Zm4.2-7.8a1.2 1.2 0 1 1-1.2-1.2 1.2 1.2 0 0 1 1.2 1.2ZM18 8.4v7.2A2.4 2.4 0 0 1 15.6 18H8.4A2.4 2.4 0 0 1 6 15.6V8.4A2.4 2.4 0 0 1 8.4 6h7.2A2.4 2.4 0 0 1 18 8.4Z"
+              />
             </svg>
           </a>
-          
-          <!-- Pinterest -->
-          <a href="https://pinterest.com/mangobasket/" target="_blank" class="hover:opacity-80 transition duration-200">
-            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="white">
+
+          <a
+            href="https://pinterest.com/mangobasket/"
+            target="_blank"
+            class="hover:opacity-80 transition duration-200"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="36"
+              height="36"
+              viewBox="0 0 24 24"
+              fill="white"
+            >
               <circle cx="12" cy="12" r="12" fill="#941a28" />
-              <path d="M13.045 13.493c-.722-.062-1.028-.414-.725-1.352.216-.663.64-1.421.48-2.144-.271-1.21-2.174-.926-2.642.963-.213.88-.084 2.072.16 2.733-.492 2.065-1.157 3.889-1.509 5.164-.152.55.398.874.743.356 1.046-1.534 1.63-3.55 1.821-5.253.502.433 1.391.643 2.063.643 2.596 0 4.275-2.582 3.89-5.043-.36-2.283-2.808-3.393-5.014-3.089-2.408.336-4.566 2.341-4.511 4.972.027 1.204.646 2.13 1.824 2.258.65.07 1.03-.476.919-1.003-.12-.586-.59-.823-.64-1.373-.121-1.276 1.198-3.095 2.603-3.016 1.163.065 1.104 1.281.86 2.154-.26.93-.817 1.946-.735 2.826.082.875.769 1.188 1.478 1.146 1.88-.11 3.196-2.382 2.748-4.734-.396-2.056-2.413-3.56-4.703-3.354-2.29.205-4.171 2.028-4.212 4.303-.04 2.323 1.673 3.687 3.246 3.404z"/>
+              <path
+                d="M13.045 13.493c-.722-.062-1.028-.414-.725-1.352.216-.663.64-1.421.48-2.144-.271-1.21-2.174-.926-2.642.963-.213.88-.084 2.072.16 2.733-.492 2.065-1.157 3.889-1.509 5.164-.152.55.398.874.743.356 1.046-1.534 1.63-3.55 1.821-5.253.502.433 1.391.643 2.063.643 2.596 0 4.275-2.582 3.89-5.043-.36-2.283-2.808-3.393-5.014-3.089-2.408.336-4.566 2.341-4.511 4.972.027 1.204.646 2.13 1.824 2.258.65.07 1.03-.476.919-1.003-.12-.586-.59-.823-.64-1.373-.121-1.276 1.198-3.095 2.603-3.016 1.163.065 1.104 1.281.86 2.154-.26.93-.817 1.946-.735 2.826.082.875.769 1.188 1.478 1.146 1.88-.11 3.196-2.382 2.748-4.734-.396-2.056-2.413-3.56-4.703-3.354-2.29.205-4.171 2.028-4.212 4.303-.04 2.323 1.673 3.687 3.246 3.404z"
+              />
             </svg>
           </a>
         </div>
-        
-        <!-- Newsletter -->
-    <!-- newsletter.component.html -->
-<div class="mt-6">
-  <h4 class="font-medium mb-3">Subscribe to our newsletter</h4>
-  
-  <!-- Success Message -->
-  <div *ngIf="isSuccess" class="mb-3 p-3 bg-green-100 text-green-700 rounded flex items-center">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-    </svg>
-    Thank you for subscribing!
-  </div>
 
-  <!-- Subscription Form -->
-  <form [formGroup]="newsletterForm" (ngSubmit)="onSubmit()" class="flex gap-2">
-    <input 
-      type="email" 
-      formControlName="email"
-      placeholder="Your email" 
-      class="bg-white px-4 py-2 w-full rounded text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#941a28]"
-      [class.ring-2]="newsletterForm.get('email')?.touched && newsletterForm.get('email')?.invalid"
-      [class.ring-red-500]="newsletterForm.get('email')?.touched && newsletterForm.get('email')?.invalid"
-    >
-    <button 
-      type="submit"
-      class="bg-white text-[#941a28] px-4 py-2 rounded font-medium hover:bg-gray-100 transition duration-200 whitespace-nowrap"
-    >
-      Subscribe
-    </button>
-  </form>
+        <div class="mt-6">
+          <h4 class="font-medium mb-3">Subscribe to our newsletter</h4>
 
-  <!-- Validation Messages -->
-  <div *ngIf="newsletterForm.get('email')?.touched && newsletterForm.get('email')?.errors" class="text-red-500 text-sm mt-1">
-    <div *ngIf="newsletterForm.get('email')?.errors?.['required']">Email is required</div>
-    <div *ngIf="newsletterForm.get('email')?.errors?.['email']">Please enter a valid email</div>
-  </div>
-</div>
+          <div
+            *ngIf="isSuccess"
+            class="mb-3 p-3 bg-green-100 text-green-700 rounded flex items-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 mr-2"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            Thank you for subscribing!
+          </div>
+
+          <form
+            [formGroup]="newsletterForm"
+            (ngSubmit)="onSubmit()"
+            class="flex gap-2"
+          >
+            <input
+              type="email"
+              formControlName="email"
+              placeholder="Your email"
+              class="bg-white px-4 py-2 w-full rounded text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#941a28]"
+              [class.ring-2]="newsletterForm.get('email')?.touched && newsletterForm.get('email')?.invalid"
+              [class.ring-red-500]="newsletterForm.get('email')?.touched && newsletterForm.get('email')?.invalid"
+            />
+            <button
+              type="submit"
+              class="bg-white text-[#941a28] px-4 py-2 rounded font-medium hover:bg-gray-100 transition duration-200 whitespace-nowrap"
+            >
+              Subscribe
+            </button>
+          </form>
+
+          <div
+            *ngIf="newsletterForm.get('email')?.touched && newsletterForm.get('email')?.errors"
+            class="text-red-500 text-sm mt-1"
+          >
+            <div *ngIf="newsletterForm.get('email')?.errors?.['required']">
+              Email is required
+            </div>
+            <div *ngIf="newsletterForm.get('email')?.errors?.['email']">
+              Please enter a valid email
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    
-    <!-- Payment and Copyright -->
+
     <div class="mt-16 border-t border-white/20 pt-8">
       <div class="flex flex-col lg:flex-row justify-between items-center">
-        <img src="assets/nav-footer/payment.webp" alt="Payment Methods" class="mb-6 lg:mb-0">
+        <img
+          src="assets/nav-footer/payment.webp"
+          alt="Payment Methods"
+          class="mb-6 lg:mb-0"
+        />
         <div class="text-center lg:text-right">
           <p class="text-sm">© 2025-26 Mango Basket. All rights reserved.</p>
           <p class="text-xs mt-1 opacity-80">Designed with ♥ in Fruitland</p>

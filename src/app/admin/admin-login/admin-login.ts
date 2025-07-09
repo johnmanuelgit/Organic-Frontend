@@ -6,42 +6,34 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-admin-login',
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './admin-login.html',
-  styleUrl: './admin-login.css'
+  styleUrl: './admin-login.css',
 })
 export class AdminLogin implements OnInit {
-  // Login form fields
   username: string = '';
   password: string = '';
   rememberMe: boolean = false;
 
-  // State management
   errorMessage: string = '';
   successMessage: string = '';
   isLoading: boolean = false;
   isSubmitted: boolean = false;
 
-  // Form validation errors
   usernameError: string = '';
   passwordError: string = '';
 
-  // Forgot password state
   showForgotPassword: boolean = false;
   resetEmail: string = '';
   resetEmailSent: boolean = false;
   resetEmailError: string = '';
 
-  // Forgot username state
   showForgotUsername: boolean = false;
   usernameRecoveryEmail: string = '';
   usernameRecoveryEmailError: string = '';
   usernameRecoveryEmailSent: boolean = false;
 
-  constructor(
-    private authService: Auth,
-    private router: Router
-  ) { }
+  constructor(private authService: Auth, private router: Router) {}
 
   ngOnInit() {
     this.checkAuthentication();
@@ -49,7 +41,7 @@ export class AdminLogin implements OnInit {
   }
 
   private checkAuthentication(): void {
-    this.authService.isAuthenticated().subscribe(isAuth => {
+    this.authService.isAuthenticated().subscribe((isAuth) => {
       if (isAuth) {
         this.router.navigate(['/admin-dash']);
       }
@@ -98,19 +90,21 @@ export class AdminLogin implements OnInit {
     this.isLoading = true;
     this.clearMessages();
 
-    this.authService.login(this.username, this.password, this.rememberMe).subscribe({
-      next: (res) => {
-        this.handleLoginSuccess(res);
-      },
-      error: (err) => {
-        this.handleLoginError(err);
-      }
-    });
+    this.authService
+      .login(this.username, this.password, this.rememberMe)
+      .subscribe({
+        next: (res) => {
+          this.handleLoginSuccess(res);
+        },
+        error: (err) => {
+          this.handleLoginError(err);
+        },
+      });
   }
 
   private handleLoginSuccess(res: any): void {
     this.isLoading = false;
-    
+
     if (res.status === 'success') {
       this.successMessage = res.message || 'Login successful';
       setTimeout(() => this.router.navigate(['/admin-dash']), 1000);
@@ -122,12 +116,13 @@ export class AdminLogin implements OnInit {
   private handleLoginError(err: any): void {
     this.isLoading = false;
     console.error('Login error:', err);
-    this.errorMessage = err?.error?.message || 'Login failed. Please check your credentials.';
+    this.errorMessage =
+      err?.error?.message || 'Login failed. Please check your credentials.';
   }
 
   toggleForgotPassword(): void {
     this.showForgotPassword = !this.showForgotPassword;
-    this.showForgotUsername = false; // Hide username recovery when showing password reset
+    this.showForgotUsername = false;
     this.resetEmail = '';
     this.resetEmailSent = false;
     this.clearMessages();
@@ -163,16 +158,17 @@ export class AdminLogin implements OnInit {
       },
       error: (err) => {
         this.handleResetError(err);
-      }
+      },
     });
   }
 
   private handleResetSuccess(res: any): void {
     this.isLoading = false;
-    
+
     if (res.status === 'success') {
       this.resetEmailSent = true;
-      this.successMessage = res.message || 'Password reset instructions sent to your email';
+      this.successMessage =
+        res.message || 'Password reset instructions sent to your email';
     } else {
       this.errorMessage = res.message || 'Failed to send reset email';
     }
@@ -181,7 +177,8 @@ export class AdminLogin implements OnInit {
   private handleResetError(err: any): void {
     this.isLoading = false;
     console.error('Forgot password error:', err);
-    this.errorMessage = err.error?.message || 'Failed to send reset email. Please try again.';
+    this.errorMessage =
+      err.error?.message || 'Failed to send reset email. Please try again.';
   }
 
   resetForgotPasswordForm(): void {
@@ -197,79 +194,80 @@ export class AdminLogin implements OnInit {
     this.clearMessages();
   }
 
-toggleForgotUsername(): void {
-  this.showForgotUsername = !this.showForgotUsername;
-  this.showForgotPassword = false; // Hide password reset when showing username recovery
-  this.usernameRecoveryEmail = '';
-  this.usernameRecoveryEmailSent = false;
-  this.clearMessages();
-  this.clearErrors();
-}
-
-// Validate email for username recovery
-validateUsernameRecoveryEmail(): boolean {
-  this.usernameRecoveryEmailError = '';
-
-  if (!this.usernameRecoveryEmail) {
-    this.usernameRecoveryEmailError = 'Email is required';
-    return false;
+  toggleForgotUsername(): void {
+    this.showForgotUsername = !this.showForgotUsername;
+    this.showForgotPassword = false;
+    this.usernameRecoveryEmail = '';
+    this.usernameRecoveryEmailSent = false;
+    this.clearMessages();
+    this.clearErrors();
   }
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(this.usernameRecoveryEmail)) {
-    this.usernameRecoveryEmailError = 'Please enter a valid email address';
-    return false;
-  }
+  validateUsernameRecoveryEmail(): boolean {
+    this.usernameRecoveryEmailError = '';
 
-  return true;
-}
-
-// Request username recovery
-requestUsername(): void {
-  if (!this.validateUsernameRecoveryEmail()) return;
-
-  this.isLoading = true;
-  this.clearMessages();
-
-  this.authService.forgotUsername(this.usernameRecoveryEmail).subscribe({
-    next: (res) => {
-      this.handleUsernameRecoverySuccess(res);
-    },
-    error: (err) => {
-      this.handleUsernameRecoveryError(err);
+    if (!this.usernameRecoveryEmail) {
+      this.usernameRecoveryEmailError = 'Email is required';
+      return false;
     }
-  });
-}
 
-private handleUsernameRecoverySuccess(res: any): void {
-  this.isLoading = false;
-  
-  if (res.status === 'success') {
-    this.usernameRecoveryEmailSent = true;
-    this.successMessage = res.message || 'Your username has been sent to your email';
-  } else {
-    this.errorMessage = res.message || 'Failed to send username recovery email';
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(this.usernameRecoveryEmail)) {
+      this.usernameRecoveryEmailError = 'Please enter a valid email address';
+      return false;
+    }
+
+    return true;
   }
-}
 
-private handleUsernameRecoveryError(err: any): void {
-  this.isLoading = false;
-  console.error('Username recovery error:', err);
-  this.errorMessage = err?.error?.message || 'Failed to send username recovery email. Please try again.';
-}
+  requestUsername(): void {
+    if (!this.validateUsernameRecoveryEmail()) return;
 
-// Reset username recovery form
-resetUsernameRecoveryForm(): void {
-  this.usernameRecoveryEmail = '';
-  this.usernameRecoveryEmailSent = false;
-  this.clearMessages();
-  this.clearErrors();
-}
-tryAgainUsername(): void {
-  this.usernameRecoveryEmailSent = false;
-  this.usernameRecoveryEmail = '';
-  this.clearMessages();
-}
+    this.isLoading = true;
+    this.clearMessages();
+
+    this.authService.forgotUsername(this.usernameRecoveryEmail).subscribe({
+      next: (res) => {
+        this.handleUsernameRecoverySuccess(res);
+      },
+      error: (err) => {
+        this.handleUsernameRecoveryError(err);
+      },
+    });
+  }
+
+  private handleUsernameRecoverySuccess(res: any): void {
+    this.isLoading = false;
+
+    if (res.status === 'success') {
+      this.usernameRecoveryEmailSent = true;
+      this.successMessage =
+        res.message || 'Your username has been sent to your email';
+    } else {
+      this.errorMessage =
+        res.message || 'Failed to send username recovery email';
+    }
+  }
+
+  private handleUsernameRecoveryError(err: any): void {
+    this.isLoading = false;
+    console.error('Username recovery error:', err);
+    this.errorMessage =
+      err?.error?.message ||
+      'Failed to send username recovery email. Please try again.';
+  }
+
+  resetUsernameRecoveryForm(): void {
+    this.usernameRecoveryEmail = '';
+    this.usernameRecoveryEmailSent = false;
+    this.clearMessages();
+    this.clearErrors();
+  }
+  tryAgainUsername(): void {
+    this.usernameRecoveryEmailSent = false;
+    this.usernameRecoveryEmail = '';
+    this.clearMessages();
+  }
 
   private clearMessages(): void {
     this.errorMessage = '';

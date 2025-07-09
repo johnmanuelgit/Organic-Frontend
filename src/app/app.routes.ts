@@ -19,8 +19,9 @@ import { Dashboard } from './admin/dashboard/dashboard';
 import { ShopManagement } from './admin/shop-management/shop-management';
 import { Addtocart } from './addtocart/addtocart';
 import { Shop } from './shop/shop';
-import { ProductReview } from './product-review/product-review';
 import { BlogManagement } from './admin/blog-management/blog-management';
+import { ManageUser } from './admin/manage-user/manage-user';
+import { OrderStatus } from './admin/order-status/order-status';
 
 export const routes: Routes = [
   { path: "", component: Home },
@@ -53,10 +54,12 @@ export const routes: Routes = [
 //   { path: "ratna", component: RatnaAlphonsoComponent, canActivate: [authGuard] },
 
   // blog page
-  { path: "blog/:id", component: BlogPage, canActivate: [authGuard] },
+  { path: "blog/:id", component: BlogPage},
 
   { path: "admin-login", component: AdminLogin },
   { path: "admin-dash", component: Dashboard },
   { path: "shop-manage", component: ShopManagement},
-  {path:"blog-manage",component:BlogManagement}
+  {path:"blog-manage",component:BlogManagement},
+  {path:"admin-create",component:ManageUser},
+  {path:"order-manage",component:OrderStatus}
 ];

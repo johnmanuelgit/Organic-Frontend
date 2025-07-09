@@ -9,88 +9,103 @@ import { ServerLink } from '../../services/server-link/server-link';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './blog-management.html',
-  styleUrls: ['./blog-management.css']
+  styleUrls: ['./blog-management.css'],
 })
 export class BlogManagement implements OnInit {
-  blog: any = {
-    title: '',
-    description: ''
-  };
-  selectedFile: File | null = null;
   blogs: any[] = [];
-  isEditing = false;
-  currentBlogId: string | null = null;
-   server: string;
+  serverUrl = '';
+  isFormVisible = false;
+  isEditMode = false;
 
-  constructor(private blogService: BlogService,private serverlink:ServerLink) { this.server = this.serverlink.serverlinks;}
+  title = '';
+  content = '';
+  category = '';
+  author = '';
+  selectedFile: File | null = null;
+  existingImage = '';
+  blogId = '';
 
-  ngOnInit(): void {
-    this.fetchBlogs();
+  constructor(
+    private blogService: BlogService,
+    private ServerLink: ServerLink
+  ) {
+    this.serverUrl = ServerLink.serverlinks;
   }
 
-  fetchBlogs(): void {
-    this.blogService.getBlogs().subscribe((data: any) => {
-      this.blogs = data;
+  ngOnInit() {
+    this.loadBlogs();
+  }
+
+  loadBlogs() {
+    this.blogService.getAllBlogs().subscribe((res) => {
+      this.blogs = res;
+      this.isFormVisible = false;
+      this.resetForm();
     });
   }
 
-  onFileSelected(event: any): void {
+  showAddForm() {
+    this.isFormVisible = true;
+    this.isEditMode = false;
+    this.resetForm();
+  }
+
+  editBlog(blog: any) {
+    this.isFormVisible = true;
+    this.isEditMode = true;
+
+    this.blogId = blog._id;
+    this.title = blog.title;
+    this.content = blog.content;
+    this.category = blog.category;
+    this.author = blog.author;
+    this.existingImage = blog.image;
+    this.selectedFile = null;
+  }
+
+  deleteBlog(id: string) {
+    if (confirm('Are you sure you want to delete this blog?')) {
+      this.blogService.deleteBlog(id).subscribe(() => {
+        this.loadBlogs();
+      });
+    }
+  }
+
+  onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
   }
 
-  onSubmit(): void {
+  saveBlog() {
     const formData = new FormData();
-    formData.append('title', this.blog.title);
-    formData.append('description', this.blog.description);
-
+    formData.append('title', this.title);
+    formData.append('content', this.content);
+    formData.append('category', this.category);
+    formData.append('author', this.author);
+    formData.append('date', new Date().toLocaleDateString());
     if (this.selectedFile) {
       formData.append('image', this.selectedFile);
     }
 
-    if (this.isEditing && this.currentBlogId) {
-      this.blogService.updateBlog(this.currentBlogId, formData).subscribe(() => {
-        this.resetForm();
-        this.fetchBlogs();
+    if (this.isEditMode) {
+      this.blogService.updateBlog(this.blogId, formData).subscribe(() => {
+        alert('Blog updated');
+        this.loadBlogs();
       });
     } else {
-      this.blogService.addBlog(formData).subscribe(() => {
-        this.resetForm();
-        this.fetchBlogs();
+      this.blogService.createBlog(formData).subscribe(() => {
+        alert('Blog added');
+        this.loadBlogs();
       });
     }
   }
 
-  onEdit(blogId: string): void {
-    this.blogService.getBlogById(blogId).subscribe((blog: any) => {
-      this.blog = {
-        title: blog.title,
-        description: blog.description
-      };
-      this.isEditing = true;
-      this.currentBlogId = blogId;
-      // Note: We don't pre-set the image file, but you could display the current image
-    });
-  }
-
-  onDelete(blogId: string): void {
-    if (confirm('Are you sure you want to delete this blog post?')) {
-      this.blogService.deleteBlog(blogId).subscribe(() => {
-        this.fetchBlogs();
-      });
-    }
-  }
-
-  resetForm(): void {
-    this.blog = {
-      title: '',
-      description: ''
-    };
+  resetForm() {
+    this.title = '';
+    this.content = '';
+    this.category = '';
+    this.author = '';
     this.selectedFile = null;
-    this.isEditing = false;
-    this.currentBlogId = null;
-  }
-
-  cancelEdit(): void {
-    this.resetForm();
+    this.existingImage = '';
+    this.blogId = '';
   }
 }

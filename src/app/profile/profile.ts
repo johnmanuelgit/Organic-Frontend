@@ -7,27 +7,29 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './profile.html',
-  styleUrl: './profile.css'
+  styleUrl: './profile.css',
 })
-export class Profile implements OnInit{
-  user:any=true;
+export class Profile implements OnInit {
+  user: any = true;
 
-  constructor (private router:Router,private http: HttpClient,private cartService: Cart){}
-
-
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private cartService: Cart
+  ) {}
 
   ngOnInit(): void {
     const userId = localStorage.getItem('userId');
     const token = localStorage.getItem('token');
-    if(userId && token){
+    if (userId && token) {
       this.http.get<any>(`api/user/profile/${userId}`).subscribe(
-        data => {
+        (data) => {
           console.log('User Data:', data);
           this.user = data;
         },
-        error => {
+        (error) => {
           console.error('Error fetching user data:', error);
         }
       );
@@ -35,12 +37,10 @@ export class Profile implements OnInit{
       console.log('No userId found in localStorage');
     }
   }
-    
-  logout(){
+
+  logout() {
     localStorage.clear();
     this.router.navigate(['/login']);
     this.cartService.clearCart();
-
   }
-
 }

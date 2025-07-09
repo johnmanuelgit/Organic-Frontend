@@ -1,36 +1,45 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { BlogService } from '../admin/services/blog-service/blog-service';
+import { ServerLink } from '../services/server-link/server-link';
 
 @Component({
   selector: 'app-blog-page',
-  imports: [CommonModule,RouterModule],
+  standalone: true,
+  imports: [CommonModule, RouterModule],
   templateUrl: './blog-page.html',
-  styleUrl: './blog-page.css'
+  styleUrl: './blog-page.css',
 })
-export class BlogPage implements OnInit{
-  imageUrl:string='assets/blog/search-icon.svg';
-  blog: any;
+export class BlogPage implements OnInit {
+  imageUrl: string = 'assets/blog/search-icon.svg';
+  blog: any = null;
   imageUrls: string = '';
-  pagetitle:string='';
+  pagetitle: string = '';
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+  constructor(
+    private route: ActivatedRoute,
+    private blogService: BlogService,
+    private serverlinkservice: ServerLink
+  ) {}
 
   ngOnInit() {
-    const blogId = Number(this.route.snapshot.paramMap.get('id'));
+    const blogId = this.route.snapshot.paramMap.get('id');
+    if (blogId) {
+      this.loadBlog(blogId);
+    }
+  }
 
-    this.http.get<any[]>('assets/blogs.json').subscribe(blogs => {
-      this.blog = blogs.find(blog => blog.id === blogId);
-    });
-
-  
-    this.http.get<any[]>('assets/blogpage.json').subscribe(details => {
-      const blogDetail = details.find(detail => detail.id === blogId);
-      if (blogDetail) {
-        this.imageUrls = blogDetail.image;
-        this.pagetitle=blogDetail.pagetitle
-      }
+  loadBlog(id:any) {
+    this.blogService.getBlogById(id).subscribe({
+      next: (res) => {
+        this.blog = res;
+        this.imageUrls = this.serverlinkservice.serverlinks +'/uploads/'+ res.image;
+        this.pagetitle = res.title;
+      },
+      error: (err) => {
+        console.error('Failed to fetch blog:', err);
+      },
     });
   }
 }

@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class Toastr {
- constructor(private toastr: ToastrService) {}
+  constructor(private toastr: ToastrService) {}
 
   success(message: string, title?: string) {
     this.toastr.success(message, title || 'Success');

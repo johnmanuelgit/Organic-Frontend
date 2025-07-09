@@ -5,21 +5,22 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './dashboard.html',
-  styleUrl: './dashboard.css'
+  styleUrl: './dashboard.css',
 })
 export class Dashboard implements OnInit {
   currentTime = '';
   user: any = null;
-  constructor(private authService: Auth) { }
+  constructor(private authService: Auth) {}
   ngOnInit(): void {
     const now = new Date();
     this.currentTime = now.toLocaleTimeString();
-    const userJson = sessionStorage.getItem('admin_user') || localStorage.getItem('admin_user');
+    const userJson =
+      sessionStorage.getItem('admin_user') ||
+      localStorage.getItem('admin_user');
     this.user = userJson ? JSON.parse(userJson) : null;
   }
-
 
   isSuperAdmin(): boolean {
     return this.user?.role === 'superadmin';
@@ -35,7 +36,6 @@ export class Dashboard implements OnInit {
   }
 
   logout(): void {
-    this.authService.logout()
+    this.authService.logout();
   }
-
 }

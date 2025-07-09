@@ -1,10 +1,15 @@
 <div *ngIf=" user" class="p-30">
-  <h1 class="md:text-center mt-5 mb-5 font-bold text-[#8b0000] text-3xl">User Profile</h1>
+  <h1 class="md:text-center mt-5 mb-5 font-bold text-[#8b0000] text-3xl">
+    User Profile
+  </h1>
   <div class="space-y-10 md:p-30">
     <p><strong>Name:</strong> {{ user.name }}</p>
     <p><strong>Email:</strong> {{ user.email }}</p>
 
-    <button (click)="logout()" class="px-8 py-3 bg-orange-400 rounded-full md:ml-50 hover:scale-105">
+    <button
+      (click)="logout()"
+      class="px-8 py-3 bg-orange-400 rounded-full md:ml-50 hover:scale-105"
+    >
       Logout
     </button>
   </div>

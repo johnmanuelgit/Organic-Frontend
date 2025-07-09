@@ -1,30 +1,47 @@
+<h2 class="text-xl font-bold mb-4">Customer Reviews</h2>
 
-  <h2 class="text-xl font-bold mb-4">Customer Reviews</h2>
+<div *ngIf="reviews.length === 0" class="text-gray-500 mb-6">
+  No reviews yet.
+</div>
 
-  <div *ngIf="reviews.length === 0" class="text-gray-500 mb-6">No reviews yet.</div>
+<div
+  *ngFor="let review of reviews"
+  class="mb-4 p-4 border border-gray-200 rounded-lg"
+>
+  <div class="font-semibold mb-1">Rating: {{ review.rating }} ⭐</div>
+  <p class="text-gray-700">{{ review.comment }}</p>
+</div>
 
-  <div *ngFor="let review of reviews" class="mb-4 p-4 border border-gray-200 rounded-lg">
-    <div class="font-semibold mb-1">Rating: {{ review.rating }} ⭐</div>
-    <p class="text-gray-700">{{ review.comment }}</p>
+<hr class="my-6" />
+
+<h2 class="text-xl font-bold mb-4">Leave a Review</h2>
+
+<form [formGroup]="reviewForm" (ngSubmit)="submitReview()" class="space-y-4">
+  <div>
+    <label class="block font-medium mb-1">Rating (1 to 5)</label>
+    <input
+      type="number"
+      min="1"
+      max="5"
+      formControlName="rating"
+      class="w-full border-gray-300 rounded-lg p-2"
+    />
   </div>
 
-  <hr class="my-6">
+  <div>
+    <label class="block font-medium mb-1">Comment</label>
+    <textarea
+      formControlName="comment"
+      class="w-full border-gray-300 rounded-lg p-2"
+      rows="4"
+    ></textarea>
+  </div>
 
-  <h2 class="text-xl font-bold mb-4">Leave a Review</h2>
-
-  <form [formGroup]="reviewForm" (ngSubmit)="submitReview()" class="space-y-4">
-    
-    <div>
-      <label class="block font-medium mb-1">Rating (1 to 5)</label>
-      <input type="number" min="1" max="5" formControlName="rating" class="w-full border-gray-300 rounded-lg p-2">
-    </div>
-
-    <div>
-      <label class="block font-medium mb-1">Comment</label>
-      <textarea formControlName="comment" class="w-full border-gray-300 rounded-lg p-2" rows="4"></textarea>
-    </div>
-
-    <button type="submit" [disabled]="reviewForm.invalid" class="bg-[#701011] text-white px-4 py-2 rounded-lg hover:bg-[#941a28]">
-      Submit Review
-    </button>
-  </form>
+  <button
+    type="submit"
+    [disabled]="reviewForm.invalid"
+    class="bg-[#701011] text-white px-4 py-2 rounded-lg hover:bg-[#941a28]"
+  >
+    Submit Review
+  </button>
+</form>

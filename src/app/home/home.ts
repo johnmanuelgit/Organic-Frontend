@@ -44,13 +44,8 @@ clearHover() {
 
   onSubmit() {
     if (this.newsletterForm.valid) {
-      // In a real app, you would send the data to your server here
       console.log('Form submitted:', this.newsletterForm.value);
-      
-      // Show success message
       this.isSuccess = true;
-      
-      // Reset form after 3 seconds
       setTimeout(() => {
         this.newsletterForm.reset();
         this.isSuccess = false;
@@ -58,8 +53,6 @@ clearHover() {
     }
   }
  
-
-  // autto paginatuion 
   testimonials: Testimonial[] = [
     {
       id: 1,
@@ -140,7 +133,6 @@ clearHover() {
 
   goToPage(pageIndex: number): void {
     this.currentPage = pageIndex;
-    // Reset the timer when manually changing page
     if (this.autoSlideSub) {
       this.autoSlideSub.unsubscribe();
     }
@@ -164,8 +156,6 @@ clearHover() {
     this.screenWidth = window.innerWidth;
     this.isMobileView = this.screenWidth < 768;
     this.itemsPerPage = this.isMobileView ? 1 : 3;
-    
-    // Reset to first page when changing view mode to avoid out-of-bounds
     if (this.currentPage >= this.totalPages) {
       this.currentPage = 0;
     }

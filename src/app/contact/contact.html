@@ -1,129 +1,194 @@
 <div class="w-full h-full">
-    <div class="py-20 px-4 sm:py-32 md:px-30">
-        <!-- Breadcrumb -->
-        <div class="container mx-auto">
-            <div class="flex flex-wrap items-center text-sm text-[#8b0000]">
-                <a [routerLink]="['/home']" class="hover:underline">Home</a>
-                <span class="mx-2">›</span>
-                <span>Contact Us</span>
-            </div>
-        </div>
-
-        <!-- Main Content -->
-        <div class="container mx-auto py-8 px-4">
-            <h1 class="text-3xl sm:text-4xl font-bold text-lime-500 mb-6 sm:mb-8">Contact Us</h1>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Contact Information -->
-                <div>
-                    <div class="flex items-start mb-6">
-                        <div class="text-mango-red mr-4">
-                            <!-- Phone Icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <a href="tel:+919921214789" class="text-[#8b0000] hover:underline text-lg">+91 9921214789</a>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start mb-6">
-                        <div class="text-mango-red mr-4">
-                            <!-- Email Icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <a href="mailto:hello@themangobasket.com"
-                                class="text-[#8b0000] hover:underline text-lg">hello&#64;themangobasket.com</a>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start mb-8">
-                        <div class="text-mango-red mr-4">
-                            <!-- Location Icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <p class="text-[#8b0000] font-medium mb-1">Mango Basket</p>
-                            <p class="text-[#8b0000] text-sm sm:text-base">
-                                Flat No. 10, Ramkrushana Hsg. Soc., 373/A/2,<br>
-                                Ramshastri Prabhune Path, Shaniwar Peth,<br>
-                                Pune, Maharashtra, India - 411030
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Map -->
-                    <div class="h-64 bg-gray-200 rounded-md overflow-hidden mb-6">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.2516259131958!2d73.8488486142196!3d18.51752788741079!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c070794e5f83%3A0xa7d9209ba95cd8f5!2sPaper%20Ln%2C%20Narayan%20Peth%2C%20Pune%2C%20Maharashtra%20411030!5e0!3m2!1sen!2sin!4v1616044319103!5m2!1sen!2sin"
-                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                    </div>
-                </div>
-
-                <!-- Contact Form -->
-                <div class="bg-white p-4 sm:p-6 rounded-lg shadow-sm">
-                    <h2 class="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">Send a Message</h2>
-                    <form (ngSubmit)="onSubmit()" [formGroup]="contactForm">
-                        <div class="mb-4">
-                            <input type="text" formControlName="fullName" placeholder="Full Name*"
-                                class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-mango-orange"
-                                [ngClass]="{'border-red-500': contactForm.get('fullName')?.invalid && contactForm.get('fullName')?.touched}">
-                            <div *ngIf="contactForm.get('fullName')?.invalid && contactForm.get('fullName')?.touched"
-                                class="text-red-500 text-sm mt-1">
-                                Full name is required
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <input type="email" formControlName="email" placeholder="Email address*"
-                                class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-mango-orange"
-                                [ngClass]="{'border-red-500': contactForm.get('email')?.invalid && contactForm.get('email')?.touched}">
-                            <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched"
-                                class="text-red-500 text-sm mt-1">
-                                Valid email is required
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <input type="tel" formControlName="mobile" placeholder="Mobile Number*"
-                                class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-mango-orange"
-                                [ngClass]="{'border-red-500': contactForm.get('mobile')?.invalid && contactForm.get('mobile')?.touched}">
-                            <div *ngIf="contactForm.get('mobile')?.invalid && contactForm.get('mobile')?.touched"
-                                class="text-red-500 text-sm mt-1">
-                                Valid 10-digit mobile number is required
-                            </div>
-                        </div>
-                        <div class="mb-6">
-                            <textarea formControlName="message" placeholder="Message*" rows="4"
-                                class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-mango-orange"
-                                [ngClass]="{'border-red-500': contactForm.get('message')?.invalid && contactForm.get('message')?.touched}"></textarea>
-                            <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"
-                                class="text-red-500 text-sm mt-1">
-                                Message is required
-                            </div>
-                        </div>
-                        <div class="text-left">
-                            <button type="submit"
-                                class="bg-orange-500 text-white px-6 sm:px-8 py-2 rounded-full hover:bg-orange-600 transition"
-                                [disabled]="contactForm.invalid">
-                                Send
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+  <div class="py-20 px-4 sm:py-32 md:px-30">
+    <div class="container mx-auto">
+      <div class="flex flex-wrap items-center text-sm text-[#8b0000]">
+        <a [routerLink]="['/home']" class="hover:underline">Home</a>
+        <span class="mx-2">›</span>
+        <span>Contact Us</span>
+      </div>
     </div>
+
+    <div class="container mx-auto py-8 px-4">
+      <h1 class="text-3xl sm:text-4xl font-bold text-lime-500 mb-6 sm:mb-8">
+        Contact Us
+      </h1>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <div class="flex items-start mb-6">
+            <div class="text-mango-red mr-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                />
+              </svg>
+            </div>
+            <div>
+              <a
+                href="tel:+919921214789"
+                class="text-[#8b0000] hover:underline text-lg"
+                >+91 9921214789</a
+              >
+            </div>
+          </div>
+
+          <div class="flex items-start mb-6">
+            <div class="text-mango-red mr-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                />
+              </svg>
+            </div>
+            <div>
+              <a
+                href="mailto:hello@themangobasket.com"
+                class="text-[#8b0000] hover:underline text-lg"
+                >hello&#64;themangobasket.com</a
+              >
+            </div>
+          </div>
+
+          <div class="flex items-start mb-8">
+            <div class="text-mango-red mr-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+              </svg>
+            </div>
+            <div>
+              <p class="text-[#8b0000] font-medium mb-1">Mango Basket</p>
+              <p class="text-[#8b0000] text-sm sm:text-base">
+                Flat No. 10, Ramkrushana Hsg. Soc., 373/A/2,<br />
+                Ramshastri Prabhune Path, Shaniwar Peth,<br />
+                Pune, Maharashtra, India - 411030
+              </p>
+            </div>
+          </div>
+
+          <div class="h-64 bg-gray-200 rounded-md overflow-hidden mb-6">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.2516259131958!2d73.8488486142196!3d18.51752788741079!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c070794e5f83%3A0xa7d9209ba95cd8f5!2sPaper%20Ln%2C%20Narayan%20Peth%2C%20Pune%2C%20Maharashtra%20411030!5e0!3m2!1sen!2sin!4v1616044319103!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+
+        <div class="bg-white p-4 sm:p-6 rounded-lg shadow-sm">
+          <h2 class="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">
+            Send a Message
+          </h2>
+          <form (ngSubmit)="onSubmit()" [formGroup]="contactForm">
+            <div class="mb-4">
+              <input
+                type="text"
+                formControlName="fullName"
+                placeholder="Full Name*"
+                class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-mango-orange"
+                [ngClass]="{'border-red-500': contactForm.get('fullName')?.invalid && contactForm.get('fullName')?.touched}"
+              />
+              <div
+                *ngIf="contactForm.get('fullName')?.invalid && contactForm.get('fullName')?.touched"
+                class="text-red-500 text-sm mt-1"
+              >
+                Full name is required
+              </div>
+            </div>
+            <div class="mb-4">
+              <input
+                type="email"
+                formControlName="email"
+                placeholder="Email address*"
+                class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-mango-orange"
+                [ngClass]="{'border-red-500': contactForm.get('email')?.invalid && contactForm.get('email')?.touched}"
+              />
+              <div
+                *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched"
+                class="text-red-500 text-sm mt-1"
+              >
+                Valid email is required
+              </div>
+            </div>
+            <div class="mb-4">
+              <input
+                type="tel"
+                formControlName="mobile"
+                placeholder="Mobile Number*"
+                class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-mango-orange"
+                [ngClass]="{'border-red-500': contactForm.get('mobile')?.invalid && contactForm.get('mobile')?.touched}"
+              />
+              <div
+                *ngIf="contactForm.get('mobile')?.invalid && contactForm.get('mobile')?.touched"
+                class="text-red-500 text-sm mt-1"
+              >
+                Valid 10-digit mobile number is required
+              </div>
+            </div>
+            <div class="mb-6">
+              <textarea
+                formControlName="message"
+                placeholder="Message*"
+                rows="4"
+                class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-mango-orange"
+                [ngClass]="{'border-red-500': contactForm.get('message')?.invalid && contactForm.get('message')?.touched}"
+              ></textarea>
+              <div
+                *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"
+                class="text-red-500 text-sm mt-1"
+              >
+                Message is required
+              </div>
+            </div>
+            <div class="text-left">
+              <button
+                type="submit"
+                class="bg-orange-500 text-white px-6 sm:px-8 py-2 rounded-full hover:bg-orange-600 transition"
+                [disabled]="contactForm.invalid"
+              >
+                Send
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
