@@ -3,11 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BlogService } from '../services/blog-service/blog-service';
 import { ServerLink } from '../../services/server-link/server-link';
+import { QuillModule } from 'ngx-quill';
 
 @Component({
   selector: 'app-blog-management',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,QuillModule
+  ],
   templateUrl: './blog-management.html',
   styleUrls: ['./blog-management.css'],
 })
@@ -16,6 +18,7 @@ export class BlogManagement implements OnInit {
   serverUrl = '';
   isFormVisible = false;
   isEditMode = false;
+  fullscreenDescription: boolean = false;
 
   title = '';
   content = '';

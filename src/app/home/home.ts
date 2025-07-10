@@ -1,8 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
+import { BlogService } from '../admin/services/blog-service/blog-service';
+import { ServerLink } from '../services/server-link/server-link';
 
 interface Testimonial {
   id: number;
@@ -12,6 +14,15 @@ interface Testimonial {
   quote: string;
 }
 
+interface blog {
+  title: string;
+  image: string;
+  date: string;
+  category: string;
+  author: string;
+  content: string;
+  _id: number;
+}
 @Component({
   selector: 'app-home',
   standalone:true,
@@ -20,7 +31,9 @@ interface Testimonial {
   styleUrl: './home.css'
 })
 export class Home implements OnInit, OnDestroy  {
+server=''
 
+ displayedBlogs: blog[] = [];
 
 hoveredMarker: number | null = null;
 
@@ -35,11 +48,12 @@ clearHover() {
   newsletterForm: FormGroup;
   isSuccess = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,private blogService: BlogService, private router: Router,private serverlinkserver:ServerLink) {
     this.newsletterForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]]
     });
+    this.server=this.serverlinkserver.serverlinks
   }
 
   onSubmit() {
@@ -108,12 +122,18 @@ clearHover() {
 
   ngOnInit(): void {
     this.startAutoSlide();
+      this.loadBlogs();
   }
 
   ngOnDestroy(): void {
     if (this.autoSlideSub) {
       this.autoSlideSub.unsubscribe();
     }
+  }
+   loadBlogs() {
+    this.blogService.getAllBlogs().subscribe((res) => {
+      this.displayedBlogs = res;
+    });
   }
 
   startAutoSlide(): void {
@@ -159,6 +179,10 @@ clearHover() {
     if (this.currentPage >= this.totalPages) {
       this.currentPage = 0;
     }
+  }
+    viewblog(blog: blog) {
+    console.log('Navigating to blog:', blog._id);
+    this.router.navigate(['/blog', blog._id]);
   }
 }
 

@@ -96,4 +96,5 @@ export class Addtocart implements OnInit {
   clearCart() {
     this.cartService.clearCart();
   }
+  
 }

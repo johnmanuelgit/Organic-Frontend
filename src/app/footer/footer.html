@@ -1,21 +1,21 @@
-<footer class="w-full bg-[#941a28] text-white mt-20">
+<footer class="w-full bg-[#941a28] text-white">
   <div class="max-w-screen-xl mx-auto px-6 py-12">
     <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-12">
       <div class="space-y-3">
         <h3 class="font-bold text-lg mb-6">Navigation</h3>
         <div class="flex flex-col space-y-3">
           <a
-            [routerLink]="['home']"
+            [routerLink]="['/home']"
             class="hover:underline transition duration-200"
             >Home</a
           >
           <a
-            [routerLink]="['products']"
+            [routerLink]="['/shop']"
             class="hover:underline transition duration-200"
             >Products</a
           >
           <a
-            [routerLink]="['blog']"
+            [routerLink]="['/blog']"
             class="hover:underline transition duration-200"
             >Blog</a
           >
@@ -30,7 +30,7 @@
             >Wiki</a
           >
           <a
-            [routerLink]="['contact']"
+            [routerLink]="['/contact']"
             class="hover:underline transition duration-200"
             >Contact Us</a
           >
@@ -55,11 +55,7 @@
             class="hover:underline transition duration-200"
             >Privacy Policy</a
           >
-          <a
-            [routerLink]="['/shipping']"
-            class="hover:underline transition duration-200"
-            >Shipping Policy</a
-          >
+    
         </div>
       </div>
 

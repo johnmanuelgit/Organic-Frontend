@@ -225,7 +225,7 @@ export class Cart {
   }
   
   buyProduct(totalPrice: number) {
-    this.http.post<any>('https://bakendrepo.onrender.com/payment/create-order', {
+    this.http.post<any>('payment/create-order', {
       amount: totalPrice,
       currency: 'INR'
     }).subscribe({

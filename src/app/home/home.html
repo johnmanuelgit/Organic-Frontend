@@ -1,32 +1,32 @@
-<div class="h-full w-full">
+<div class="h-full w-full bg-[url('assets/product/product-page-bg.png')] bg-cover bg-center">
   <div
-    class="flex flex-col md:flex-row md:items-center md:justify-between p-15 bg-[#f6f0e8] bg-cover"
+    class="flex flex-col md:flex-row md:items-center md:justify-between p-15 bg-cover"
   >
     <div class="md:relative right-0 top-0 h-screen">
       <img
         src="assets/home/Alphonso-Mango-Basket.webp"
         alt="Mango Basket"
-        class="object-cover md:-my-75 md:mx-80 overflow-hidden scale-[2.0] my-10 md:scale-100 z-30"
+        class="object-cover md:-my-75 md:mx-90 overflow-hidden scale-[2.0] my-10 md:scale-100 z-30"
       />
     </div>
 
     <div
-      class="absolute md:mx-20 md:mb-10 md:p-8 md:space-y-15 space-y-4 my-80 md:mx-20 flex-wrap md:flex-nowrap"
+      class="absolute  md:p-20 md:space-y-15 space-y-4  flex-wrap md:flex-nowrap"
     >
-      <h2 class="text-2xl md:text-5xl font-bold text-lime-600">
-        A BASKET FULL<br /><a
+      <h2 class="text-xl md:text-5xl font-bold text-lime-600">
+      Welcome<br /><a
           class="underline md:underline md:decoration-5 md:underline-offset-20 decoration-[#8b0000]"
-          >OF M</a
-        >ANGO LOVE!
+          >To Our</a
+        >Farm House Sale!
       </h2>
       <ul
         class="md:mt-4 space-y-4 text-md md:text-2xl md:font-semibold text-red-800 mt-5"
       >
-        <li class="underline underline-offset-10 decoration-2">
-          100% Authentic mangoes
+        <li>
+          100% Organic Product
         </li>
-        <li class="underline underline-offset-10 decoration-2">
-          Carbide & chemical free
+        <li>
+          In our farm, all fruits and crops are grown naturally.<br>It is 100% safe for your health and your family.
         </li>
         <li>Farm to home delivery</li>
       </ul>
@@ -73,132 +73,59 @@
     </div>
   </div>
 
-  <div class="w-screen h-full">
-    <img
-      src="assets/home/mango-2.png"
-      class="object-cover h-full w-full z-50 flex-wrap"
-    />
-  </div>
+ <!-- home.component.html -->
+<section class="h-full w-screen bg-cover bg-center font-sans px-6 py-12">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+    
+    <!-- Left: Image -->
+    <div class="flex justify-center">
+      <img src="assets/home/mango-2.png" alt="Organic Products" class="w-full h-full object-contain md:object-cover ">
+    </div>
 
-  <div class="flex items-center justify-center w-screen h-full">
-    <img
-      src="assets/home/mango-3.png"
-      class="relative object-cover h-full w-screen"
-    />
+    <!-- Right: Text and Features -->
+    <div class="text-[#701011]">
+      <h2 class="text-3xl font-bold mb-4">Why Choose Farm Fresh Organics?</h2>
+      <p class="text-lg mb-6 ">
+        We are committed to delivering the authentic taste of nature through organically grown, chemical-free products directly from our farmhouse.
+        Our mission is to support sustainable farming and connect health-conscious consumers with fresh, naturally grown produce — straight from our soil to your home!
+      </p>
 
-    <div class="absolute left-20 mb-14 md:left-50 md:-p-15 md:mb-40">
-      <img
-        src="assets/home/mango-4.png"
-        class="object-cover w-30 h-30 md:h-190 md:w-190"
-      />
-
-      <div
-        class="absolute left-[22%] top-[60%] transform -translate-x-1/2 -translate-y-1/2 group z-30"
-      >
-        <img
-          src="assets/home/pin.png"
-          class="w-2 h-2 md:w-13 md:p-2 md:h-15 cursor-pointer hover:scale-110"
-        />
-        <div
-          class="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-64 bg-white p-4 rounded-lg shadow-lg border border-orange-500 hidden group-hover:block z-50"
-        >
-          <img
-            src="assets/home/mango.png"
-            alt="Mango"
-            class="w-16 h-16 mx-auto"
-          />
-          <h3 class="text-center text-lg font-semibold my-2">
-            Devgad Alphonso Mango
-          </h3>
-          <button
-            class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full mx-auto block"
-            [routerLink]="['/devgad']"
-          >
-            Order Now
-          </button>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="flex items-center space-x-3">
+          <span class="text-green-600 text-2xl">🍎</span>
+          <p>Wide Range of Organic Products</p>
         </div>
-      </div>
-
-      <div
-        class="absolute left-[22%] top-[67%] transform -translate-x-1/2 -translate-y-1/2 group z-20"
-      >
-        <img
-          src="assets/home/pin.png"
-          class="w-2 h-2 md:w-13 md:p-2 md:h-15 cursor-pointer hover:scale-110"
-        />
-        <div
-          class="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-64 bg-white p-4 rounded-lg shadow-lg border border-orange-500 hidden group-hover:block z-50"
-        >
-          <img
-            src="assets/image/about/mango.png"
-            alt="Mango"
-            class="w-16 h-16 mx-auto"
-          />
-          <h3 class="text-center text-lg font-semibold my-2">
-            Ratnagiri Alphonso Mango
-          </h3>
-          <button
-            [routerLink]="['/ratna']"
-            class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full mx-auto block"
-          >
-            Order Now
-          </button>
+        <div class="flex items-center space-x-3">
+          <span class="text-green-600 text-2xl">🏡</span>
+          <p>Direct from Farmhouse</p>
         </div>
-      </div>
-
-      <div
-        class="absolute left-[27%] top-[66%] transform -translate-x-1/2 -translate-y-1/2 group z-20"
-      >
-        <img
-          src="assets/home/pin.png"
-          class="w-2 h-2 md:w-13 md:p-2 md:h-15 cursor-pointer hover:scale-110"
-        />
-        <div
-          class="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-64 bg-white p-4 rounded-lg shadow-lg border border-orange-500 hidden group-hover:block z-50"
-        >
-          <img
-            src="assets/home/mango.png"
-            alt="Mango"
-            class="w-16 h-16 mx-auto"
-          />
-          <h3 class="text-center text-lg font-semibold my-2">Payari Mango</h3>
-          <button
-            [routerLink]="['/payari']"
-            class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full mx-auto block"
-          >
-            Order Now
-          </button>
+        <div class="flex items-center space-x-3">
+          <span class="text-green-600 text-2xl">🌱</span>
+          <p>100% Organic & Natural</p>
         </div>
-      </div>
-
-      <div
-        class="absolute left-[31%] top-[62%] transform -translate-x-1/2 -translate-y-1/2 group z-20"
-      >
-        <img
-          src="assets/home/pin.png"
-          class="w-2 h-2 md:w-13 md:p-2 md:h-15 cursor-pointer hover:scale-110"
-        />
-        <div
-          class="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-64 bg-white p-2 rounded-lg shadow-lg border border-orange-500 hidden group-hover:block z-50"
-        >
-          <img
-            src="assets/home/mango.png"
-            alt="Mango"
-            class="w-16 h-16 mx-auto"
-          />
-          <h3 class="text-center text-lg font-semibold my-2">
-            Ratna Alphonso Mango
-          </h3>
-          <button
-            [routerLink]="['/ratnagiri']"
-            class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full mx-auto block"
-          >
-            Order Now
-          </button>
+        <div class="flex items-center space-x-3">
+          <span class="text-green-600 text-2xl">🚫</span>
+          <p>Free from Chemicals</p>
+        </div>
+        <div class="flex items-center space-x-3">
+          <span class="text-green-600 text-2xl">😋</span>
+          <p>Fresh, Nutritious & Flavorful</p>
+        </div>
+        <div class="flex items-center space-x-3">
+          <span class="text-green-600 text-2xl">🚚</span>
+          <p>Delivery Across India</p>
         </div>
       </div>
     </div>
   </div>
+  <div class="flex items-center justify-center p-5">
+   <img
+        src="assets/home/mango-4.png"
+        class="object-cover w-30 h-30 md:h-190 md:w-190"
+      />
+      </div>
+</section>
+
 
   <div
     class="w-screen h-full flex md:justify-between md:px-20 md:-py-20 md:p-0 p-5 flex-wrap md:flex-nowrap"
@@ -208,20 +135,17 @@
         <a class="underline decoration-4 underline-offset-10">ABOU</a>T US
       </h2>
       <div class="text-[#8b0000] text-xs md:text-lg md:space-y-1">
-        <p>Mango Basket is your way to goodness of Indian mangoes, Mango</p>
-        <p>is considered the king of fruits and is one of the most widely</p>
+        <p>Mango Basket is your way to goodness of Indian mangoes, MangoMango Basket brings you the authentic taste of India with a wide variety of organically grown, chemical-free mangoes and more.is considered the king of fruits and is one of the most widely</p>
         <p>
-          produced fruit in India. It doesn’t matter which type of mango you
+       Known as the king of fruits, mangoes are a beloved part of India’s rich agricultural heritage — and at Mango Basket, we honor that by offering only the purest, residue-free produce straight from our farms.
         </p>
         <p>
-          love because at mango basket you will find all of them in one place.
+         Whether you're craving juicy Alphonsos, pulpy Kesar, or any regional favorite, we’ve got them all — grown organically, ripened naturally, and delivered fresh.
         </p>
         <p>
-          We are a brand focusing on delivering all types of authentic Indian
+          And it’s not just mangoes — we’re expanding our basket with more farm-fresh organic fruits and natural products, straight from our soil to your doorstep.
         </p>
-        <p>residue free mangoes to you. If you are in the mood for a juicy</p>
-        <p>mango, choose the type of mango you are craving for and buy it</p>
-        <p>now.</p>
+        <p>Experience the goodness of Indian farms — choose the variety you love and taste the difference of truly natural produce.</p>
       </div>
       <button
         class="cursor-pointer md:mt-6 md:px-12 md:py-5 px-5 py-3 text-orange-600 font-semibold border-2 border-orange-600 rounded-full hover:bg-orange-600 hover:text-white transition-all duration-300 shadow-md"
@@ -295,50 +219,38 @@
     </div>
   </div>
 
-  <div class="w-screen h-full mt-80 md:mt-0">
+  <div class="w-screen h-full mt-80 md:mt-5">
     <h2 class="text-center text-[#8b0000] text-4xl font-bold">
       B<a class="underline decoration-3 underline-offset-10">LO</a>G
     </h2>
-    <div class="flex flex-wrap justify-center items-center gap-20 p-10">
-      <div
-        class="max-w-sm bg-white shadow-lg rounded-lg hover:scale-101"
-        [routerLink]="['/blog',1]"
+  <div class="grid grid-cols-2 p-20 gap-6">
+  <div
+    *ngFor="let blog of displayedBlogs"
+    class="bg-white shadow-md hover:shadow-xl transition-shadow duration-300 rounded-2xl overflow-hidden"
+  >
+    <img
+      [src]="server + '/uploads/' + blog.image"
+      alt="Blog Image"
+      class="w-full h-60 object-cover"
+    />
+    <div class="p-4 space-y-2">
+      <h2 class="text-lg md:text-xl font-semibold text-gray-800">
+        {{ blog.title }}
+      </h2>
+      <p class="text-gray-500 text-xs md:text-sm">
+        {{ blog.date }} | {{ blog.category }} | By {{ blog.author }}
+      </p>
+      <button
+        (click)="viewblog(blog)"
+        class="text-blue-600 hover:underline text-sm font-medium"
       >
-        <img src="assets/home/blog-1.webp" />
-        <div class="space-y-4 p-5 text-[#8b0000]">
-          <p class="text-2xl font-semibold">
-            Mango or Mangoes? Discover the Correct Plural Form
-          </p>
-          <p>
-            Are you puzzled by the plural form of mango? Whether it’s ‘mangoes’
-            or...
-          </p>
-        </div>
-        <div class="cursor-pointer text-lime-600 flex justify-between p-5">
-          <p>By Suchita Dey</p>
-          <p class="text-5xl hover:scale-130">→</p>
-        </div>
-      </div>
-      <div
-        class="max-w-sm bg-white shadow-lg rounded-lg hover:scale-101"
-        [routerLink]="['/blog',2]"
-      >
-        <img src="assets/home/blog-2.webp" />
-        <div class="space-y-4 p-5 text-[#8b0000]">
-          <p class="text-2xl font-semibold">
-            Top 15 Benefits of Eating Mango at Night
-          </p>
-          <p>
-            It is common to get nightly cravings if you are a late sleeper or
-            have poor sleeping..
-          </p>
-        </div>
-        <div class="text-lime-600 flex justify-between p-5 cursor-pointer">
-          <p>By Suchita Dey</p>
-          <p class="text-5xl hover:scale-130">→</p>
-        </div>
-      </div>
+        Read More →
+      </button>
     </div>
+  </div>
+</div>
+
+
     <button
       class="cursor-pointer md:mx-140 mx-20 mt-6 px-12 py-1 md:px-12 md:py-5 text-orange-600 font-semibold border-2 border-orange-600 rounded-full hover:bg-orange-600 hover:text-white transition-all duration-300 shadow-md"
       [routerLink]="['/blog']"

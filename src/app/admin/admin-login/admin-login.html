@@ -10,7 +10,7 @@
       <div class="p-6 text-center border-b border-gray-100">
         <div class="flex justify-center mb-4">
           <div
-            class="w-14 h-14 rounded-lg bg-indigo-600 flex items-center justify-center"
+            class="w-14 h-14 rounded-lg bg-[#8b0000] flex items-center justify-center"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +46,7 @@
               <button
                 type="button"
                 (click)="toggleForgotUsername()"
-                class="text-xs text-indigo-600 hover:text-indigo-800 font-medium"
+                class="text-xs text-[#8b0000] hover:text-orange-500 font-medium"
               >
                 Forgot username?
               </button>
@@ -78,7 +78,7 @@
                 required
                 minlength="3"
                 placeholder="Enter your username"
-                class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all text-gray-700"
+                class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border rounded-lg focus:ring-2 focus:ring-[#8b0000] focus:border-[#8b0000] outline-none transition-all text-gray-700"
                 [ngClass]="{'border-red-500': (usernameInput.invalid && (isSubmitted || usernameInput.touched)) || usernameError, 'border-gray-200': !(usernameInput.invalid && (isSubmitted || usernameInput.touched)) && !usernameError}"
               />
             </div>
@@ -97,7 +97,7 @@
               <button
                 type="button"
                 (click)="toggleForgotPassword()"
-                class="text-xs text-indigo-600 hover:text-indigo-800 font-medium"
+                class="text-xs text-[#8b0000] hover:text-orange-500 font-medium"
               >
                 Forgot password?
               </button>
@@ -130,7 +130,7 @@
                 minlength="6"
                 placeholder="Enter your password"
                 type="password"
-                class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all text-gray-700"
+                class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border rounded-lg focus:ring-2 focus:ring-[#8b0000] focus:border-[#8b0000] outline-none transition-all text-gray-700"
                 [ngClass]="{'border-red-500': (passwordInput.invalid && (isSubmitted || passwordInput.touched)) || passwordError, 'border-gray-200': !(passwordInput.invalid && (isSubmitted || passwordInput.touched)) && !passwordError}"
               />
             </div>
@@ -198,7 +198,7 @@
 
           <button
             type="submit"
-            class="w-full flex justify-center items-center py-2.5 px-4 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-100 transition-all duration-300 disabled:opacity-70"
+            class="w-full flex justify-center items-center py-2.5 px-4 bg-[#8b0000] text-white font-medium rounded-lg hover:bg-orange-500 focus:outline-none focus:ring-4 focus:ring-indigo-100 transition-all duration-300 disabled:opacity-70"
             [disabled]="isLoading"
           >
             <span *ngIf="!isLoading" class="flex items-center">
@@ -340,7 +340,7 @@
 
           <button
             (click)="requestUsername()"
-            class="w-full flex justify-center items-center py-2.5 px-4 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-100 transition-all duration-300 disabled:opacity-70"
+            class="w-full flex justify-center items-center py-2.5 px-4 bg-[#8b0000] text-white font-medium rounded-lg hover:bg-orange-500 focus:outline-none focus:ring-4 focus:ring-indigo-100 transition-all duration-300 disabled:opacity-70"
             [disabled]="isLoading"
           >
             <span *ngIf="!isLoading">Send Username</span>
@@ -406,7 +406,7 @@
           </p>
           <button
             (click)="toggleForgotUsername()"
-            class="text-indigo-600 hover:text-indigo-800 font-medium text-sm"
+            class="text-[#8b0000] hover:text-orange-500 font-medium text-sm"
           >
             ← Back to login
           </button>
@@ -506,7 +506,7 @@
 
           <button
             (click)="requestPasswordReset()"
-            class="w-full flex justify-center items-center py-2.5 px-4 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-100 transition-all duration-300 disabled:opacity-70"
+            class="w-full flex justify-center items-center py-2.5 px-4 bg-[#8b0000] text-white font-medium rounded-lg hover:bg-orange-500 focus:outline-none focus:ring-4 focus:ring-indigo-100 transition-all duration-300 disabled:opacity-70"
             [disabled]="isLoading"
           >
             <span *ngIf="!isLoading">Send Reset Link</span>
@@ -566,13 +566,13 @@
             <a
               href="#"
               (click)="tryAgain()"
-              class="text-indigo-600 hover:underline"
+              class="text-[#8b0000] hover:underline"
               >try again</a
             >.
           </p>
           <button
             (click)="toggleForgotPassword()"
-            class="text-indigo-600 hover:text-indigo-800 font-medium text-sm"
+            class="text-[#8b0000] hover:text-indigo-800 font-medium text-sm"
           >
             ← Back to login
           </button>

@@ -1,7 +1,28 @@
-<div
-  *ngIf="product"
-  class="max-w-4xl mx-auto p-4 bg-white rounded-xl shadow-md mt-10"
->
+<div class="w-full h-full">
+  <div class="bg-[url('assets/product/product-page-bg.png')]  bg-cover p-15 bg-center">
+    <div *ngIf="product">
+    <nav class="flex mb-6" aria-label="Breadcrumb">
+          <ol class="inline-flex items-center space-x-1 md:space-x-2">
+            <li class="inline-flex items-center">
+              <a [routerLink]="['/home']" class="inline-flex items-center text-sm font-medium text-[#941a28] hover:text-[#701011]">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                Home
+              </a>
+            </li>
+            <li>
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                <a [routerLink]="['/shop']" class="ml-1 text-sm font-medium text-[#941a28] hover:text-[#701011] md:ml-2">Shop</a>
+              </div>
+            </li>
+            <li aria-current="page">
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                <span class="ml-1 text-3xlmd:text-4xl font-bold text-green-600 md:ml-2">{{ product.name }}</span>
+              </div>
+            </li>
+          </ol>
+        </nav>
   <div class="flex flex-col md:flex-row gap-8">
     <div class="flex-1 flex justify-center">
       <img
@@ -14,16 +35,50 @@
     <div class="flex-1">
       <h1 class="text-3xl font-bold text-[#701011] mb-4">{{ product.name }}</h1>
       <p class="text-2xl font-bold text-[#701011] mb-6">₹{{ product.price }}</p>
-      <p class="text-gray-600 mb-4">{{ product.description }}</p>
-      <p>{{product.stock}}</p>
-
-      <button
-        class="bg-[#701011] hover:bg-[#941a28] text-white font-medium py-3 px-6 rounded-lg transition"
-      >
-        Order Now
-      </button>
+           <p>Available Stock: {{product.stock}}</p>
+        <!-- Quantity -->
+      <label class="block mt-4">Quantity (in dz.)</label>
+      <div class="flex items-center">
+        <button (click)="decreaseQuantity()" class="px-3 py-1 border rounded">-</button>
+        <input type="text" [(ngModel)]="quantity" class="w-12 text-center border mx-2 rounded">
+        <button (click)="increaseQuantity()" class="px-3 py-1 border rounded">+</button>
+      </div>
+<p class="text-xl font-bold mt-4">Price: ₹{{ product.price * quantity }}</p>
+           <!-- Buttons -->
+      <div class="mt-4 flex space-x-4">
+        <button (click)="addToCart({name: product.name, image:server + product.imageUrl},quantity)" class=" border-2 border-orange-500 px-6 py-4 rounded-full text-orange-600 font-bold hover:scale-105" >Add to Basket</button>
+        <button 
+        class="bg-orange-500 text-white px-10 py-4 rounded-full font-bold hover:scale-105 flex items-center justify-center space-x-2 disabled:opacity-60 disabled:cursor-not-allowed"
+        (click)="buyProduct()"
+        [disabled]="loading">
+        
+        <ng-container *ngIf="!loading; else loadingTpl">
+          Buy Now
+        </ng-container>
+      
+        <ng-template #loadingTpl>
+          <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+          </svg>
+          <span>Processing...</span>
+        </ng-template>
+      </button>      
+      </div>
     </div>
+
   </div>
+  <div>
+    <h1 class="text-2xl font-bold">Description:</h1>
+
+<div class="ql-snow">
+  <div class="ql-editor" [innerHTML]="product.description"></div>
+</div>
+
+
+
+        </div>
 </div>
 
 <app-product-review></app-product-review>
+</div></div>

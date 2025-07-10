@@ -1,155 +1,242 @@
-<div class="max-w-4xl mx-auto p-10 bg-white rounded-lg shadow-md mt-30">
-  <h1 class="text-3xl font-bold text-[#8b0000] mb-2">Organic Basket</h1>
-  <h2 class="text-xl font-semibold text-gray-700 mb-6">Add New Product</h2>
+<div class="max-w-5xl mx-auto p-6 bg-white rounded-xl shadow-lg mt-8">
+  <!-- Header Section -->
+  <div class="flex justify-between items-center mb-6 border-b pb-4">
+    <div>
+      <h1 class="text-3xl font-bold text-[#2E8B57]">Organic Basket</h1>
+      <h2 class="text-xl font-semibold text-gray-600">{{editingId ? 'Edit Product' : 'Add New Product'}}</h2>
+    </div>
+    <div class="bg-[#F0FFF0] p-2 rounded-full">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#2E8B57]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+      </svg>
+    </div>
+  </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
-      <form (ngSubmit)="onSubmit()" class="space-y-4">
-        <div class="grid grid-cols-2 gap-4">
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1"
-              >Product Name</label
-            >
-            <input
-              [(ngModel)]="product.name"
-              name="name"
-              placeholder="e.g. Organic Apples"
-              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-              required
-            />
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1"
-              >Price (₹)</label
-            >
-            <input
-              [(ngModel)]="product.price"
-              name="price"
-              type="number"
-              placeholder="0.00"
-              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-              required
-            />
-          </div>
+  <!-- Main Content -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <!-- Product Form Section -->
+    <div class="lg:col-span-1 bg-[#F9F9F9] p-6 rounded-xl border border-[#E0E0E0]">
+      <form (ngSubmit)="onSubmit()" class="space-y-5">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">Product Name</label>
+          <input
+            [(ngModel)]="product.name"
+            name="name"
+            placeholder="e.g. Organic Apples"
+            class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2E8B57] focus:border-transparent transition-all"
+            required
+          />
         </div>
 
         <div class="grid grid-cols-2 gap-4">
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1"
-              >Category</label
-            >
-            <input
-              [(ngModel)]="product.category"
-              name="category"
-              placeholder="e.g. Fruits"
-              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-            />
+            <label class="block text-sm font-medium text-gray-700 mb-2">Price (₹)</label>
+            <div class="relative">
+              <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">₹</span>
+              <input
+                [(ngModel)]="product.price"
+                name="price"
+                type="number"
+                placeholder="0.00"
+                class="w-full pl-8 pr-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2E8B57] focus:border-transparent"
+                required
+              />
+            </div>
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1"
-              >Stock</label
-            >
+            <label class="block text-sm font-medium text-gray-700 mb-2">Stock</label>
             <input
               [(ngModel)]="product.stock"
               name="stock"
               type="number"
               placeholder="0"
-              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2E8B57] focus:border-transparent"
             />
           </div>
         </div>
 
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1"
-            >Description</label
+          <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
+          <select
+            [(ngModel)]="product.category"
+            name="category"
+            class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2E8B57] focus:border-transparent appearance-none bg-white bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiAjdjY3ODVhZCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNoZXZyb24tZG93biI+PHBhdGggZD0ibTYgOSA2IDYgNi02Ii8+PC9zdmc+')] bg-no-repeat bg-[right_0.75rem_center] bg-[length:1.25rem]"
           >
-          <textarea
-            [(ngModel)]="product.description"
-            name="description"
-            rows="3"
-            placeholder="Product details..."
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-          ></textarea>
+            <option value="" disabled selected>Select a category</option>
+            <option value="Fruits">Fruits</option>
+            <option value="Vegetables">Vegetables</option>
+            <option value="Dairy">Dairy</option>
+            <option value="Grains">Grains</option>
+            <option value="Bakery">Bakery</option>
+            <option value="Other">Other</option>
+          </select>
         </div>
+<!-- Description with Fullscreen Toggle -->
+<div 
+  [ngClass]="{
+    'fixed inset-0 z-50 bg-white p-6 overflow-y-auto': fullscreenDescription,
+    'relative': !fullscreenDescription
+  }" 
+  class="rounded-xl shadow-lg transition-all duration-300"
+>
+
+  <!-- Label + Fullscreen Button -->
+  <div class="flex items-center justify-between mb-2">
+    <label class="block text-sm font-medium text-gray-700">Description</label>
+    
+    <button 
+      type="button" 
+      (click)="fullscreenDescription = true"
+      *ngIf="!fullscreenDescription"
+      class="text-sm text-[#2E8B57] font-medium hover:underline"
+    >
+      Fullscreen
+    </button>
+  </div>
+
+  <!-- Quill Editor -->
+  <quill-editor
+    [(ngModel)]="product.description"
+    name="description"
+    [styles]="{ height: fullscreenDescription ? '70vh' : '150px' }"
+    [placeholder]="'Describe the product features, benefits, and organic certifications...'"
+    theme="snow"
+    class="rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#2E8B57] w-full"
+  ></quill-editor>
+
+  <!-- Close Button for Fullscreen -->
+  <div *ngIf="fullscreenDescription" class="flex justify-end mt-3">
+    <button
+      (click)="fullscreenDescription = false"
+      class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
+    >
+      Close Fullscreen
+    </button>
+  </div>
+</div>
+
 
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1"
-            >Product Image</label
-          >
-          <div class="mt-1 flex items-center">
-            <label
-              class="cursor-pointer bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-            >
-              Choose File
-              <input
-                type="file"
-                (change)="onFileSelected($event)"
-                class="sr-only"
-              />
+          <label class="block text-sm font-medium text-gray-700 mb-2">Product Image</label>
+          <div class="mt-1 flex items-center gap-3">
+            <label class="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer bg-white hover:bg-gray-50 transition-colors">
+              <div class="flex flex-col items-center justify-center pt-5 pb-6 px-4 text-center">
+                <svg class="w-8 h-8 mb-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+                <p class="mb-2 text-sm text-gray-500">
+                  <span class="font-semibold">Click to upload</span> or drag and drop
+                </p>
+                <p class="text-xs text-gray-500">PNG, JPG (MAX. 2MB)</p>
+              </div>
+              <input type="file" (change)="onFileSelected($event)" class="hidden" accept="image/*" />
             </label>
-            <span class="ml-3 text-sm text-gray-500" *ngIf="!selectedFile"
-              >No file chosen</span
-            >
-            <span class="ml-3 text-sm text-gray-700" *ngIf="selectedFile"
-              >{{selectedFile.name}}</span
-            >
+          </div>
+          <div *ngIf="selectedFile" class="mt-2 flex items-center">
+            <span class="bg-[#E8F5E9] text-[#2E8B57] text-sm font-medium px-3 py-1 rounded-full flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              {{selectedFile.name}}
+            </span>
+            <button type="button" (click)="selectedFile = null" class="ml-2 text-gray-500 hover:text-gray-700">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
           </div>
         </div>
 
         <button
           type="submit"
-          class="w-full bg-orange-400 hover:bg-orange-300 text-white font-medium py-2 px-4 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors"
+          class="w-full bg-[#2E8B57] hover:bg-[#3AA76D] text-white font-medium py-3 px-4 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2E8B57] transition-colors flex items-center justify-center"
         >
-          Add Product
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" *ngIf="!editingId">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" *ngIf="editingId">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+          </svg>
+          {{editingId ? 'Update Product' : 'Add Product'}}
         </button>
       </form>
     </div>
 
-    <div>
-      <h3 class="text-lg font-medium text-gray-900 mb-4">Your Products</h3>
-      <div
-        *ngIf="products.length === 0"
-        class="text-center py-8 bg-gray-50 rounded-lg border border-gray-200"
-      >
-        <p class="text-gray-500">No products added yet</p>
-      </div>
-      <div
-        *ngFor="let p of products"
-        class="mb-4 p-4 bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
-      >
-        <div class="flex items-start space-x-4">
-          <img
-            *ngIf="p.imageUrl"
-            [src]="server + p.imageUrl"
-            class="w-20 h-20 object-cover rounded-md border border-gray-200"
+    <!-- Product List Section -->
+    <div class="lg:col-span-2">
+      <div class="flex justify-between items-center mb-6">
+        <h3 class="text-xl font-semibold text-gray-800">Your Products</h3>
+        <div class="relative">
+          <input
+            type="text"
+            placeholder="Search products..."
+            class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2E8B57] focus:border-transparent text-sm"
+            (input)="filterProducts($event)"
           />
-          <div class="flex-1">
-            <div class="flex justify-between items-start">
-              <h4 class="font-medium text-gray-900">{{ p.name }}</h4>
-              <span class="font-semibold text-green-600">₹{{ p.price }}</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 absolute left-3 top-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+      </div>
+
+      <div *ngIf="products.length === 0" class="text-center py-12 bg-gray-50 rounded-xl border border-dashed border-gray-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+        </svg>
+        <h4 class="mt-3 text-lg font-medium text-gray-700">No products found</h4>
+        <p class="mt-1 text-sm text-gray-500">Add your first organic product to get started</p>
+      </div>
+
+      <div class="space-y-4">
+        <div *ngFor="let p of filteredProducts" class="group relative bg-white p-5 rounded-xl border border-gray-200 hover:border-[#2E8B57] transition-all shadow-sm hover:shadow-md">
+          <div class="flex items-start gap-4">
+            <div class="relative">
+              <img
+                [src]="p.imageUrl ? server + p.imageUrl : 'https://via.placeholder.com/80?text=No+Image'"
+                class="w-20 h-20 object-cover rounded-lg border border-gray-200"
+                alt="Product image"
+              />
+           <span *ngIf="p.stock !== null && p.stock > 0" class="...">
+  {{p.stock}} in stock
+</span>
+<span *ngIf="p.stock !== null && p.stock <= 0" class="...">
+  Out of stock
+</span>
+
             </div>
-            <p class="text-sm text-gray-500 mt-1">{{ p.category }}</p>
-            <p
-              *ngIf="p.description"
-              class="text-sm text-gray-600 mt-2 line-clamp-2"
+            <div class="flex-1 min-w-0">
+              <div class="flex justify-between items-start gap-2">
+                <h4 class="text-lg font-semibold text-gray-900 truncate">{{ p.name }}</h4>
+                <span class="font-bold text-[#2E8B57] whitespace-nowrap">₹{{ p.price }}</span>
+              </div>
+              <div class="flex items-center mt-1">
+                <span class="bg-[#E8F5E9] text-[#2E8B57] text-xs font-medium px-2 py-0.5 rounded-full">
+                  {{ p.category || 'Uncategorized' }}
+                </span>
+              </div>
+              <div class="mt-2 text-sm text-gray-600 line-clamp-2 prose" [innerHTML]="p.description"></div>
+            </div>
+          </div>
+          
+          <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity flex space-x-2">
+            <button
+              (click)="editProduct(p)"
+              class="p-1.5 bg-white border border-gray-200 rounded-lg text-gray-600 hover:text-[#2E8B57] hover:border-[#2E8B57] shadow-sm hover:shadow-md transition-all"
+              title="Edit"
             >
-              {{ p.description }}
-            </p>
-            <div class="mt-3 flex space-x-2">
-              <button
-                (click)="editProduct(p)"
-                class="text-sm text-blue-600 hover:text-blue-800 font-medium"
-              >
-                Edit
-              </button>
-              <span class="text-gray-300">|</span>
-              <button
-                (click)="deleteProduct(p._id)"
-                class="text-sm text-red-600 hover:text-red-800 font-medium"
-              >
-                Delete
-              </button>
-            </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+              </svg>
+            </button>
+            <button
+              (click)="deleteProduct(p._id)"
+              class="p-1.5 bg-white border border-gray-200 rounded-lg text-gray-600 hover:text-red-500 hover:border-red-500 shadow-sm hover:shadow-md transition-all"
+              title="Delete"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>

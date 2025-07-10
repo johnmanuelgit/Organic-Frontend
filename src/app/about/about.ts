@@ -7,6 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
 
 interface Testimonial {
@@ -19,7 +20,7 @@ interface Testimonial {
 
 @Component({
   selector: 'app-about',
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule,RouterModule],
   templateUrl: './about.html',
   styleUrl: './about.css',
 })

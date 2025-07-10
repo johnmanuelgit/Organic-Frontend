@@ -32,11 +32,49 @@
       placeholder="Author"
       class="w-full border px-3 py-2"
     />
-    <textarea
-      [(ngModel)]="content"
-      placeholder="Content"
-      class="w-full border px-3 py-2"
-    ></textarea>
+ <!-- Description with Fullscreen Toggle -->
+<div 
+  [ngClass]="{
+    'fixed inset-0 z-50 bg-white p-6 overflow-y-auto': fullscreenDescription,
+    'relative': !fullscreenDescription
+  }" 
+  class="rounded-xl shadow-lg transition-all duration-300"
+>
+
+  <!-- Label + Fullscreen Button -->
+  <div class="flex items-center justify-between mb-2">
+    <label class="block text-sm font-medium text-gray-700">Description</label>
+    
+    <button 
+      type="button" 
+      (click)="fullscreenDescription = true"
+      *ngIf="!fullscreenDescription"
+      class="text-sm text-[#2E8B57] font-medium hover:underline"
+    >
+      Fullscreen
+    </button>
+  </div>
+
+  <!-- Quill Editor -->
+  <quill-editor
+   [(ngModel)]="content"
+    name="description"
+    [styles]="{ height: fullscreenDescription ? '70vh' : '150px' }"
+    [placeholder]="'Describe the product features, benefits, and organic certifications...'"
+    theme="snow"
+    class="rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#2E8B57] w-full"
+  ></quill-editor>
+
+  <!-- Close Button for Fullscreen -->
+  <div *ngIf="fullscreenDescription" class="flex justify-end mt-3">
+    <button
+      (click)="fullscreenDescription = false"
+      class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
+    >
+      Close Fullscreen
+    </button>
+  </div>
+</div>
 
     <div *ngIf="existingImage">
       <p>Current Image:</p>
