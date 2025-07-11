@@ -26,7 +26,6 @@ export class ManageUser implements OnInit {
       incomeExpense: false,
       members: false,
       user: false,
-      xmas: false,
     },
   };
 
@@ -55,7 +54,6 @@ export class ManageUser implements OnInit {
             incomeExpense: false,
             members: false,
             user: false,
-            xmas: false,
           },
         };
       },

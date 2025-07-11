@@ -1,0 +1,38 @@
+<div class="p-6">
+  <h2 class="text-2xl font-bold mt-30">All Orders</h2>
+
+  <table class="w-full border">
+    <thead>
+      <tr class="bg-gray-100">
+        <th class="p-2 border">#</th>
+        <th class="p-2 border">Customer</th>
+        <th class="p-2 border">Product</th>
+        <th class="p-2 border">Qty</th>
+        <th class="p-2 border">Payment</th>
+        <th class="p-2 border">Status</th>
+        <th class="p-2 border">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders; let i = index">
+        <td class="p-2 border">{{ i + 1 }}</td>
+        <td class="p-2 border">
+          {{ order.name }}<br />
+          {{ order.phone }}
+        </td>
+        <td class="p-2 border">{{ order.productId?.name || 'Product Removed' }}</td>
+        <td class="p-2 border">{{ order.quantity }}</td>
+        <td class="p-2 border">
+          {{ order.paymentMethod }}<br />
+          <span class="text-xs text-gray-500">({{ order.paymentStatus }})</span>
+        </td>
+        <td class="p-2 border">{{ order.status }}</td>
+        <td class="p-2 border">
+          <select [(ngModel)]="order.status" (change)="updateStatus(order._id, order.status)" class="border p-1">
+            <option *ngFor="let s of statuses" [value]="s">{{ s }}</option>
+          </select>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

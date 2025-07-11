@@ -23,6 +23,9 @@ import { BlogManagement } from './admin/blog-management/blog-management';
 import { ManageUser } from './admin/manage-user/manage-user';
 import { OrderStatus } from './admin/order-status/order-status';
 import { ResetPasswordComponent } from './admin/reset-password-component/reset-password-component';
+import { Address } from './address/address';
+import { AdminOrderComponent } from './admin/admin-order-component/admin-order-component';
+import { OrderlistUser } from './orderlist-user/orderlist-user';
 
 export const routes: Routes = [
   { path: "", component: Home },
@@ -41,6 +44,9 @@ export const routes: Routes = [
   { path: "cart", component:Addtocart, canActivate: [authGuard]},
 { path: "profile", component: Profile, canActivate: [authGuard] },
 { path: 'product/:id', component: Product},
+{path:"address",component:Address},
+{path:"order-manage",component:AdminOrderComponent},
+{path:"order-list",component:OrderlistUser},
 
 
 

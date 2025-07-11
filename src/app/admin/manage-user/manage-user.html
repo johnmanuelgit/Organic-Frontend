@@ -1,6 +1,6 @@
 <div class="container mx-auto px-4 py-8 max-w-6xl">
-  <div class="flex justify-between items-center mb-8">
-    <h1 class="text-2xl font-bold text-gray-800">User Admin</h1>
+  <div class="flex justify-between items-center mt-30">
+    <h1 class="text-3xl font-bold text-[#2E8B57]">User Admin</h1>
   </div>
 
   <div class="bg-white rounded-lg shadow-md p-6 mb-8">
@@ -157,17 +157,17 @@
                 <span
                   *ngIf="admin.moduleAccess.lcf"
                   class="px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full"
-                  >LCF</span
+                  >Shop-Management</span
                 >
                 <span
                   *ngIf="admin.moduleAccess.incomeExpense"
                   class="px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full"
-                  >Income</span
+                  >Order-Managemen</span
                 >
                 <span
                   *ngIf="admin.moduleAccess.members"
                   class="px-2 py-1 text-xs bg-purple-100 text-purple-800 rounded-full"
-                  >Members</span
+                  >Blog Management</span
                 >
                 <span
                   *ngIf="admin.moduleAccess.user"
@@ -250,7 +250,7 @@
                 [(ngModel)]="selectedAdmin.moduleAccess.lcf"
                 class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
               />
-              <span>LCF</span>
+              <span>Shop Management</span>
             </label>
             <label class="flex items-center space-x-2">
               <input
@@ -258,7 +258,7 @@
                 [(ngModel)]="selectedAdmin.moduleAccess.incomeExpense"
                 class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
               />
-              <span>Income & Expense</span>
+              <span>Order-Management</span>
             </label>
             <label class="flex items-center space-x-2">
               <input
@@ -266,7 +266,7 @@
                 [(ngModel)]="selectedAdmin.moduleAccess.members"
                 class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
               />
-              <span>Members</span>
+              <span>Blog Management</span>
             </label>
             <label class="flex items-center space-x-2">
               <input
@@ -275,14 +275,6 @@
                 class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
               />
               <span>User Admin</span>
-            </label>
-            <label class="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                [(ngModel)]="selectedAdmin.moduleAccess.xmas"
-                class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-              />
-              <span>Christmas Tax</span>
             </label>
           </div>
         </div>

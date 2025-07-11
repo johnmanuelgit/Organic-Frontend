@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ProductService } from '../services/product-service/product-service';
 import { CommonModule } from '@angular/common';
 import { ProductReview } from '../product-review/product-review';
@@ -9,8 +9,6 @@ import { Cart } from '../services/Cart/cart';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
 
-
-declare var Razorpay: any;
 
 @Component({
   selector: 'app-product',
@@ -23,6 +21,9 @@ export class Product implements OnInit {
   product: any;
   server: string;
    quantity = 1;
+   showPaymentOptions = false;
+selectedPaymentMethod = '';
+
 
   constructor(
     private route: ActivatedRoute,
@@ -30,7 +31,8 @@ export class Product implements OnInit {
     private serverlink: ServerLink,
     private cartService:Cart,
     private toast:ToastrService,
-    private http:HttpClient
+    private http:HttpClient,
+    private router:Router
   ) {
     this.server = this.serverlink.serverlinks;
   }
@@ -78,43 +80,28 @@ export class Product implements OnInit {
     this.toast.success(`${product.name} added to cart!`);
   }
   loading:boolean=false
-   buyProduct(){
-    const amount =this.product.price*this.quantity;
-    this.loading=true;
-    this.http.post<any>('payment/create-order',{
-      amount:amount,
-      currency:'INR'
-    }).subscribe(order=>{
-      const options = {
-        key:'rzp_test_QIN4sfPHDDt9hq',
-        amount:order.amount,
-        currency:order.currency,
-        name:'John Manuvel',
-        description:'Welcome',
-        order_id:order.id,
-        handler:(response:any)=>{
-          console.log('Payment Successfull!',response);
-          this.toast.success('Payment Successfull!');
-        },
-        prefill:{
-          name:'John Manuvel',
-          email:'sjohnmanuelpc@gmail.com',
-          contact:'1234567890'
-        },
-        theme:{
-          color:'#3399cc'
-        },
-        modal: {
-          ondismiss: () => {
-            console.log('Payment popup closed by user');
-            this.loading = false; 
-          },}
-      };
 
-      const rzp = new Razorpay(options);
-      rzp.open();},
-      error =>{
-        console.error('Order creation failed', error);
-    })
+  buyProduct() {
+  this.showPaymentOptions = true;
+}
+selectPayment(method: 'cod' | 'online') {
+  this.showPaymentOptions = false;
+ this.router.navigate(['/address'], {
+  state: {
+    order: {
+      productId: this.product._id,
+      product: this.product,
+      quantity: this.quantity
+    },
+    paymentMethod: method
   }
+});
+
+}
+PaymentOptions() {
+  this.showPaymentOptions = false;
+}
+closePaymentOptions() {
+  this.showPaymentOptions = false;
+}
 }

@@ -13,7 +13,6 @@ export interface User {
     incomeExpense: boolean;
     members: boolean;
     user: boolean;
-    xmas: boolean;
   };
 }
 
