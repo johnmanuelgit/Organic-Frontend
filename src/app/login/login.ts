@@ -53,14 +53,15 @@ export class Login {
     }
 
     this.http
-      .post<any>('https://bakendrepo.onrender.com/login', this.loginForm.value)
+      .post<any>('login', this.loginForm.value)
       .subscribe({
         next: (res) => {
           localStorage.setItem('userId', res.user._id);
           localStorage.setItem('token', res.token);
           localStorage.setItem('user', JSON.stringify(res.user));
           const token = localStorage.getItem('token');
-
+  const user = localStorage.getItem('user');
+  console.log('user', user);
           console.log('token', token);
           this.cartService.fetchCartFromBackend();
           this.toast.success('Login successful!');

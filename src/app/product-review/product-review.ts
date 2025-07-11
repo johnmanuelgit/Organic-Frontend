@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../services/product-service/product-service';
 import { CommonModule } from '@angular/common';
 import { catchError, of, tap } from 'rxjs';
+import { ServerLink } from '../services/server-link/server-link';
 
 interface Product {
   id: string;
@@ -20,6 +21,7 @@ interface Review {
   comment: string;
   date?: Date;
   userName?: string;
+  userImageUrl?: string; // ✅ new
 }
 
 @Component({
@@ -37,16 +39,19 @@ export class ProductReview implements OnInit {
   isLoading = false;
   error: string | null = null;
   successMessage: string | null = null;
+server: string = '';
 
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+     private serverlink: ServerLink
   ) {
     this.reviewForm = this.fb.group({
       rating: [null, [Validators.required, Validators.min(1), Validators.max(5)]],
       comment: ['', [Validators.required, Validators.minLength(10)]]
     });
+    this.server = this.serverlink.serverlinks;
   }
 
   ngOnInit(): void {
@@ -104,10 +109,15 @@ export class ProductReview implements OnInit {
     this.error = null;
     this.successMessage = null;
 
-    const reviewData: Review = {
-      ...this.reviewForm.value,
-      date: new Date()
-    };
+  const user = JSON.parse(localStorage.getItem('user') || '{}');
+
+const reviewData: Review = {
+  ...this.reviewForm.value,
+  date: new Date(),
+  userName: user.name || '',
+  userImageUrl: user.imageUrl || ''
+};
+
 
     this.productService.addReview(this.productId, reviewData)
       .pipe(

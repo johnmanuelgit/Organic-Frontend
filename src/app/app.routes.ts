@@ -21,7 +21,6 @@ import { Addtocart } from './addtocart/addtocart';
 import { Shop } from './shop/shop';
 import { BlogManagement } from './admin/blog-management/blog-management';
 import { ManageUser } from './admin/manage-user/manage-user';
-import { OrderStatus } from './admin/order-status/order-status';
 import { ResetPasswordComponent } from './admin/reset-password-component/reset-password-component';
 import { Address } from './address/address';
 import { AdminOrderComponent } from './admin/admin-order-component/admin-order-component';
@@ -68,8 +67,7 @@ export const routes: Routes = [
   { path: "shop-manage", component: ShopManagement},
   {path:"blog-manage",component:BlogManagement},
   {path:"admin-create",component:ManageUser},
-  {path:"order-manage",component:OrderStatus},
-  {
+{
     path: 'reset-password',
     component: ResetPasswordComponent,
   },

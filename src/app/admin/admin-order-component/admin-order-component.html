@@ -1,38 +1,128 @@
-<div class="p-6">
-  <h2 class="text-2xl font-bold mt-30">All Orders</h2>
+<div class="min-h-screen bg-[url('assets/product/product-page-bg.png')] bg-cover bg-center p-8">
 
-  <table class="w-full border">
-    <thead>
-      <tr class="bg-gray-100">
-        <th class="p-2 border">#</th>
-        <th class="p-2 border">Customer</th>
-        <th class="p-2 border">Product</th>
-        <th class="p-2 border">Qty</th>
-        <th class="p-2 border">Payment</th>
-        <th class="p-2 border">Status</th>
-        <th class="p-2 border">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let order of orders; let i = index">
-        <td class="p-2 border">{{ i + 1 }}</td>
-        <td class="p-2 border">
-          {{ order.name }}<br />
-          {{ order.phone }}
-        </td>
-        <td class="p-2 border">{{ order.productId?.name || 'Product Removed' }}</td>
-        <td class="p-2 border">{{ order.quantity }}</td>
-        <td class="p-2 border">
-          {{ order.paymentMethod }}<br />
-          <span class="text-xs text-gray-500">({{ order.paymentStatus }})</span>
-        </td>
-        <td class="p-2 border">{{ order.status }}</td>
-        <td class="p-2 border">
-          <select [(ngModel)]="order.status" (change)="updateStatus(order._id, order.status)" class="border p-1">
-            <option *ngFor="let s of statuses" [value]="s">{{ s }}</option>
-          </select>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="max-w-7xl mx-auto rounded-xl shadow-lg p-6 mt-32">
+
+    <!-- Summary + CSV Button -->
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-8">
+ 
+
+      <!-- CSV Export Button -->
+      <div class="mt-4 ml-250 lg:mt-0">
+        <button
+          (click)="downloadCSV()"
+          class="bg-[#941a28] text-white px-4 py-2 rounded-lg shadow hover:bg-[#7b1421] transition"
+        >
+          Export CSV
+        </button>
+      </div>
+    </div>
+
+    <!-- Orders Table -->
+    <div class="overflow-x-auto rounded-xl border border-gray-200">
+      <table class="min-w-full divide-y divide-gray-200 text-sm">
+        <thead class="bg-orange-50 text-[#941a28] font-semibold uppercase text-xs">
+          <tr>
+            <th class="p-3 text-left">No</th>
+            <th class="p-3 text-left">Customer</th>
+            <th class="p-3 text-left">Product</th>
+            <th class="p-3 text-left">Qty</th>
+            <th class="p-3 text-left">Payment</th>
+            <th class="p-3 text-left">Status</th>
+            <th class="p-3 text-left">Tracking Update</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100 bg-white">
+          <tr
+            *ngFor="let order of orders; let i = index"
+            [ngClass]="{ 'bg-white': i % 2 === 0, 'bg-orange-50': i % 2 !== 0 }"
+            class="hover:bg-orange-100 transition"
+          >
+            <td class="p-3 text-gray-700">{{ i + 1 }}</td>
+
+            <td class="p-3">
+              <div class="text-sm font-medium text-gray-900">{{ order.name }}</div>
+              <div class="text-xs text-gray-500">{{ order.phone }}</div>
+            </td>
+
+            <td class="p-3">
+              <div class="text-sm text-gray-800 font-medium">
+                {{ order.productId?.name || 'Product Removed' }}
+              </div>
+              <div class="text-xs text-gray-500">₹{{ order.productId?.price || '0.00' }}</div>
+              <div class="text-xs text-[#941a28] font-medium mt-1" *ngIf="order.productId?.stock === 0">
+                Out of Stock
+              </div>
+            </td>
+
+            <td class="p-3 text-gray-700 font-semibold">
+              {{ order.quantity }}
+            </td>
+
+            <td class="p-3">
+              <span
+                [ngClass]="{
+                  'text-orange-600 font-medium': order.paymentMethod.toLowerCase() === 'cod',
+                  'text-green-600 font-medium': order.paymentMethod.toLowerCase() === 'online'
+                }"
+              >
+                {{ order.paymentMethod }}
+              </span>
+              <br />
+              <span class="text-xs text-gray-500">({{ order.paymentStatus }})</span>
+            </td>
+
+            <td class="p-3">
+              <span
+                [ngClass]="{
+                  'text-green-600 font-semibold': order.status.toLowerCase() === 'delivered',
+                  'text-orange-600 font-semibold': order.status.toLowerCase() === 'pending',
+                  'text-[#941a28] font-semibold': order.status.toLowerCase() === 'cancelled'
+                }"
+              >
+                {{ order.status }}
+              </span>
+            </td>
+
+            <td class="p-3">
+              <select
+                [(ngModel)]="order.status"
+                (change)="updateStatus(order._id, order.status)"
+                class="border border-gray-300 rounded-md px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-[#2E8B57]"
+              >
+                <option *ngFor="let s of statuses" [value]="s">{{ s }}</option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+     <!-- Summary Cards -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 w-full text-sm mt-10  text-white">
+        <div class="bg-[#941a28] p-4 rounded-lg shadow text-center">
+          <div class="text-xl font-bold">{{ totalOrders }}</div>
+          <div>Total</div>
+        </div>
+        <div class="bg-orange-600 p-4 rounded-lg shadow text-center">
+          <div class="text-xl font-bold">{{ pendingCount }}</div>
+          <div>Pending</div>
+        </div>
+        <div class="bg-yellow-500 p-4 rounded-lg shadow text-center">
+          <div class="text-xl font-bold">{{ processingCount }}</div>
+          <div>Processing</div>
+        </div>
+        <div class="bg-blue-500 p-4 rounded-lg shadow text-center">
+          <div class="text-xl font-bold">{{ shippedCount }}</div>
+          <div>Shipped</div>
+        </div>
+        <div class="bg-green-600 p-4 rounded-lg shadow text-center">
+          <div class="text-xl font-bold">{{ deliveredCount }}</div>
+          <div>Delivered</div>
+        </div>
+        <div class="bg-gray-500 p-4 rounded-lg shadow text-center">
+          <div class="text-xl font-bold">{{ cancelledCount }}</div>
+          <div>Cancelled</div>
+        </div>
+      </div>
+  </div>
+  
 </div>

@@ -1,13 +1,33 @@
-<div class="p-6 max-w-md mt-30 mx-auto">
-  <h2 class="text-2xl font-bold mb-4">Shipping Address</h2>
-  <input type="text" [(ngModel)]="name" placeholder="Full Name" class="border p-2 w-full mb-3" />
-  <input type="text" [(ngModel)]="phone" placeholder="Phone" class="border p-2 w-full mb-3" />
-  <textarea [(ngModel)]="address" placeholder="Address" class="border p-2 w-full mb-3"></textarea>
+<div class="max-w-xl mx-auto mt-10 p-8 bg-[#fef6f0] border border-orange-200 shadow-lg rounded-xl">
+  <h2 class="text-3xl font-bold text-[#7d1300] mb-6 text-center">Shipping Address</h2>
 
-  <button 
-    class="bg-green-600 text-white px-4 py-2 rounded w-full"
-    [disabled]="loading"
-    (click)="submitAddress()">
-    {{ paymentMethod === 'cod' ? 'Place Order (Cash on Delivery)' : 'Proceed to Pay (Online)' }}
-  </button>
+  <div class="space-y-5">
+    <input 
+      type="text" 
+      [(ngModel)]="name" 
+      placeholder="Full Name" 
+      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 outline-none"
+    />
+
+    <input 
+      type="text" 
+      [(ngModel)]="phone" 
+      placeholder="Phone Number" 
+      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 outline-none"
+    />
+
+    <textarea 
+      [(ngModel)]="address" 
+      placeholder="Full Address (with Pincode)" 
+      class="w-full px-4 py-3 border border-gray-300 rounded-lg h-28 resize-none focus:ring-2 focus:ring-orange-400 outline-none"
+    ></textarea>
+
+    <button 
+      class="w-full py-3 text-white bg-[#ff6c00] hover:bg-orange-600 font-semibold rounded-lg transition duration-300"
+      [disabled]="loading"
+      (click)="submitAddress()"
+    >
+      {{ paymentMethod === 'cod' ? 'Place Order (Cash on Delivery)' : 'Proceed to Pay (Online)' }}
+    </button>
+  </div>
 </div>

@@ -48,7 +48,7 @@ export class Signup {
   }
   register() {
     this.http
-      .post('https://bakendrepo.onrender.com/register', this.signupform.value)
+      .post('register', this.signupform.value)
       .subscribe({
         next: (res) => {
           console.log('Registration successful:', res);

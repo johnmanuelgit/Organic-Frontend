@@ -157,13 +157,28 @@
   </div>
 </div>
 <!-- Payment Options Modal -->
-<div *ngIf="showPaymentOptions" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-  <div class="bg-white rounded-lg p-6 w-11/12 max-w-md">
-    <h2 class="text-xl font-bold mb-4 text-[#701011]">Choose Payment Method</h2>
+<div *ngIf="showPaymentOptions" class="fixed inset-0 bg-[url('assets/product/product-page-bg.png')] bg-cover bg-center flex items-center justify-center z-50">
+  <div class="bg-[#fef6f0]/90 backdrop-blur-sm rounded-xl p-6 w-11/12 max-w-md shadow-lg border border-orange-200">
+    <h2 class="text-2xl font-bold mb-5 text-center text-[#7d1300]">Select Payment Method</h2>
+
     <div class="space-y-4">
-      <button (click)="selectPayment('cod')" class="w-full px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Cash on Delivery</button>
-      <button (click)="selectPayment('online')" class="w-full px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Online Payment</button>
+      <button 
+        (click)="selectPayment('cod')" 
+        class="w-full py-3 bg-[#ff6c00] hover:bg-orange-600 text-white font-semibold rounded-lg transition duration-300">
+        Cash on Delivery
+      </button>
+
+      <button 
+        (click)="selectPayment('online')" 
+        class="w-full py-3 bg-[#7d1300] hover:bg-[#5a0c00] text-white font-semibold rounded-lg transition duration-300">
+        Online Payment
+      </button>
     </div>
-    <button (click)="closePaymentOptions()" class="mt-4 text-sm text-gray-500 hover:underline">Cancel</button>
+
+    <button 
+      (click)="closePaymentOptions()" 
+      class="mt-6 block mx-auto text-sm text-gray-600 hover:text-[#7d1300] hover:underline transition">
+      Cancel
+    </button>
   </div>
 </div>

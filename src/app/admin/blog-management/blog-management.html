@@ -2,12 +2,12 @@
   <!-- Header Section -->
   <div class="flex justify-between items-center mt-30">
     <div>
-      <h1 class="text-3xl font-bold text-[#2E8B57]">Blog Management</h1>
+      <h1 class="text-3xl font-bold text-[#941a28]">Blog Management</h1>
       <p class="text-gray-600 mt-1">Create and manage your blog content</p>
     </div>
     <button
       (click)="showAddForm()"
-      class="flex items-center px-5 py-2.5 bg-green-600 hover:bg-green-700 text-white rounded-lg shadow transition-colors duration-300"
+      class="flex items-center px-5 py-2.5 bg-orange-500 hover:bg-orange-700 text-white rounded-lg shadow transition-colors duration-300"
       *ngIf="!isFormVisible"
     >
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -102,7 +102,7 @@
         <button 
           type="button" 
           (click)="fullscreenDescription = !fullscreenDescription"
-          class="text-sm text-green-600 font-medium hover:underline flex items-center"
+          class="text-sm text-orange-600 font-medium hover:underline flex items-center"
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
@@ -148,7 +148,7 @@
       </button>
       <button
         (click)="saveBlog()"
-        class="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow transition-colors duration-300"
+        class="px-5 py-2 bg-[#941a28] hover:bg-blue-700 text-white rounded-lg shadow transition-colors duration-300"
       >
         {{ isEditMode ? 'Update Post' : 'Publish Post' }}
       </button>
@@ -213,24 +213,25 @@
           
           <!-- Actions -->
           <div class="flex justify-end gap-2">
-            <button
-              (click)="editBlog(blog)"
-              class="flex items-center px-3 py-1.5 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-colors"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-              </svg>
-              Edit
-            </button>
-            <button
+              <button
               (click)="deleteBlog(blog._id)"
-              class="flex items-center px-3 py-1.5 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition-colors"
+              class="flex items-center px-3 py-1.5 bg-[#941a28] text-white rounded-lg hover:bg-red-100 transition-colors"
             >
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
               </svg>
               Delete
             </button>
+            <button
+              (click)="editBlog(blog)"
+              class="flex items-center px-3 py-1.5 bg-orange-600 text-white rounded-lg hover:bg-blue-100 transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+              </svg>
+              Edit
+            </button>
+          
           </div>
         </div>
       </div>
