@@ -5,6 +5,7 @@ import { Cart } from '../services/Cart/cart';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ServerLink } from '../services/server-link/server-link';
+import { Toastr } from '../services/toast/toastr';
 
 @Component({
   selector: 'app-profile',
@@ -22,7 +23,8 @@ export class Profile implements OnInit {
     private router: Router,
     private http: HttpClient,
     private cartService: Cart,
-    private serverlink: ServerLink
+    private serverlink: ServerLink,
+    private toast:Toastr
   ) {
     this.server = this.serverlink.serverlinks;
   }
@@ -60,7 +62,7 @@ export class Profile implements OnInit {
 
     this.http.put<any>(`api/user/profile/${userId}`, formData).subscribe(
       (res) => {
-        alert('Profile updated successfully!');
+        this.toast.success('Profile updated successfully!');
         this.isEditMode = false;
         this.selectedFile = null;
 
@@ -69,7 +71,7 @@ export class Profile implements OnInit {
       },
       (err) => {
         console.error('Profile update error:', err);
-        alert('Update failed. Try again.');
+        this.toast.error('Update failed. Try again.');
       }
     );
   }
@@ -84,5 +86,6 @@ export class Profile implements OnInit {
     localStorage.clear();
     this.router.navigate(['/login']);
     this.cartService.clearCart();
+    this.toast.success('Logout Successfully')
   }
 }

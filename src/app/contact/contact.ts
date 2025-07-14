@@ -8,7 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { Toast, ToastrService } from 'ngx-toastr';
+import { Toastr } from '../services/toast/toastr';
 
 @Component({
   selector: 'app-contact',
@@ -22,7 +22,7 @@ export class Contact {
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private toast: ToastrService
+    private toast: Toastr
   ) {
     this.contactForm = this.fb.group({
       fullName: ['', Validators.required],

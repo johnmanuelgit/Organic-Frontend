@@ -10,7 +10,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import { Toastr } from '../services/toast/toastr';
 
 @Component({
   selector: 'app-signup',
@@ -29,7 +29,7 @@ export class Signup {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private toast: ToastrService
+    private toast:Toastr
   ) {
     this.signupform = new FormGroup({
       name: new FormControl('', [Validators.required]),

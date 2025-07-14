@@ -6,8 +6,9 @@ import { ProductReview } from '../product-review/product-review';
 import { ServerLink } from '../services/server-link/server-link';
 import { FormsModule } from '@angular/forms';
 import { Cart } from '../services/Cart/cart';
-import { ToastrService } from 'ngx-toastr';
+
 import { HttpClient } from '@angular/common/http';
+import { Toastr } from '../services/toast/toastr';
 
 @Component({
   selector: 'app-product',
@@ -28,8 +29,7 @@ export class Product implements OnInit {
     private productService: ProductService,
     private serverlink: ServerLink,
     private cartService: Cart,
-    private toast: ToastrService,
-    private http: HttpClient,
+    private toast: Toastr,
     private router: Router
   ) {
     this.server = this.serverlink.serverlinks;
@@ -80,7 +80,17 @@ export class Product implements OnInit {
   loading: boolean = false;
 
   buyProduct() {
-    this.showPaymentOptions = true;
+     const iflogin=localStorage.getItem('token')
+    if (iflogin){
+      this.showPaymentOptions = true;
+      return;
+    }
+    if (!iflogin){
+      this.showPaymentOptions = false;
+      this.toast.error('Please Register or Login to continue')
+      return;
+    }
+    
   }
   selectPayment(method: 'cod' | 'online') {
     this.showPaymentOptions = false;

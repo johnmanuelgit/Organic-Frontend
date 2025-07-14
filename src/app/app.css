@@ -1,0 +1,6 @@
+.ng-toast {
+  top: 1rem;
+  right: 1rem;
+  left: auto !important;
+  bottom: auto !important;
+}

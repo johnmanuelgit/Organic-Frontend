@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Toastr } from '../services/toast/toastr';
 
 declare var Razorpay: any;
 
@@ -22,7 +23,9 @@ export class Address {
   address = '';
   loading: boolean = false;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient,
+     private router: Router,
+    private toast:Toastr) {}
 
   submitAddress() {
     if (this.paymentMethod === 'cod') {
@@ -34,7 +37,7 @@ export class Address {
       };
 
       this.http.post('api/orders/cod', data).subscribe(() => {
-        alert('Order placed successfully!');
+        this.toast.success('Order placed successfully!');
         this.router.navigate(['/order-success']);
       });
     } else {
@@ -74,12 +77,12 @@ export class Address {
 
               this.http.post('api/orders/online', data).subscribe(
                 () => {
-                  alert('Payment successful and order saved!');
+                  this.toast.success('Payment successful and order saved!');
                   this.router.navigate(['/order-success']);
                 },
                 (error) => {
                   console.error('Error saving online order:', error);
-                  alert('Payment was successful, but order saving failed.');
+                  this.toast.error('Payment was successful, but order saving failed.');
                 }
               );
             },
