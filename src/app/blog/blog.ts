@@ -29,13 +29,18 @@ export class Blog implements OnInit {
   blogsPerPage: number = 5;
   totalPages: number = 0;
   searchQuery: string = '';
-  server:string=''
+  server: string = '';
 
-  constructor(private blogService: BlogService, private router: Router,private serverlinkserver:ServerLink) {this.server=this.serverlinkserver.serverlinks}
+  constructor(
+    private blogService: BlogService,
+    private router: Router,
+    private serverlinkserver: ServerLink
+  ) {
+    this.server = this.serverlinkserver.serverlinks;
+  }
 
   ngOnInit() {
     this.loadBlogs();
-    
   }
   loadBlogs() {
     this.blogService.getAllBlogs().subscribe((res) => {

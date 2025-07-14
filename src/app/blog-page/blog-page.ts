@@ -39,7 +39,8 @@ export class BlogPage implements OnInit {
     this.blogService.getBlogById(id).subscribe({
       next: (res) => {
         this.blog = res;
-        this.imageUrls = this.serverlinkservice.serverlinks + '/uploads/' + res.image;
+        this.imageUrls =
+          this.serverlinkservice.serverlinks + '/uploads/' + res.image;
         this.pagetitle = res.title;
       },
       error: (err) => {
@@ -67,11 +68,15 @@ export class BlogPage implements OnInit {
 
     const query = this.searchQuery.toLowerCase();
 
-    this.filteredBlogs = this.allBlogs.filter(blog => {
-      const plainContent = blog.content ? blog.content.replace(/<[^>]+>/g, '').toLowerCase() : '';
+    this.filteredBlogs = this.allBlogs.filter((blog) => {
+      const plainContent = blog.content
+        ? blog.content.replace(/<[^>]+>/g, '').toLowerCase()
+        : '';
       const titleMatch = blog.title?.toLowerCase().includes(query);
       const contentMatch = plainContent.includes(query);
-      const tagMatch = blog.tags?.some((tag: string) => tag.toLowerCase().includes(query));
+      const tagMatch = blog.tags?.some((tag: string) =>
+        tag.toLowerCase().includes(query)
+      );
       return titleMatch || contentMatch || tagMatch;
     });
   }
@@ -86,17 +91,19 @@ export class BlogPage implements OnInit {
     'Top 15 Benefits of Eating Mango at Night',
     'Health Benefits of Mango for Kids',
     'Eating Mangoes During Pregnancy: Health Benefits and Side Effects',
-    'Mango 101: Nutrition Facts About Mangoes That Will Surprise You!'
+    'Mango 101: Nutrition Facts About Mangoes That Will Surprise You!',
   ];
 
   features = [
     {
       title: 'Varieties of Mangoes',
-      image: 'https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/Varieties-of-Mangoes.png.webp'
+      image:
+        'https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/Varieties-of-Mangoes.png.webp',
     },
     {
       title: 'Directly From Farmers',
-      image: 'https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/Directly-From-Farmers.png.webp'
+      image:
+        'https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/Directly-From-Farmers.png.webp',
     },
   ];
 }

@@ -1,6 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
 import { BlogService } from '../admin/services/blog-service/blog-service';
@@ -25,35 +31,40 @@ interface blog {
 }
 @Component({
   selector: 'app-home',
-  standalone:true,
-  imports: [CommonModule,RouterModule,ReactiveFormsModule,FormsModule],
+  standalone: true,
+  imports: [CommonModule, RouterModule, ReactiveFormsModule, FormsModule],
   templateUrl: './home.html',
-  styleUrl: './home.css'
+  styleUrl: './home.css',
 })
-export class Home implements OnInit, OnDestroy  {
-server=''
+export class Home implements OnInit, OnDestroy {
+  server = '';
 
- displayedBlogs: blog[] = [];
+  displayedBlogs: blog[] = [];
 
-hoveredMarker: number | null = null;
+  hoveredMarker: number | null = null;
 
-setHover(index: number) {
-  this.hoveredMarker = index;
-}
+  setHover(index: number) {
+    this.hoveredMarker = index;
+  }
 
-clearHover() {
-  this.hoveredMarker = null;
-}
+  clearHover() {
+    this.hoveredMarker = null;
+  }
 
   newsletterForm: FormGroup;
   isSuccess = false;
 
-  constructor(private fb: FormBuilder,private blogService: BlogService, private router: Router,private serverlinkserver:ServerLink) {
+  constructor(
+    private fb: FormBuilder,
+    private blogService: BlogService,
+    private router: Router,
+    private serverlinkserver: ServerLink
+  ) {
     this.newsletterForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.email]]
+      email: ['', [Validators.required, Validators.email]],
     });
-    this.server=this.serverlinkserver.serverlinks
+    this.server = this.serverlinkserver.serverlinks;
   }
 
   onSubmit() {
@@ -66,55 +77,65 @@ clearHover() {
       }, 3000);
     }
   }
- 
+
   testimonials: Testimonial[] = [
     {
       id: 1,
-      name: "Rina Shah",
-      location: "Delhi",
-      image: "https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/Rina-Shah.png.webp",
-      quote: "I ordered mangoes from Mango Basket for my family and they loved it. It is very fresh, healthy and delicious."
+      name: 'Rina Shah',
+      location: 'Delhi',
+      image:
+        'https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/Rina-Shah.png.webp',
+      quote:
+        'I ordered mangoes from Mango Basket for my family and they loved it. It is very fresh, healthy and delicious.',
     },
     {
       id: 2,
-      name: "Jaydeep Bagul",
-      location: "Pune",
-      image: "https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2021/01/jaydeep-bagul.png.webp",
-      quote: "The quality and freshness were not compromised in any way, It is one of the best batches of mangoes I have had in a while. Thank you team Mango Basket."
+      name: 'Jaydeep Bagul',
+      location: 'Pune',
+      image:
+        'https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2021/01/jaydeep-bagul.png.webp',
+      quote:
+        'The quality and freshness were not compromised in any way, It is one of the best batches of mangoes I have had in a while. Thank you team Mango Basket.',
     },
     {
       id: 3,
-      name: "Meenakshi Kharat",
-      location: "Ratnagiri",
-      image: "https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2021/01/meenakshi-kharat.png.webp",
-      quote: "I ordered a few dozens of alphonso mangoes from Mango Basket. I am a health-conscious person so I always prefer eating residue free fruits. I found their mangoes to be healthy as well as delicious. I would definitely order more from them."
+      name: 'Meenakshi Kharat',
+      location: 'Ratnagiri',
+      image:
+        'https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2021/01/meenakshi-kharat.png.webp',
+      quote:
+        'I ordered a few dozens of alphonso mangoes from Mango Basket. I am a health-conscious person so I always prefer eating residue free fruits. I found their mangoes to be healthy as well as delicious. I would definitely order more from them.',
     },
     {
       id: 4,
-      name: "Rina Shah",
-      location: "Delhi",
-      image: "https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/Rina-Shah.png.webp",
-      quote: "I ordered mangoes from Mango Basket for my family and they loved it. It is very fresh, healthy and delicious."
+      name: 'Rina Shah',
+      location: 'Delhi',
+      image:
+        'https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2020/12/Rina-Shah.png.webp',
+      quote:
+        'I ordered mangoes from Mango Basket for my family and they loved it. It is very fresh, healthy and delicious.',
     },
     {
       id: 5,
-      name: "Meenakshi Kharat",
-      location: "Ratnagiri",
-      image: "https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2021/01/meenakshi-kharat.png.webp",
-      quote: "I ordered a few dozens of alphonso mangoes from Mango Basket. I am a health-conscious person so I always prefer eating residue free fruits. I found their mangoes to be healthy as well as delicious. I would definitely order more from them."
-
+      name: 'Meenakshi Kharat',
+      location: 'Ratnagiri',
+      image:
+        'https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2021/01/meenakshi-kharat.png.webp',
+      quote:
+        'I ordered a few dozens of alphonso mangoes from Mango Basket. I am a health-conscious person so I always prefer eating residue free fruits. I found their mangoes to be healthy as well as delicious. I would definitely order more from them.',
     },
     {
       id: 6,
-      name: "Jaydeep Bagul",
-      location: "Pune",
-      image: "https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2021/01/jaydeep-bagul.png.webp",
-     quote: "The quality and freshness were not compromised in any way, It is one of the best batches of mangoes I have had in a while. Thank you team Mango Basket."
-    }
-
+      name: 'Jaydeep Bagul',
+      location: 'Pune',
+      image:
+        'https://themangobasket.com/wp-content/webp-express/webp-images/uploads/2021/01/jaydeep-bagul.png.webp',
+      quote:
+        'The quality and freshness were not compromised in any way, It is one of the best batches of mangoes I have had in a while. Thank you team Mango Basket.',
+    },
   ];
 
- currentPage = 0;
+  currentPage = 0;
   itemsPerPage = 3;
   private autoSlideSub: Subscription | undefined;
   isMobileView = false;
@@ -122,7 +143,7 @@ clearHover() {
 
   ngOnInit(): void {
     this.startAutoSlide();
-      this.loadBlogs();
+    this.loadBlogs();
   }
 
   ngOnDestroy(): void {
@@ -130,7 +151,7 @@ clearHover() {
       this.autoSlideSub.unsubscribe();
     }
   }
-   loadBlogs() {
+  loadBlogs() {
     this.blogService.getAllBlogs().subscribe((res) => {
       this.displayedBlogs = res;
     });
@@ -164,11 +185,12 @@ clearHover() {
   }
 
   previousPage(): void {
-    this.currentPage = (this.currentPage - 1 + this.totalPages) % this.totalPages;
+    this.currentPage =
+      (this.currentPage - 1 + this.totalPages) % this.totalPages;
   }
 
   @HostListener('window:resize', ['$event'])
-  onResize(event:Event) {
+  onResize(event: Event) {
     this.checkScreenSize();
   }
 
@@ -180,9 +202,8 @@ clearHover() {
       this.currentPage = 0;
     }
   }
-    viewblog(blog: blog) {
+  viewblog(blog: blog) {
     console.log('Navigating to blog:', blog._id);
     this.router.navigate(['/blog', blog._id]);
   }
 }
-

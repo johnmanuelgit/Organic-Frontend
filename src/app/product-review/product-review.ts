@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../services/product-service/product-service';
 import { CommonModule } from '@angular/common';
@@ -14,14 +19,13 @@ interface Product {
   description: string;
 }
 
-
 interface Review {
   id?: string;
   rating: number;
   comment: string;
   date?: Date;
   userName?: string;
-  userImageUrl?: string; // ✅ new
+  userImageUrl?: string; 
 }
 
 @Component({
@@ -29,7 +33,7 @@ interface Review {
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './product-review.html',
-  styleUrls: ['./product-review.css']
+  styleUrls: ['./product-review.css'],
 })
 export class ProductReview implements OnInit {
   product: Product | null = null;
@@ -39,17 +43,20 @@ export class ProductReview implements OnInit {
   isLoading = false;
   error: string | null = null;
   successMessage: string | null = null;
-server: string = '';
+  server: string = '';
 
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
     private fb: FormBuilder,
-     private serverlink: ServerLink
+    private serverlink: ServerLink
   ) {
     this.reviewForm = this.fb.group({
-      rating: [null, [Validators.required, Validators.min(1), Validators.max(5)]],
-      comment: ['', [Validators.required, Validators.minLength(10)]]
+      rating: [
+        null,
+        [Validators.required, Validators.min(1), Validators.max(5)],
+      ],
+      comment: ['', [Validators.required, Validators.minLength(10)]],
     });
     this.server = this.serverlink.serverlinks;
   }
@@ -65,13 +72,14 @@ server: string = '';
     this.isLoading = true;
     this.error = null;
 
-    // Get product details
-    this.productService.getProductById(this.productId!)
+    
+    this.productService
+      .getProductById(this.productId!)
       .pipe(
-        tap(product => {
+        tap((product) => {
           this.product = product;
         }),
-        catchError(error => {
+        catchError((error) => {
           this.error = 'Failed to load product details';
           console.error(error);
           return of(null);
@@ -79,21 +87,22 @@ server: string = '';
       )
       .subscribe();
 
-    // Get reviews
+    
     this.getReviews();
   }
 
   getReviews(): void {
-    this.productService.getProductReviews(this.productId!)
+    this.productService
+      .getProductReviews(this.productId!)
       .pipe(
-        tap(reviews => {
-          this.reviews = reviews.map(review => ({
+        tap((reviews) => {
+          this.reviews = reviews.map((review) => ({
             ...review,
-            date: review.date ? new Date(review.date) : new Date()
+            date: review.date ? new Date(review.date) : new Date(),
           }));
           this.isLoading = false;
         }),
-        catchError(error => {
+        catchError((error) => {
           this.error = 'Failed to load reviews';
           this.isLoading = false;
           console.error(error);
@@ -109,24 +118,24 @@ server: string = '';
     this.error = null;
     this.successMessage = null;
 
-  const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
 
-const reviewData: Review = {
-  ...this.reviewForm.value,
-  date: new Date(),
-  userName: user.name || '',
-  userImageUrl: user.imageUrl || ''
-};
+    const reviewData: Review = {
+      ...this.reviewForm.value,
+      date: new Date(),
+      userName: user.name || '',
+      userImageUrl: user.imageUrl || '',
+    };
 
-
-    this.productService.addReview(this.productId, reviewData)
+    this.productService
+      .addReview(this.productId, reviewData)
       .pipe(
         tap(() => {
           this.successMessage = 'Thank you for your review!';
           this.reviewForm.reset();
           this.getReviews();
         }),
-        catchError(error => {
+        catchError((error) => {
           this.error = 'Failed to submit review. Please try again.';
           console.error(error);
           return of(null);
@@ -135,8 +144,10 @@ const reviewData: Review = {
       .subscribe();
   }
 
-  // Helper method for star rating display
+  
   getStars(rating: number): number[] {
-    return Array(5).fill(0).map((_, i) => i < rating ? 1 : 0);
+    return Array(5)
+      .fill(0)
+      .map((_, i) => (i < rating ? 1 : 0));
   }
 }

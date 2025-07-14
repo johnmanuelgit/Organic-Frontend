@@ -17,11 +17,10 @@ export interface User {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserAdmin {
-
-   private apiUrl = 'api/admin/superadmin';
+  private apiUrl = 'api/admin/superadmin';
 
   constructor(private http: HttpClient) {}
 
@@ -40,5 +39,4 @@ export class UserAdmin {
   deleteAdmin(id: string) {
     return this.http.delete(`${this.apiUrl}/delete-admin/${id}`);
   }
-
 }

@@ -1,131 +1,114 @@
-<div class="h-full w-full bg-[url('assets/product/product-page-bg.png')] bg-cover bg-center">
+<div
+  class="h-full w-full bg-[url('assets/product/product-page-bg.png')] bg-cover flex-wrap bg-center"
+>
   <div
-    class="flex flex-col md:flex-row md:items-center md:justify-between p-15 bg-cover"
+    class="flex flex-col-reverse md:flex-row md:items-center md:justify-between px-6 py-25"
   >
-    <div class="md:relative right-0 top-0 h-screen">
+    <div class="relative w-full md:w-1/2 flex justify-center md:justify-end">
       <img
         src="assets/home/Alphonso-Mango-Basket.webp"
         alt="Mango Basket"
-        class="object-cover md:-my-75 md:mx-90 overflow-hidden scale-[2.0] my-10 md:scale-100 z-30"
+        class="object-cover scale-100 md:scale-100 w-4/5 md:w-full"
       />
     </div>
 
-    <div
-      class="absolute  md:p-20 md:space-y-15 space-y-4  flex-wrap md:flex-nowrap"
-    >
-      <h2 class="text-xl md:text-5xl font-bold text-green-600">
-      Welcome<br /><a
-          class="underline md:underline md:decoration-5 md:underline-offset-20 decoration-[#8b0000]"
+    <div class="w-full md:w-1/2 space-y-6 text-center md:text-left z-10">
+      <h2 class="text-2xl md:text-5xl font-bold text-green-600 leading-snug">
+        Welcome<br />
+        <a
+          class="underline decoration-[#8b0000] decoration-4 underline-offset-4"
           >To Our</a
-        >Farm House Sale!
+        >
+        Farm House Sale!
       </h2>
-      <ul
-        class="md:mt-4 space-y-4 text-md md:text-2xl md:font-semibold text-red-800 mt-5"
-      >
+
+      <ul class="text-md md:text-2xl text-red-800 space-y-4">
+        <li>✅ 100% Organic Product</li>
         <li>
-          100% Organic Product
+          ✅ Grown naturally in our farm.<br />
+          Safe for your health and family.
         </li>
-        <li>
-          In our farm, all fruits and crops are grown naturally.<br>It is 100% safe for your health and your family.
-        </li>
-        <li>Farm to home delivery</li>
+        <li>✅ Farm to home delivery</li>
       </ul>
+
       <button
-        class="flex cursor-pointer items-center px-4 py-1 md:px-10 gap-2 md:py-5 mt-8 bg-orange-500 text-white rounded-full text-sm md:text-lg font-semibold hover:bg-orange-600 hover:scale-110"
+        class="mx-auto md:mx-0 flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full font-semibold hover:scale-105 transition"
         [routerLink]="['/shop']"
       >
         Order Now
+
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="31.267"
-          height="15.038"
-          viewBox="0 0 31.267 15.038"
+          width="20"
+          height="20"
+          fill="white"
+          viewBox="0 0 20 20"
         >
-          <defs>
-            <style>
-              .a,
-              .b {
-                fill: none;
-                stroke: #fff;
-                stroke-linecap: round;
-                stroke-width: 2px;
-              }
-
-              .b {
-                stroke-linejoin: round;
-              }
-            </style>
-          </defs>
-          <g transform="translate(-273.05 -557.086)">
-            <path
-              class="a"
-              d="M5013.345,789h27.971"
-              transform="translate(-4739.295 -224.5)"
-            ></path>
-            <path
-              class="b"
-              d="M5088.429,805.1v8.671h8.6"
-              transform="translate(3325.539 4738.066) rotate(-135)"
-            ></path>
-          </g>
+          <path
+            fill-rule="evenodd"
+            d="M10 18a8 8 0 100-16 8 8 0 000 16zm4.293-9.707a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 10-1.414 1.414l2.5 2.5a1 1 0 001.414 0l4-4z"
+            clip-rule="evenodd"
+          />
         </svg>
       </button>
     </div>
   </div>
 
- <!-- home.component.html -->
-<section class="h-full w-screen bg-cover bg-center font-sans px-6 py-12">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
-    
-    <!-- Left: Image -->
-    <div class="flex justify-center">
-      <img src="assets/home/mango-2.png" alt="Organic Products" class="w-full h-full object-contain md:object-cover ">
-    </div>
+  <section class="h-full w-screen bg-cover bg-center font-sans px-6 py-12">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+      <div class="flex justify-center">
+        <img
+          src="assets/home/mango-2.png"
+          alt="Organic Products"
+          class="w-full h-full object-contain md:object-cover"
+        />
+      </div>
 
-    <!-- Right: Text and Features -->
-    <div class="text-[#701011]">
-      <h2 class="text-3xl font-bold mb-4">Why Choose Farm Fresh Organics?</h2>
-      <p class="text-lg mb-6 ">
-        We are committed to delivering the authentic taste of nature through organically grown, chemical-free products directly from our farmhouse.
-        Our mission is to support sustainable farming and connect health-conscious consumers with fresh, naturally grown produce — straight from our soil to your home!
-      </p>
+      <div class="text-[#701011]">
+        <h2 class="text-3xl font-bold mb-4">Why Choose Farm Fresh Organics?</h2>
+        <p class="text-lg mb-6">
+          We are committed to delivering the authentic taste of nature through
+          organically grown, chemical-free products directly from our farmhouse.
+          Our mission is to support sustainable farming and connect
+          health-conscious consumers with fresh, naturally grown produce —
+          straight from our soil to your home!
+        </p>
 
-      <div class="grid sm:grid-cols-2 gap-4">
-        <div class="flex items-center space-x-3">
-          <span class="text-green-600 text-2xl">🍎</span>
-          <p>Wide Range of Organic Products</p>
-        </div>
-        <div class="flex items-center space-x-3">
-          <span class="text-green-600 text-2xl">🏡</span>
-          <p>Direct from Farmhouse</p>
-        </div>
-        <div class="flex items-center space-x-3">
-          <span class="text-green-600 text-2xl">🌱</span>
-          <p>100% Organic & Natural</p>
-        </div>
-        <div class="flex items-center space-x-3">
-          <span class="text-green-600 text-2xl">🚫</span>
-          <p>Free from Chemicals</p>
-        </div>
-        <div class="flex items-center space-x-3">
-          <span class="text-green-600 text-2xl">😋</span>
-          <p>Fresh, Nutritious & Flavorful</p>
-        </div>
-        <div class="flex items-center space-x-3">
-          <span class="text-green-600 text-2xl">🚚</span>
-          <p>Delivery Across India</p>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="flex items-center space-x-3">
+            <span class="text-green-600 text-2xl">🍎</span>
+            <p>Wide Range of Organic Products</p>
+          </div>
+          <div class="flex items-center space-x-3">
+            <span class="text-green-600 text-2xl">🏡</span>
+            <p>Direct from Farmhouse</p>
+          </div>
+          <div class="flex items-center space-x-3">
+            <span class="text-green-600 text-2xl">🌱</span>
+            <p>100% Organic & Natural</p>
+          </div>
+          <div class="flex items-center space-x-3">
+            <span class="text-green-600 text-2xl">🚫</span>
+            <p>Free from Chemicals</p>
+          </div>
+          <div class="flex items-center space-x-3">
+            <span class="text-green-600 text-2xl">😋</span>
+            <p>Fresh, Nutritious & Flavorful</p>
+          </div>
+          <div class="flex items-center space-x-3">
+            <span class="text-green-600 text-2xl">🚚</span>
+            <p>Delivery Across India</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="flex items-center justify-center p-5">
-   <img
+    <div class="flex items-center justify-center p-5">
+      <img
         src="assets/home/mango-4.png"
         class="object-cover w-30 h-30 md:h-190 md:w-190"
       />
-      </div>
-</section>
-
+    </div>
+  </section>
 
   <div
     class="w-screen h-full flex md:justify-between md:px-20 md:-py-20 md:p-0 p-5 flex-wrap md:flex-nowrap"
@@ -135,17 +118,32 @@
         <a class="underline decoration-4 underline-offset-10">ABOU</a>T US
       </h2>
       <div class="text-[#8b0000] text-xs md:text-lg md:space-y-1">
-        <p>Mango Basket is your way to goodness of Indian mangoes, MangoMango Basket brings you the authentic taste of India with a wide variety of organically grown, chemical-free mangoes and more.is considered the king of fruits and is one of the most widely</p>
         <p>
-       Known as the king of fruits, mangoes are a beloved part of India’s rich agricultural heritage — and at Mango Basket, we honor that by offering only the purest, residue-free produce straight from our farms.
+          Mango Basket is your way to goodness of Indian mangoes, MangoMango
+          Basket brings you the authentic taste of India with a wide variety of
+          organically grown, chemical-free mangoes and more.is considered the
+          king of fruits and is one of the most widely
         </p>
         <p>
-         Whether you're craving juicy Alphonsos, pulpy Kesar, or any regional favorite, we’ve got them all — grown organically, ripened naturally, and delivered fresh.
+          Known as the king of fruits, mangoes are a beloved part of India’s
+          rich agricultural heritage — and at Mango Basket, we honor that by
+          offering only the purest, residue-free produce straight from our
+          farms.
         </p>
         <p>
-          And it’s not just mangoes — we’re expanding our basket with more farm-fresh organic fruits and natural products, straight from our soil to your doorstep.
+          Whether you're craving juicy Alphonsos, pulpy Kesar, or any regional
+          favorite, we’ve got them all — grown organically, ripened naturally,
+          and delivered fresh.
         </p>
-        <p>Experience the goodness of Indian farms — choose the variety you love and taste the difference of truly natural produce.</p>
+        <p>
+          And it’s not just mangoes — we’re expanding our basket with more
+          farm-fresh organic fruits and natural products, straight from our soil
+          to your doorstep.
+        </p>
+        <p>
+          Experience the goodness of Indian farms — choose the variety you love
+          and taste the difference of truly natural produce.
+        </p>
       </div>
       <button
         class="cursor-pointer md:mt-6 md:px-12 md:py-5 px-5 py-3 text-orange-600 font-semibold border-2 border-orange-600 rounded-full hover:bg-orange-600 hover:text-white transition-all duration-300 shadow-md"
@@ -223,33 +221,32 @@
     <h2 class="text-center text-[#8b0000] text-4xl font-bold">
       B<a class="underline decoration-3 underline-offset-10">LO</a>G
     </h2>
-  <div class="grid grid-cols-2 p-20 gap-6">
-  <div
-    *ngFor="let blog of displayedBlogs"
-    class="bg-white shadow-md hover:shadow-xl transition-shadow duration-300 rounded-2xl overflow-hidden"
-  >
-    <img
-      [src]="server + '/uploads/' + blog.image"
-      alt="Blog Image"
-      class="w-full h-60 object-cover"
-    />
-    <div class="p-4 space-y-2">
-      <h2 class="text-lg md:text-xl font-semibold text-gray-800">
-        {{ blog.title }}
-      </h2>
-      <p class="text-gray-500 text-xs md:text-sm">
-        {{ blog.date }} | {{ blog.category }} | By {{ blog.author }}
-      </p>
-      <button
-        (click)="viewblog(blog)"
-        class="text-blue-600 hover:underline text-sm font-medium"
+    <div class="grid grid-cols-2 p-20 gap-6">
+      <div
+        *ngFor="let blog of displayedBlogs"
+        class="bg-white shadow-md hover:shadow-xl transition-shadow duration-300 rounded-2xl overflow-hidden"
       >
-        Read More →
-      </button>
+        <img
+          [src]="server + '/uploads/' + blog.image"
+          alt="Blog Image"
+          class="w-full h-60 object-cover"
+        />
+        <div class="p-4 space-y-2">
+          <h2 class="text-lg md:text-xl font-semibold text-gray-800">
+            {{ blog.title }}
+          </h2>
+          <p class="text-gray-500 text-xs md:text-sm">
+            {{ blog.date }} | {{ blog.category }} | By {{ blog.author }}
+          </p>
+          <button
+            (click)="viewblog(blog)"
+            class="text-blue-600 hover:underline text-sm font-medium"
+          >
+            Read More →
+          </button>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
 
     <button
       class="cursor-pointer md:mx-140 mx-20 mt-6 px-12 py-1 md:px-12 md:py-5 text-orange-600 font-semibold border-2 border-orange-600 rounded-full hover:bg-orange-600 hover:text-white transition-all duration-300 shadow-md"

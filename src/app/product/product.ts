@@ -9,30 +9,28 @@ import { Cart } from '../services/Cart/cart';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
 
-
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [CommonModule,FormsModule, ProductReview,RouterModule],
+  imports: [CommonModule, FormsModule, ProductReview, RouterModule],
   templateUrl: './product.html',
   styleUrl: './product.css',
 })
 export class Product implements OnInit {
   product: any;
   server: string;
-   quantity = 1;
-   showPaymentOptions = false;
-selectedPaymentMethod = '';
-
+  quantity = 1;
+  showPaymentOptions = false;
+  selectedPaymentMethod = '';
 
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
     private serverlink: ServerLink,
-    private cartService:Cart,
-    private toast:ToastrService,
-    private http:HttpClient,
-    private router:Router
+    private cartService: Cart,
+    private toast: ToastrService,
+    private http: HttpClient,
+    private router: Router
   ) {
     this.server = this.serverlink.serverlinks;
   }
@@ -45,7 +43,7 @@ selectedPaymentMethod = '';
       });
     }
   }
-    decreaseQuantity() {
+  decreaseQuantity() {
     if (this.quantity > 1) {
       this.quantity--;
     }
@@ -55,53 +53,52 @@ selectedPaymentMethod = '';
   increaseQuantity() {
     this.quantity++;
   }
-    addToCart(product: any, quantity: number) {
+  addToCart(product: any, quantity: number) {
     const token = localStorage.getItem('token');
-  
+
     if (!token) {
-    this.toast.error('Please login to add products to the cart.');
+      this.toast.error('Please login to add products to the cart.');
       return;
     }
-  
+
     if (!product) {
       console.error('Product is undefined or null');
       return;
     }
-  
+
     const item = {
       name: product.name,
       image: product.image,
       price: this.product.price,
-      quantity: quantity
+      quantity: quantity,
     };
 
     this.cartService.addToCart(item);
 
     this.toast.success(`${product.name} added to cart!`);
   }
-  loading:boolean=false
+  loading: boolean = false;
 
   buyProduct() {
-  this.showPaymentOptions = true;
-}
-selectPayment(method: 'cod' | 'online') {
-  this.showPaymentOptions = false;
- this.router.navigate(['/address'], {
-  state: {
-    order: {
-      productId: this.product._id,
-      product: this.product,
-      quantity: this.quantity
-    },
-    paymentMethod: method
+    this.showPaymentOptions = true;
   }
-});
-
-}
-PaymentOptions() {
-  this.showPaymentOptions = false;
-}
-closePaymentOptions() {
-  this.showPaymentOptions = false;
-}
+  selectPayment(method: 'cod' | 'online') {
+    this.showPaymentOptions = false;
+    this.router.navigate(['/address'], {
+      state: {
+        order: {
+          productId: this.product._id,
+          product: this.product,
+          quantity: this.quantity,
+        },
+        paymentMethod: method,
+      },
+    });
+  }
+  PaymentOptions() {
+    this.showPaymentOptions = false;
+  }
+  closePaymentOptions() {
+    this.showPaymentOptions = false;
+  }
 }

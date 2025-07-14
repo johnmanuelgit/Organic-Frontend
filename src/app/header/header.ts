@@ -15,7 +15,7 @@ export class Header implements OnInit {
   isMenuOpen = false;
   cartCount = 0;
 
-  constructor(private cartService: Cart,private router:Router) {}
+  constructor(private cartService: Cart, private router: Router) {}
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
@@ -26,15 +26,13 @@ export class Header implements OnInit {
       this.cartCount = count;
     });
   }
-    profile(){
+  profile() {
     const token = localStorage.getItem('token');
 
-  if(token){
-    this.router.navigate(['/profile'])
+    if (token) {
+      this.router.navigate(['/profile']);
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
-  else{
-    this.router.navigate(['/login'])
-  }
-  }
-
 }

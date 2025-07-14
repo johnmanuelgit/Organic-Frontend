@@ -9,7 +9,7 @@ import { Router, RouterModule } from '@angular/router';
 @Component({
   selector: 'app-orderlist-user',
   standalone: true,
-  imports: [CommonModule, FormsModule,RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './orderlist-user.html',
   styleUrl: './orderlist-user.css',
 })
@@ -32,16 +32,20 @@ export class OrderlistUser implements OnInit {
   }
 
   fetchOrders() {
-    this.http.get<any[]>('api/orders').subscribe(data => {
+    this.http.get<any[]>('api/orders').subscribe((data) => {
       this.orders = data;
 
       const uniqueProductIds = Array.from(
-        new Set(data.map(order => order.productId?._id || order.productId).filter(Boolean))
+        new Set(
+          data
+            .map((order) => order.productId?._id || order.productId)
+            .filter(Boolean)
+        )
       );
 
-      uniqueProductIds.forEach(id => {
+      uniqueProductIds.forEach((id) => {
         if (!this.productMap[id]) {
-          this.productService.getProductById(id).subscribe(product => {
+          this.productService.getProductById(id).subscribe((product) => {
             this.productMap[id] = product;
           });
         }
@@ -50,9 +54,11 @@ export class OrderlistUser implements OnInit {
   }
 
   updateStatus(orderId: string, newStatus: string) {
-    this.http.put(`api/orders/${orderId}/status`, { status: newStatus }).subscribe(() => {
-      this.fetchOrders();
-    });
+    this.http
+      .put(`api/orders/${orderId}/status`, { status: newStatus })
+      .subscribe(() => {
+        this.fetchOrders();
+      });
   }
 
   cancelOrder(orderId: string) {
@@ -62,7 +68,6 @@ export class OrderlistUser implements OnInit {
   }
 
   buyAgain(order: any) {
-    // Simulate adding to cart or redirecting to product page
     const productId = order.productId?._id || order.productId;
     if (productId) {
       this.router.navigate(['/product', productId]);

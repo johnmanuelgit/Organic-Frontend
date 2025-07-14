@@ -8,8 +8,7 @@ import { QuillModule } from 'ngx-quill';
 @Component({
   selector: 'app-blog-management',
   standalone: true,
-  imports: [CommonModule, FormsModule,QuillModule
-  ],
+  imports: [CommonModule, FormsModule, QuillModule],
   templateUrl: './blog-management.html',
   styleUrls: ['./blog-management.css'],
 })

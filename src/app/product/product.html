@@ -76,7 +76,7 @@
             ₹{{ product.price }}
           </p>
           <p>Available Stock: {{product.stock}}</p>
-          <!-- Quantity -->
+
           <label class="block mt-4">Quantity (in dz.)</label>
           <div class="flex items-center">
             <button
@@ -100,7 +100,7 @@
           <p class="text-xl font-bold mt-4">
             Price: ₹{{ product.price * quantity }}
           </p>
-          <!-- Buttons -->
+
           <div class="mt-4 flex space-x-4">
             <button
               (click)="addToCart({name: product.name, image:server + product.imageUrl},quantity)"
@@ -156,28 +156,38 @@
     <app-product-review></app-product-review>
   </div>
 </div>
-<!-- Payment Options Modal -->
-<div *ngIf="showPaymentOptions" class="fixed inset-0 bg-[url('assets/product/product-page-bg.png')] bg-cover bg-center flex items-center justify-center z-50">
-  <div class="bg-[#fef6f0]/90 backdrop-blur-sm rounded-xl p-6 w-11/12 max-w-md shadow-lg border border-orange-200">
-    <h2 class="text-2xl font-bold mb-5 text-center text-[#7d1300]">Select Payment Method</h2>
+
+<div
+  *ngIf="showPaymentOptions"
+  class="fixed inset-0 bg-[url('assets/product/product-page-bg.png')] bg-cover bg-center flex items-center justify-center z-50"
+>
+  <div
+    class="bg-[#fef6f0]/90 backdrop-blur-sm rounded-xl p-6 w-11/12 max-w-md shadow-lg border border-orange-200"
+  >
+    <h2 class="text-2xl font-bold mb-5 text-center text-[#7d1300]">
+      Select Payment Method
+    </h2>
 
     <div class="space-y-4">
-      <button 
-        (click)="selectPayment('cod')" 
-        class="w-full py-3 bg-[#ff6c00] hover:bg-orange-600 text-white font-semibold rounded-lg transition duration-300">
+      <button
+        (click)="selectPayment('cod')"
+        class="w-full py-3 bg-[#ff6c00] hover:bg-orange-600 text-white font-semibold rounded-lg transition duration-300"
+      >
         Cash on Delivery
       </button>
 
-      <button 
-        (click)="selectPayment('online')" 
-        class="w-full py-3 bg-[#7d1300] hover:bg-[#5a0c00] text-white font-semibold rounded-lg transition duration-300">
+      <button
+        (click)="selectPayment('online')"
+        class="w-full py-3 bg-[#7d1300] hover:bg-[#5a0c00] text-white font-semibold rounded-lg transition duration-300"
+      >
         Online Payment
       </button>
     </div>
 
-    <button 
-      (click)="closePaymentOptions()" 
-      class="mt-6 block mx-auto text-sm text-gray-600 hover:text-[#7d1300] hover:underline transition">
+    <button
+      (click)="closePaymentOptions()"
+      class="mt-6 block mx-auto text-sm text-gray-600 hover:text-[#7d1300] hover:underline transition"
+    >
       Cancel
     </button>
   </div>

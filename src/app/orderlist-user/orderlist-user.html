@@ -1,83 +1,112 @@
-<div class="min-h-screen w-full bg-[url('assets/product/product-page-bg.png')] bg-cover bg-center py-10 px-4">
-  <div class="max-w-5xl mx-auto bg-white/90 backdrop-blur-md mt-25 rounded-2xl shadow-lg overflow-hidden">
-    <!-- Header -->
+<div
+  class="min-h-screen w-full bg-[url('assets/product/product-page-bg.png')] bg-cover bg-center py-10 px-4"
+>
+  <div
+    class="max-w-5xl mx-auto bg-white/90 backdrop-blur-md mt-25 rounded-2xl shadow-lg overflow-hidden"
+  >
     <div class="border-b p-6">
       <h1 class="text-3xl font-bold text-[#941a28] text-center">Your Orders</h1>
       <div class="text-center text-sm text-gray-600 mt-1">
         <span>{{ orders.length }} orders</span>
         <span class="mx-2">|</span>
-        <span class="text-orange-600 font-medium cursor-pointer hover:underline">Past 3 months</span>
+        <span class="text-orange-600 font-medium cursor-pointer hover:underline"
+          >Past 3 months</span
+        >
       </div>
     </div>
 
-    <!-- Order Items -->
     <div class="divide-y divide-orange-100">
       <div *ngFor="let order of orders" class="p-6">
-        <!-- Top Info -->
         <div class="flex flex-col md:flex-row justify-between mb-4">
           <div class="space-y-1 text-sm text-gray-800">
-            <div><span class="font-semibold text-[#7d1300]">Order Placed:</span> {{ order.orderDate | date:'mediumDate' }}</div>
-            <div><span class="font-semibold text-[#7d1300]">Total:</span> ₹{{ (order.productId?.price * order.quantity).toFixed(2) }}</div>
-            <div><span class="font-semibold text-[#7d1300]">Ship To:</span> You</div>
+            <div>
+              <span class="font-semibold text-[#7d1300]">Order Placed:</span> {{
+              order.orderDate | date:'mediumDate' }}
+            </div>
+            <div>
+              <span class="font-semibold text-[#7d1300]">Total:</span> ₹{{
+              (order.productId?.price * order.quantity).toFixed(2) }}
+            </div>
+            <div>
+              <span class="font-semibold text-[#7d1300]">Ship To:</span> You
+            </div>
           </div>
 
           <div class="text-sm mt-4 md:mt-0 text-right">
-            <div class="font-medium text-[#b33030]">ORDER #{{ order._id.slice(-8) }}</div>
+            <div class="font-medium text-[#b33030]">
+              ORDER #{{ order._id.slice(-8) }}
+            </div>
             <div class="mt-2 flex gap-3 justify-end">
-              <button *ngIf="order.status !== 'cancelled' && order.status !== 'delivered'"
-                      (click)="cancelOrder(order._id)"
-                      class="text-sm text-[#ff6c00] hover:underline">
+              <button
+                *ngIf="order.status !== 'cancelled' && order.status !== 'delivered'"
+                (click)="cancelOrder(order._id)"
+                class="text-sm text-[#ff6c00] hover:underline"
+              >
                 Cancel
               </button>
             </div>
           </div>
         </div>
 
-        <!-- Order Card -->
         <div class="border border-orange-200 rounded-xl bg-[#fff8f0]">
-          <div class="bg-[#fff0e5] border-b border-orange-100 px-4 py-2 text-sm text-gray-800 flex justify-between">
-            <span [ngClass]="{
+          <div
+            class="bg-[#fff0e5] border-b border-orange-100 px-4 py-2 text-sm text-gray-800 flex justify-between"
+          >
+            <span
+              [ngClass]="{
               'text-green-600': order.status === 'delivered',
               'text-orange-600': order.status === 'pending',
               'text-red-600': order.status === 'cancelled'
-            }">
-              {{ order.status === 'delivered' ? 'Delivered on ' + (order.deliveryDate | date)
-                : order.status === 'pending' ? 'Arriving Soon'
-                : 'Cancelled on ' + (order.cancellationDate | date) }}
+            }"
+            >
+              {{ order.status === 'delivered' ? 'Delivered on ' +
+              (order.deliveryDate | date) : order.status === 'pending' ?
+              'Arriving Soon' : 'Cancelled on ' + (order.cancellationDate |
+              date) }}
             </span>
             <span class="text-xs bg-white border px-2 py-1 rounded">
               {{ order.paymentStatus === 'paid' ? 'Paid' : 'Payment Pending' }}
             </span>
           </div>
 
-          <!-- Product Row -->
           <div class="flex flex-col md:flex-row items-start gap-4 px-4 py-4">
-            <img [src]="server + order.productId?.imageUrl" alt="Product Image" class="w-24 h-24 object-cover rounded border border-orange-300" />
+            <img
+              [src]="server + order.productId?.imageUrl"
+              alt="Product Image"
+              class="w-24 h-24 object-cover rounded border border-orange-300"
+            />
 
             <div class="flex-1">
-              <h2 class="text-lg font-semibold text-[#941a28]">{{ order.productId?.name || 'Product Removed' }}</h2>
-              <p class="text-sm text-gray-600">Seller: {{ order.seller || 'Organic Basket' }}</p>
-              <p class="text-sm text-gray-900">₹{{ order.productId?.price?.toFixed(2) || '0.00' }}</p>
+              <h2 class="text-lg font-semibold text-[#941a28]">
+                {{ order.productId?.name || 'Product Removed' }}
+              </h2>
+              <p class="text-sm text-gray-600">
+                Seller: {{ order.seller || 'Organic Basket' }}
+              </p>
+              <p class="text-sm text-gray-900">
+                ₹{{ order.productId?.price?.toFixed(2) || '0.00' }}
+              </p>
               <p class="text-sm text-gray-700">Qty: {{ order.quantity }}</p>
 
               <div class="mt-3 flex flex-wrap gap-3">
-  <button class="text-sm bg-orange-100 hover:bg-orange-200 px-4 py-1.5 rounded text-[#7d1300]"
-          [routerLink]="['/product', order.productId?._id]">
-    View Item
-  </button>
+                <button
+                  class="text-sm bg-orange-100 hover:bg-orange-200 px-4 py-1.5 rounded text-[#7d1300]"
+                  [routerLink]="['/product', order.productId?._id]"
+                >
+                  View Item
+                </button>
 
-  <button class="text-sm bg-orange-100 hover:bg-orange-200 px-4 py-1.5 rounded text-[#7d1300]"
-          (click)="buyAgain(order)">
-    Buy Again
-  </button>
-</div>
-
+                <button
+                  class="text-sm bg-orange-100 hover:bg-orange-200 px-4 py-1.5 rounded text-[#7d1300]"
+                  (click)="buyAgain(order)"
+                >
+                  Buy Again
+                </button>
+              </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
-
   </div>
 </div>

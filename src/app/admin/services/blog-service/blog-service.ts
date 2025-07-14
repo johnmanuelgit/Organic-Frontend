@@ -35,6 +35,4 @@ export class BlogService {
   getBlogById(id: number) {
     return this.http.get<Blog>(`api/blogs/${id}`);
   }
-
-
 }

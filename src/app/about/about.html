@@ -1,157 +1,249 @@
-<div class="w-full h-full bg-[url('assets/product/product-page-bg.png')] bg-cover bg-center text-[#8b0000] p-5">
-<div class="py-12 px-4 sm:px-8 lg:px-16">
-  <div class="grid md:grid-cols-2 gap-10 items-start mt-25 p-5 mb-16">
-    <div class="text-center">
-       <nav class="flex mb-6" aria-label="Breadcrumb">
+<div
+  class="w-full h-full bg-[url('assets/product/product-page-bg.png')] bg-cover bg-center text-[#8b0000] p-5"
+>
+  <div class="py-12 px-4 sm:px-8 lg:px-16">
+    <div class="grid md:grid-cols-2 gap-10 items-start mt-25 p-5 mb-16">
+      <div class="text-center">
+        <nav class="flex mb-6" aria-label="Breadcrumb">
           <ol class="inline-flex items-center space-x-1 md:space-x-2">
             <li class="inline-flex items-center">
-              <a [routerLink]="['/home']" class="inline-flex items-center text-sm font-medium text-[#941a28] hover:text-[#701011]">
-                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+              <a
+                [routerLink]="['/home']"
+                class="inline-flex items-center text-sm font-medium text-[#941a28] hover:text-[#701011]"
+              >
+                <svg
+                  class="w-4 h-4 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
+                  ></path>
+                </svg>
                 Home
               </a>
             </li>
-            <li  aria-current="page">
+            <li aria-current="page">
               <div class="flex items-center">
-                <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
-                <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2">About</span>
+                <svg
+                  class="w-6 h-6 text-gray-400"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2"
+                  >About</span
+                >
               </div>
             </li>
           </ol>
         </nav>
-      <h2 class="text-4xl text-green-600 font-bold text-left">Organic Farm Direct</h2>
-      <h3 class="text-2xl font-semibold text-left mt-2 ml-30">
-        Our Farming Story
-      </h3>
+        <h2 class="text-4xl text-green-600 font-bold text-left">
+          Organic Farm Direct
+        </h2>
+        <h3 class="text-2xl font-semibold text-left mt-2 ml-30">
+          Our Farming Story
+        </h3>
 
-      <p class="mt-4 max-w-5xl font-md mx-auto mt-10">
-        Our farm is a family-owned organic operation dedicated to bringing you the purest, most natural produce. 
-        For three generations, we've cultivated our land with sustainable practices that respect nature and deliver 
-        exceptional flavor. Every product you receive comes straight from our farm to your table.
+        <p class="mt-4 max-w-5xl font-md mx-auto mt-10">
+          Our farm is a family-owned organic operation dedicated to bringing you
+          the purest, most natural produce. For three generations, we've
+          cultivated our land with sustainable practices that respect nature and
+          deliver exceptional flavor. Every product you receive comes straight
+          from our farm to your table.
+        </p>
+      </div>
+      <img
+        src="assets/about/farmhouse.jpeg"
+        alt="Our Organic Farm"
+        class="w-100 scale-105 h-100 object-cover mt-10 rounded-xl shadow-lg"
+      />
+    </div>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-10 items-center mb-16 p-5">
+    <img
+      src="assets/about/farmers-working.jpg"
+      alt="Farmers at Work"
+      class="rounded-xl shadow-lg"
+    />
+    <div>
+      <h3 class="text-2xl font-bold">Direct From Our Fields</h3>
+      <p class="font-semibold mt-2">
+        Farm-fresh organic produce delivered straight to your home
       </p>
-    </div>
-    <img
-      src="assets/about/farmhouse.jpeg"
-      alt="Our Organic Farm"
-      class="w-100 scale-105 h-100 object-cover mt-10 rounded-xl shadow-lg"
-    />
-  </div>
-</div>
-
-<div class="grid md:grid-cols-2 gap-10 items-center mb-16 p-5">
-  <img
-    src="assets/about/farmers-working.jpg"
-    alt="Farmers at Work"
-    class="rounded-xl shadow-lg"
-  />
-  <div>
-    <h3 class="text-2xl font-bold">
-      Direct From Our Fields
-    </h3>
-    <p class=" font-semibold mt-2">
-      Farm-fresh organic produce delivered straight to your home
-    </p>
-    <p class="mt-4">
-      By cutting out the middleman, we ensure you get the freshest possible produce while our farmers 
-      receive fair compensation for their hard work. Our seasonal harvests include fruits, vegetables, 
-      and artisanal products - all grown and made with care on our family farm.
-    </p>
-    <button
-      class="mt-6 hover:bg-orange-700 text-white px-6 py-2 rounded-full transition"
-    >
-      Shop Farm Fresh
-    </button>
-  </div>
-</div>
-
-<div class="grid md:grid-cols-2 gap-10 items-center p-5">
-  <div>
-    <h3 class="text-2xl font-bold ">Sustainable Farming Practices</h3>
-    <p class=" font-semibold mt-2">
-      Committed to Organic, Regenerative Agriculture
-    </p>
-    <p class="mt-4">
-      We believe in farming that nourishes both people and the planet. Our fields are never treated with 
-      synthetic chemicals. Instead, we use compost, crop rotation, and natural pest management to grow 
-      nutrient-dense food while improving soil health for future generations.
-    </p>
-    <div class="mt-6 grid grid-cols-2 gap-4">
-      <div class="flex items-center">
-        <svg class="w-6 h-6  mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-        </svg>
-        <span>No synthetic pesticides</span>
-      </div>
-      <div class="flex items-center">
-        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-        </svg>
-        <span>Chemical-free fertilizer</span>
-      </div>
-      <div class="flex items-center">
-        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-        </svg>
-        <span>Non-GMO seeds</span>
-      </div>
-      <div class="flex items-center">
-        <svg class="w-6 h-6  mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-        </svg>
-        <span>Biodiversity focused</span>
-      </div>
+      <p class="mt-4">
+        By cutting out the middleman, we ensure you get the freshest possible
+        produce while our farmers receive fair compensation for their hard work.
+        Our seasonal harvests include fruits, vegetables, and artisanal products
+        - all grown and made with care on our family farm.
+      </p>
+      <button
+        class="mt-6 hover:bg-orange-700 text-white px-6 py-2 rounded-full transition"
+      >
+        Shop Farm Fresh
+      </button>
     </div>
   </div>
-  <div class="grid grid-cols-2 gap-4">
-    <img
-      src="assets/about/soil-hands.jpeg"
-      class="rounded-lg shadow-md col-span-2"
-      alt="Healthy Soil"
-    />
-    <img
-      src="assets/about/farm-field.jpeg"
-      class="rounded-lg shadow-md"
-      alt="Farm Field"
-    />
-    <img
-      src="assets/about/harvest-basket.jpeg"
-      class="rounded-lg shadow-md"
-      alt="Fresh Harvest"
-    />
+
+  <div class="grid md:grid-cols-2 gap-10 items-center p-5">
+    <div>
+      <h3 class="text-2xl font-bold">Sustainable Farming Practices</h3>
+      <p class="font-semibold mt-2">
+        Committed to Organic, Regenerative Agriculture
+      </p>
+      <p class="mt-4">
+        We believe in farming that nourishes both people and the planet. Our
+        fields are never treated with synthetic chemicals. Instead, we use
+        compost, crop rotation, and natural pest management to grow
+        nutrient-dense food while improving soil health for future generations.
+      </p>
+      <div class="mt-6 grid grid-cols-2 gap-4">
+        <div class="flex items-center">
+          <svg
+            class="w-6 h-6 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 13l4 4L19 7"
+            ></path>
+          </svg>
+          <span>No synthetic pesticides</span>
+        </div>
+        <div class="flex items-center">
+          <svg
+            class="w-6 h-6 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 13l4 4L19 7"
+            ></path>
+          </svg>
+          <span>Chemical-free fertilizer</span>
+        </div>
+        <div class="flex items-center">
+          <svg
+            class="w-6 h-6 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 13l4 4L19 7"
+            ></path>
+          </svg>
+          <span>Non-GMO seeds</span>
+        </div>
+        <div class="flex items-center">
+          <svg
+            class="w-6 h-6 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 13l4 4L19 7"
+            ></path>
+          </svg>
+          <span>Biodiversity focused</span>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 gap-4">
+      <img
+        src="assets/about/soil-hands.jpeg"
+        class="rounded-lg shadow-md col-span-2"
+        alt="Healthy Soil"
+      />
+      <img
+        src="assets/about/farm-field.jpeg"
+        class="rounded-lg shadow-md"
+        alt="Farm Field"
+      />
+      <img
+        src="assets/about/harvest-basket.jpeg"
+        class="rounded-lg shadow-md"
+        alt="Fresh Harvest"
+      />
+    </div>
   </div>
-</div>
 
-<div class="py-16 px-4">
-  <div class="max-w-6xl mx-auto">
-    <h2 class="text-3xl font-bold text-center mb-12">Our Seasonal Offerings</h2>
-    
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <img src="assets/about/vegetables.png" alt="Fresh Vegetables" class="w-full h-48 object-cover rounded-md mb-4">
-        <h3 class="text-xl font-semibold">Organic Vegetables</h3>
-        <p class=" mt-2">Seasonal selections grown with care</p>
-        <p class="mt-3">From heirloom tomatoes to crisp greens, our vegetables are harvested at peak ripeness for maximum flavor and nutrition.</p>
-      </div>
-      
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <img src="assets/about/fruits.jpg" alt="Fresh Fruits" class="w-full h-48 object-cover rounded-md mb-4">
-        <h3 class="text-xl font-semibold ">Tree-Ripened Fruits</h3>
-        <p class="mt-2">Nature's candy, grown organically</p>
-        <p class=" mt-3">Enjoy fruits allowed to ripen naturally on the tree or vine, picked at just the right moment for perfect sweetness.</p>
+  <div class="py-16 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12">
+        Our Seasonal Offerings
+      </h2>
 
-      </div>
-      
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <img src="assets/about/preserves.webp" alt="Farm Products" class="w-full h-48 object-cover rounded-md mb-4">
-        <h3 class="text-xl font-semibold">Farmhouse Pantry</h3>
-        <p class=" mt-2">Handcrafted with our harvest</p>
-        <p class="mt-3">Jams, preserves, honey, and other artisanal products made in small batches from our organic produce.</p>
-       
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <img
+            src="assets/about/vegetables.png"
+            alt="Fresh Vegetables"
+            class="w-full h-48 object-cover rounded-md mb-4"
+          />
+          <h3 class="text-xl font-semibold">Organic Vegetables</h3>
+          <p class="mt-2">Seasonal selections grown with care</p>
+          <p class="mt-3">
+            From heirloom tomatoes to crisp greens, our vegetables are harvested
+            at peak ripeness for maximum flavor and nutrition.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <img
+            src="assets/about/fruits.jpg"
+            alt="Fresh Fruits"
+            class="w-full h-48 object-cover rounded-md mb-4"
+          />
+          <h3 class="text-xl font-semibold">Tree-Ripened Fruits</h3>
+          <p class="mt-2">Nature's candy, grown organically</p>
+          <p class="mt-3">
+            Enjoy fruits allowed to ripen naturally on the tree or vine, picked
+            at just the right moment for perfect sweetness.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <img
+            src="assets/about/preserves.webp"
+            alt="Farm Products"
+            class="w-full h-48 object-cover rounded-md mb-4"
+          />
+          <h3 class="text-xl font-semibold">Farmhouse Pantry</h3>
+          <p class="mt-2">Handcrafted with our harvest</p>
+          <p class="mt-3">
+            Jams, preserves, honey, and other artisanal products made in small
+            batches from our organic produce.
+          </p>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-  <div class="bg-[#f6f0e8] max-w-5xl mx-auto mt-10 mb-10 rounded-xl shadow-2xl p-6">
+  <div
+    class="bg-[#f6f0e8] max-w-5xl mx-auto mt-10 mb-10 rounded-xl shadow-2xl p-6"
+  >
     <form [formGroup]="newsletterForm" (ngSubmit)="onSubmit()">
       <div class="flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="w-full md:w-1/2 space-y-4">

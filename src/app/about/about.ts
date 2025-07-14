@@ -20,7 +20,7 @@ interface Testimonial {
 
 @Component({
   selector: 'app-about',
-  imports: [CommonModule, FormsModule, ReactiveFormsModule,RouterModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule],
   templateUrl: './about.html',
   styleUrl: './about.css',
 })

@@ -8,7 +8,7 @@ import { User, UserAdmin } from '../services/user-admin/user-admin';
   selector: 'app-manage-user',
   imports: [CommonModule, FormsModule],
   templateUrl: './manage-user.html',
-  styleUrl: './manage-user.css'
+  styleUrl: './manage-user.css',
 })
 export class ManageUser implements OnInit {
   admins: User[] = [];
@@ -29,7 +29,7 @@ export class ManageUser implements OnInit {
     },
   };
 
-  constructor(private useradminService:UserAdmin) {}
+  constructor(private useradminService: UserAdmin) {}
 
   ngOnInit() {
     this.loadAdmins();

@@ -6,20 +6,20 @@ import { ServerLink } from '../../services/server-link/server-link';
 import { QuillModule } from 'ngx-quill';
 
 export interface Product {
- _id?: string | undefined;
+  _id?: string | undefined;
   name: string;
   description: string;
   price: number | null;
   stock: number | null;
   category: string;
   imageUrl?: string;
+  customCategory?: string;
 }
-
 
 @Component({
   selector: 'app-shop-management',
   standalone: true,
-  imports: [CommonModule, FormsModule,QuillModule],
+  imports: [CommonModule, FormsModule, QuillModule],
   templateUrl: './shop-management.html',
   styleUrl: './shop-management.css',
 })
@@ -55,10 +55,11 @@ export class ShopManagement implements OnInit {
       return;
     }
 
-    this.filteredProducts = this.products.filter((product: Product) =>
-      product.name.toLowerCase().includes(searchTerm) ||
-      product.category.toLowerCase().includes(searchTerm) ||
-      product.description.toLowerCase().includes(searchTerm)
+    this.filteredProducts = this.products.filter(
+      (product: Product) =>
+        product.name.toLowerCase().includes(searchTerm) ||
+        product.category.toLowerCase().includes(searchTerm) ||
+        product.description.toLowerCase().includes(searchTerm)
     );
   }
 
@@ -71,7 +72,13 @@ export class ShopManagement implements OnInit {
     formData.append('name', this.product.name);
     formData.append('description', this.product.description);
     formData.append('price', String(this.product.price));
-    formData.append('category', this.product.category);
+    const finalCategory =
+      this.product.category === 'Other'
+        ? this.product.customCategory || 'Other'
+        : this.product.category;
+
+    formData.append('category', finalCategory);
+
     formData.append('stock', String(this.product.stock));
     if (this.selectedFile) {
       formData.append('image', this.selectedFile);
@@ -103,7 +110,9 @@ export class ShopManagement implements OnInit {
       });
     }
     this.products = this.products.filter((p: Product) => p._id !== id);
-    this.filteredProducts = this.filteredProducts.filter((p: Product) => p._id !== id);
+    this.filteredProducts = this.filteredProducts.filter(
+      (p: Product) => p._id !== id
+    );
   }
 
   resetForm() {

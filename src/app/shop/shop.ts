@@ -10,7 +10,7 @@ import { ServerLink } from '../services/server-link/server-link';
   standalone: true,
   imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './shop.html',
-  styleUrls: ['./shop.css']
+  styleUrls: ['./shop.css'],
 })
 export class Shop implements OnInit {
   server: string;
@@ -18,7 +18,6 @@ export class Shop implements OnInit {
   products: any[] = [];
   filteredProducts: any[] = [];
 
-  // Filters
   searchQuery: string = '';
   selectedCategories: Set<string> = new Set();
   maxPrice: number = 1000;
@@ -29,26 +28,28 @@ export class Shop implements OnInit {
 
   ngOnInit(): void {
     this.loadProducts();
-
   }
 
   loadProducts() {
-    this.http.get<any[]>('api/products').subscribe(data => {
+    this.http.get<any[]>('api/products').subscribe((data) => {
       this.products = data;
       const categorySet = new Set<string>();
-    data.forEach(p => {
-      if (p.category) categorySet.add(p.category);
-    });
-    this.categories = Array.from(categorySet).map(name => ({ name }));
+      data.forEach((p) => {
+        if (p.category) categorySet.add(p.category);
+      });
+      this.categories = Array.from(categorySet).map((name) => ({ name }));
       this.applyFilters();
     });
   }
 
-
   applyFilters() {
-    this.filteredProducts = this.products.filter(product => {
-      const matchCategory = this.selectedCategories.size === 0 || this.selectedCategories.has(product.category);
-      const matchSearch = product.name.toLowerCase().includes(this.searchQuery.toLowerCase());
+    this.filteredProducts = this.products.filter((product) => {
+      const matchCategory =
+        this.selectedCategories.size === 0 ||
+        this.selectedCategories.has(product.category);
+      const matchSearch = product.name
+        .toLowerCase()
+        .includes(this.searchQuery.toLowerCase());
       const matchPrice = product.price <= this.maxPrice;
       return matchCategory && matchSearch && matchPrice;
     });

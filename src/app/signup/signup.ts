@@ -47,22 +47,20 @@ export class Signup {
     return hasUppercase ? null : { uppercase: true };
   }
   register() {
-    this.http
-      .post('register', this.signupform.value)
-      .subscribe({
-        next: (res) => {
-          console.log('Registration successful:', res);
-          this.toast.success('Registered Successfully');
+    this.http.post('register', this.signupform.value).subscribe({
+      next: (res) => {
+        console.log('Registration successful:', res);
+        this.toast.success('Registered Successfully');
+        this.router.navigate(['/login']);
+      },
+      error: (err) => {
+        if (err.status === 400) {
+          this.toast.warning('Email already registered');
           this.router.navigate(['/login']);
-        },
-        error: (err) => {
-          if (err.status === 400) {
-            this.toast.warning('Email already registered');
-            this.router.navigate(['/login']);
-          } else {
-            this.toast.error('Registration failed');
-          }
-        },
-      });
+        } else {
+          this.toast.error('Registration failed');
+        }
+      },
+    });
   }
 }

@@ -5,6 +5,8 @@ import {  provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideToastr } from 'ngx-toastr';
 import { loaderInterceptor } from './interceptor/loader/loader-interceptor';
 import { httpInterceptor } from './interceptor/http/http-interceptor';
+import { provideAnimations } from '@angular/platform-browser/animations'; // ✅ Add this
+
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,7 +21,8 @@ export const appConfig: ApplicationConfig = {
   
   provideHttpClient(
     withInterceptors([httpInterceptor])
-  )
+  ),
+  provideAnimations(),
 
 
   ]
