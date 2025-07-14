@@ -1,36 +1,77 @@
-<div class="w-full h-full flex overflow-x-hidden flex-wrap md:flex-nowrap">
-  <div class="container space-y-5 mt-30 md:mt-0 p-5 md:p-35">
-    <div class="flex justify-between items-center">
-      <p class="flex gap-2 text-[#941a28] text-sm">
-        <a [routerLink]="['/home']" class="hover:underline">Home</a> > Wiki
-      </p>
-    </div>
-    <h1 class="text-4xl font-bold text-left text-green-600 mb-6">Wiki</h1>
-    <p class="text-left text-[#941a28] mb-6">
-      Mangoes are juicy, succulent, and just mouth-wateringly delicious!
-      <br />But they’re not called the kind of fruits only for these aspects,
-      there is so much<br />
-      more! These sunshine gold-colored fruits offer a myriad of health
-      benefits<br />
-      as well. In this blog, we give you all the more reasons why eating
-      mangoes<br />
-      is the best decision you can make for your health.
+<div class="w-full min-h-screen flex flex-col md:flex-row overflow-x-hidden">
+  <div class="w-full md:container space-y-5 p-4 mt-30 sm:p-6 md:p-10">
+ <nav class="flex mb-6" aria-label="Breadcrumb">
+          <ol class="inline-flex items-center space-x-1 md:space-x-2">
+            <li class="inline-flex items-center">
+              <a
+                [routerLink]="['/home']"
+                class="inline-flex items-center text-sm font-medium text-[#941a28] hover:text-[#701011]"
+              >
+                <svg
+                  class="w-4 h-4 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
+                  ></path>
+                </svg>
+                Home
+              </a>
+            </li>
+            <li aria-current="page">
+              <div class="flex items-center">
+                <svg
+                  class="w-6 h-6 text-gray-400"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2"
+                  >Wiki</span
+                >
+              </div>
+            </li>
+          </ol>
+        </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-green-600 mb-4 sm:mb-6">
+      Wiki
+    </h1>
+
+    <p class="text-[#941a28] text-sm sm:text-base leading-relaxed mb-6">
+      Mangoes are juicy, succulent, and just mouth-wateringly delicious!<br />
+      But they’re not called the king of fruits only for these aspects, there is
+      so much more!<br />
+      These sunshine gold-colored fruits offer a myriad of health benefits as
+      well.<br />
+      In this blog, we give you all the more reasons why eating mangoes is the
+      best decision you can make for your health.
     </p>
+
     <button
-      class="px-8 py-3 bg-orange-500 text-white rounded-full md:text-lg md:font-semibold hover:bg-orange-600 hover:scale-110"
-      [routerLink]="['/products']"
+      class="px-6 py-2 sm:px-8 sm:py-3 bg-orange-500 text-white rounded-full text-sm sm:text-base font-semibold hover:bg-orange-600 hover:scale-105 transition-transform"
+      [routerLink]="['/shop']"
     >
       Order Now
     </button>
-    <div
-      class="min-h-screen bg-beige-100 flex items-center justify-center -ml-15 md:-ml-0"
-    >
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
-        <div class="bg-white rounded-2xl shadow-lg p-6 w-80 text-center">
-          <h2 class="text-2xl font-bold text-red-800 mb-4">
-            Types of Indian mangos
+
+    <div class="w-full mt-10">
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 justify-center items-start"
+      >
+        <div
+          class="bg-white rounded-2xl shadow-lg p-6 w-full sm:w-80 mx-auto text-center"
+        >
+          <h2 class="text-xl sm:text-2xl font-bold text-red-800 mb-4">
+            Types of Indian Mangos
           </h2>
-          <ul class="text-red-700 space-y-1">
+          <ul class="text-red-700 space-y-2 text-sm sm:text-base">
             <li>
               <a [routerLink]="['/wiki']" class="hover:underline">Payri</a>
             </li>
@@ -57,11 +98,13 @@
           </ul>
         </div>
 
-        <div class="bg-white rounded-2xl shadow-lg p-6 w-80 text-center">
-          <h2 class="text-2xl font-bold text-red-800 mb-4">
-            Types of US mangos
+        <div
+          class="bg-white rounded-2xl shadow-lg p-6 w-full sm:w-80 mx-auto text-center"
+        >
+          <h2 class="text-xl sm:text-2xl font-bold text-red-800 mb-4">
+            Types of US Mangos
           </h2>
-          <ul class="text-red-700 space-y-1">
+          <ul class="text-red-700 space-y-2 text-sm sm:text-base">
             <li>
               <a [routerLink]="['/wiki']" class="hover:underline">Himsagar</a>
             </li>

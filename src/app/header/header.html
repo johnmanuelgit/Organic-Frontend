@@ -1,28 +1,28 @@
 <div
   class="flex absolute fixed items-center justify-between bg-[#f6f0e8] px-4 w-full h-25 shadow-md z-50"
-  [ngClass]="{'bg-[#f6f0e8]  shadow-md':isscrolled}"
+  [ngClass]="{'bg-[#f6f0e8] shadow-md':isscrolled}"
 >
   <div
-    class="flex items-end space-x-2 rounded-full w-70 h-70 md:w-180 md:h-190 bg-white mb-40 md:mb-90 md:-mx-60 -mx-20 md:-my-60 md:p-5 p-20 shadow-lg"
+    class="flex items-end space-x-2 rounded-full w-70 h-70 lg:w-190 lg:h-190 bg-white  mb-50 md:mb-50 lg:mb-90  lg:-mx-60 -mx-20 lg:-my-60 lg:p-5 p-20 shadow-lg"
   >
     <img
       src="assets/nav-footer/home-logo.png"
       alt="Mango Basket Logo"
-      class="md:-my-15 -my-20 mx-5 md:mx-70 md:w-50 md:h-50 md:py-2 hover:scale-105"
+      class="lg:-my-8 xl:-my-13 -my-23 md:-my-25 mx-5 lg:mx-60 xl:mx-70 w-30  h-30   lg:w-40 lg:h-40 xl:w-50 xl:h-50 lg:py-2 hover:scale-105"
       [routerLink]="['/home']"
     />
   </div>
 
   <button
     (click)="toggleMenu()"
-    class="absolute left-80 md:hidden text-xl text-black text-center p-10"
+    class="absolute right-5 md:hidden text-xl text-black text-center p-10"
   >
     <i class="fas fa-bars"></i>
   </button>
 
   <nav
     [ngClass]="{ 'flex': isMenuOpen, 'hidden': !isMenuOpen }"
-    class="flex-col items-center gap-y-4 mt-120 mr-15 md:mr-0 md:mt-0 text-[#8b0000] font-small text-2xl p-10 md:flex md:flex-row md:gap-x-8 bg-white md:bg-transparent rounded-2xl flex-wrap"
+    class="flex-col items-center gap-y-4 md:ml-10 lg:ml-40  mt-120 lg:mr-15 md:mt-0 text-[#8b0000] font-small md:text-lg lg:text-2xl p-10 md:flex md:flex-row md:gap-x-8 bg-white md:bg-transparent rounded-2xl flex-wrap"
   >
     <a
       [routerLink]="['/home']"
@@ -85,14 +85,14 @@
       </svg>
     </p>
     <p
-      class="text-sm font-bold text-white p-2 bg-[#8b0000] rounded-full hover:shadow-lg hover:scale-125 cursor-pointer"
+      class="text-sm font-small xl:font-bold text-white p-2 bg-[#8b0000] rounded-full hover:shadow-lg hover:scale-125 cursor-pointer"
       [routerLink]="['/admin-login']"
     >
       Admin
     </p>
     <button
       [routerLink]="['/shop']"
-      class="px-4 cursor-pointer py-2 bg-orange-400 text-white rounded-full text-lg font-semibold hover:bg-orange-500 hover:scale-110"
+      class="px-2 xl:px-4 cursor-pointer py-1 xl:py-2 bg-orange-400 text-white rounded-full text-base xl:text-lg font-sm xl:font-semibold hover:bg-orange-500 hover:scale-110"
     >
       Buy Now
     </button>

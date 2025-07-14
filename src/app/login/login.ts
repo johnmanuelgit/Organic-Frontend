@@ -12,7 +12,7 @@ import {
 } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { Cart } from '../services/Cart/cart';
-import { ToastrService } from 'ngx-toastr';
+import { Toastr } from '../services/toast/toastr';
 
 @Component({
   selector: 'app-login',
@@ -35,7 +35,7 @@ export class Login {
     private http: HttpClient,
     private router: Router,
     private cartService: Cart,
-    private toast: ToastrService
+    private toast:Toastr
   ) {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),

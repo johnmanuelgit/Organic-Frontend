@@ -20,22 +20,22 @@ export class Recipes {
   allRecipes = [
     {
       name: 'Mango Wine',
-      image: 'assets/image/recipe-1.webp',
+      image: 'assets/recipes/recipe-1.webp',
       category: 'drinks',
     },
     {
       name: 'Aamras',
-      image: 'assets/image/recipe-2.webp',
+      image: 'assets/recipes/recipe-2.webp',
       category: 'dessert',
     },
     {
       name: 'Mango Kulfi',
-      image: 'assets/image/recipe-3.webp',
+      image: 'assets/recipes/recipe-3.webp',
       category: 'dessert,refreshment',
     },
     {
       name: 'Aam Panna',
-      image: 'assets/image/recipe-4.webp',
+      image: 'assets/recipes/recipe-4.webp',
       category: 'refreshment',
     },
   ];

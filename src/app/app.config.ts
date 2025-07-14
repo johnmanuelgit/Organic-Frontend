@@ -1,8 +1,11 @@
-import { ApplicationConfig, provideZoneChangeDetection, provideBrowserGlobalErrorListeners } from '@angular/core';
+import {
+  ApplicationConfig,
+  provideZoneChangeDetection,
+  provideBrowserGlobalErrorListeners,
+} from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideToastr } from 'ngx-toastr';
-import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { routes } from './app.routes';
 import { loaderInterceptor } from './interceptor/loader/loader-interceptor';
@@ -13,15 +16,9 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
+    provideToastr(),
+    provideAnimation(),
 
-    provideAnimations(),
-    provideToastr(),          
-
-    provideHttpClient(
-      withInterceptors([
-        loaderInterceptor,
-        httpInterceptor
-      ])
-    )
-  ]
+    provideHttpClient(withInterceptors([loaderInterceptor, httpInterceptor])),
+  ],
 };

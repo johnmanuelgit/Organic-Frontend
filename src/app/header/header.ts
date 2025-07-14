@@ -35,4 +35,8 @@ export class Header implements OnInit {
       this.router.navigate(['/login']);
     }
   }
+ 
+  closeMenu(): void {
+    this.isMenuOpen = false;
+  }
 }
