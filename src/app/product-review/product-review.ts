@@ -40,11 +40,10 @@ export class ProductReview implements OnInit {
   reviews: Review[] = [];
   reviewForm: FormGroup;
   productId: string | null = null;
-  isLoading = false;
   error: string | null = null;
   successMessage: string | null = null;
   server: string = '';
-
+isLoading:boolean=false;
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
@@ -69,7 +68,7 @@ export class ProductReview implements OnInit {
   }
 
   private loadData(): void {
-    this.isLoading = true;
+
     this.error = null;
 
     
@@ -100,11 +99,11 @@ export class ProductReview implements OnInit {
             ...review,
             date: review.date ? new Date(review.date) : new Date(),
           }));
-          this.isLoading = false;
+  
         }),
         catchError((error) => {
           this.error = 'Failed to load reviews';
-          this.isLoading = false;
+      
           console.error(error);
           return of([]);
         })

@@ -47,7 +47,6 @@ export class Product implements OnInit {
     }
   }
 
-  // Increase quantity
   increaseQuantity() {
     this.quantity++;
   }
@@ -75,7 +74,7 @@ export class Product implements OnInit {
 
     this.toast.success(`${product.name} added to cart!`);
   }
-  loading: boolean = false;
+
 
   buyProduct() {
      const iflogin=localStorage.getItem('token')

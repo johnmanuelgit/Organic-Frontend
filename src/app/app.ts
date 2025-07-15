@@ -3,14 +3,13 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 import { Header } from "./header/header";
 import { Footer } from "./footer/footer";
 import { CommonModule } from '@angular/common';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { Loader } from './services/loader/loader';
 import { NgToastComponent } from "ng-angular-popup";
 
 @Component({
   selector: 'app-root',
   standalone:true,
-  imports: [RouterOutlet, Header, Footer, CommonModule, RouterModule, MatProgressSpinnerModule, NgToastComponent],
+  imports: [RouterOutlet, Header, Footer, CommonModule, RouterModule, NgToastComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

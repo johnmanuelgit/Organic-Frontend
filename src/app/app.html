@@ -1,10 +1,16 @@
 <app-header></app-header>
 
-<mat-progress-spinner
+<!-- Loader Blur Overlay -->
+<div
   *ngIf="(isLoading$ | async)"
-  mode="indeterminate"
-></mat-progress-spinner>
+  class="fixed inset-0 z-40  backdrop-blur-xs flex justify-center items-center"
+>
+  <div
+    class="z-50 animate-spin rounded-full h-15 w-15  border-t-4 border-b-4 border-[#701011]"
+  ></div>
+</div>
 
+<!-- Main Content -->
 <div class="overflow-x-hidden w-full h-full">
   <router-outlet>
     <ng-toast></ng-toast>

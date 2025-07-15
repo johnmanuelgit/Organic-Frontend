@@ -1,10 +1,4 @@
 <div class="w-full h-full px-4 py-6 sm:px-6 md:px-10">
-  <div *ngIf="isLoading" class="flex justify-center items-center py-12">
-    <div
-      class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#701011]"
-    ></div>
-  </div>
-
   <div
     *ngIf="error"
     class="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700"
@@ -19,7 +13,7 @@
     <p>{{ successMessage }}</p>
   </div>
 
-  <section class="mb-12" *ngIf="!isLoading">
+  <section class="mb-12">
     <h2 class="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">
       Customer Reviews
     </h2>
@@ -80,7 +74,7 @@
     </div>
   </section>
 
-  <section class="bg-gray-50 rounded-lg p-6 shadow-inner" *ngIf="!isLoading">
+  <section class="bg-gray-50 rounded-lg p-6 shadow-inner">
     <h2 class="text-2xl font-bold mb-6 text-gray-800">Share Your Experience</h2>
 
     <form
@@ -142,7 +136,7 @@
 
       <button
         type="submit"
-        [disabled]="reviewForm.invalid || isLoading"
+        [disabled]="reviewForm.invalid"
         class="w-full bg-[#701011] hover:bg-[#941a28] text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         <span *ngIf="!isLoading">Submit Review</span>

@@ -52,7 +52,7 @@
                 ></path>
               </svg>
               <span
-                class="ml-1 text-3xlmd:text-4xl font-bold text-gray-600 md:ml-2"
+                class="ml-1 text-3xlmd:text-4xl font-bold text-gray-600 md:ml-2 cursor-default"
                 >{{ product.name }}</span
               >
             </div>
@@ -111,35 +111,8 @@
             <button
               class="bg-orange-500 text-white px-10 py-4 rounded-full font-bold hover:scale-105 flex items-center justify-center space-x-2 disabled:opacity-60 disabled:cursor-not-allowed"
               (click)="buyProduct()"
-              [disabled]="loading"
             >
-              <ng-container *ngIf="!loading; else loadingTpl">
-                Buy Now
-              </ng-container>
-
-              <ng-template #loadingTpl>
-                <svg
-                  class="animate-spin h-5 w-5 text-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    class="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    stroke-width="4"
-                  ></circle>
-                  <path
-                    class="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8v8z"
-                  ></path>
-                </svg>
-                <span>Processing...</span>
-              </ng-template>
+           Buy Now
             </button>
           </div>
         </div>

@@ -17,10 +17,16 @@ export class Shop implements OnInit {
   categories: any[] = [];
   products: any[] = [];
   filteredProducts: any[] = [];
+sortOrder: string = '';
+
+
 
   searchQuery: string = '';
   selectedCategories: Set<string> = new Set();
-  maxPrice: number = 1000;
+maxPrice: number = 0;         // Current slider value
+pageMaxPrice: number = 1000;  // True max value from data
+
+
 
   constructor(private http: HttpClient, private serverlink: ServerLink) {
     this.server = serverlink.serverlinks;
@@ -30,30 +36,48 @@ export class Shop implements OnInit {
     this.loadProducts();
   }
 
-  loadProducts() {
-    this.http.get<any[]>('api/products').subscribe((data) => {
-      this.products = data;
-      const categorySet = new Set<string>();
-      data.forEach((p) => {
-        if (p.category) categorySet.add(p.category);
-      });
-      this.categories = Array.from(categorySet).map((name) => ({ name }));
-      this.applyFilters();
-    });
-  }
+loadProducts() {
+  this.http.get<any[]>('api/products').subscribe((data) => {
+    this.products = data;
 
-  applyFilters() {
-    this.filteredProducts = this.products.filter((product) => {
-      const matchCategory =
-        this.selectedCategories.size === 0 ||
-        this.selectedCategories.has(product.category);
-      const matchSearch = product.name
-        .toLowerCase()
-        .includes(this.searchQuery.toLowerCase());
-      const matchPrice = product.price <= this.maxPrice;
-      return matchCategory && matchSearch && matchPrice;
+    const highest = Math.max(...data.map(p => p.price || 0));
+
+    this.pageMaxPrice = highest;     // Real upper bound for slider
+    this.maxPrice = highest;         // Set current selection to highest by default
+
+    const categorySet = new Set<string>();
+    data.forEach((p) => {
+      if (p.category) categorySet.add(p.category);
     });
+
+    this.categories = Array.from(categorySet).map(name => ({ name }));
+    this.applyFilters();
+  });
+}
+
+
+
+applyFilters() {
+  this.filteredProducts = this.products.filter((product) => {
+    const matchCategory =
+      this.selectedCategories.size === 0 ||
+      this.selectedCategories.has(product.category);
+    const matchSearch = product.name
+      .toLowerCase()
+      .includes(this.searchQuery.toLowerCase());
+    const matchPrice = product.price <= this.maxPrice;
+
+    return matchCategory && matchSearch && matchPrice;
+  });
+
+  // Apply sorting
+  if (this.sortOrder === 'low-to-high') {
+    this.filteredProducts.sort((a, b) => a.price - b.price);
+  } else if (this.sortOrder === 'high-to-low') {
+    this.filteredProducts.sort((a, b) => b.price - a.price);
   }
+}
+
 
   toggleCategory(category: string) {
     if (this.selectedCategories.has(category)) {
@@ -67,7 +91,7 @@ export class Shop implements OnInit {
   resetFilters() {
     this.selectedCategories.clear();
     this.searchQuery = '';
-    this.maxPrice = 100;
+   this.maxPrice = this.pageMaxPrice; 
     this.applyFilters();
   }
 }
