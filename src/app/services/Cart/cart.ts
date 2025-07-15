@@ -11,7 +11,7 @@ export class Cart {
   private cartItems: any[] = [];
   private cartSubject = new BehaviorSubject<any[]>([]);
   private cartItemsCountSubject = new BehaviorSubject<number>(0);
-  private apiUrl = 'api/cart';
+  private apiUrl = '/api/cart';
 
   cartItemsCount$: Observable<number>;
   cart$: Observable<any[]>;

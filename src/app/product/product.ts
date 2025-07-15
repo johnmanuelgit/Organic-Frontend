@@ -6,8 +6,6 @@ import { ProductReview } from '../product-review/product-review';
 import { ServerLink } from '../services/server-link/server-link';
 import { FormsModule } from '@angular/forms';
 import { Cart } from '../services/Cart/cart';
-
-import { HttpClient } from '@angular/common/http';
 import { Toastr } from '../services/toast/toastr';
 
 @Component({
