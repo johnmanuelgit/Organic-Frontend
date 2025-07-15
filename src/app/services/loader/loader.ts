@@ -9,18 +9,15 @@ export class Loader {
   private _isLoading = new BehaviorSubject<boolean>(false);
   isLoading = this._isLoading.asObservable();
 
+  private _loading = new BehaviorSubject<boolean>(false);
+  loading$ = this._loading.asObservable();
+
   show() {
-    this.requestCount++;
-    if (this.requestCount === 1) {
-      this._isLoading.next(true);
-    }
+    this._loading.next(true);
   }
 
   hide() {
-    this.requestCount--;
-    if (this.requestCount <= 0) {
-      this.requestCount = 0;
-      this._isLoading.next(false);
-    }
+     setTimeout(() => this._loading.next(false), 300);
   }
+  
 }

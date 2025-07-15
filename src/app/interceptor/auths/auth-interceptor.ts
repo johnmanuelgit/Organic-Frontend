@@ -8,7 +8,7 @@ export const authInterceptor: HttpInterceptorFn = (
   req: HttpRequest<any>,
   next: HttpHandlerFn
 ): Observable<HttpEvent<any>> => {
-  const loaderService = inject(Loader); // ✅ Use inject() for DI
+  const loaderService = inject(Loader); 
   const token = localStorage.getItem('token');
 
   const clonedReq = token
@@ -23,11 +23,10 @@ export const authInterceptor: HttpInterceptorFn = (
     tap({
       next: (event) => {
         if (event instanceof HttpResponse) {
-          console.log('✅ HTTP Response:', event);
         }
       },
       error: (error: HttpErrorResponse) => {
-        console.error('❌ HTTP Error:', error);
+        console.error('HTTP Error:', error);
       },
     }),
     finalize(() => {
