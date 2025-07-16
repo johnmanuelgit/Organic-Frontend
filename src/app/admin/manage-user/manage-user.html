@@ -13,7 +13,7 @@
       <form (ngSubmit)="createAdmin()" class="space-y-6">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label class="text-sm font-medium text-gray-700">Full Name</label>
+            <label class="text-sm font-medium text-gray-700">User Name</label>
             <input
               [(ngModel)]="admin.username"
               name="name"
@@ -113,7 +113,7 @@
       <table class="min-w-full text-sm divide-y divide-gray-100">
         <thead class="bg-[#fef4ec] text-gray-600 text-xs uppercase">
           <tr>
-            <th class="text-left px-6 py-3">Name</th>
+            <th class="text-left px-6 py-3">Username</th>
             <th class="text-left px-6 py-3">Email</th>
             <th class="text-left px-6 py-3">Access</th>
             <th class="text-left px-6 py-3">Status</th>
@@ -192,7 +192,7 @@
         </div>
         <div class="p-6 space-y-4">
           <div>
-            <label class="text-sm font-medium text-gray-700">Name</label>
+            <label class="text-sm font-medium text-gray-700">Username</label>
             <input
               [(ngModel)]="selectedAdmin.username"
               class="mt-1 w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-orange-400"

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { Cart } from '../services/Cart/cart';
 
@@ -25,6 +25,11 @@ export class Header implements OnInit {
     this.cartService.cartItemsCount$.subscribe((count) => {
       this.cartCount = count;
     });
+  }
+
+    @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.isscrolled = window.scrollY > 100; 
   }
   profile() {
     const token = localStorage.getItem('token');

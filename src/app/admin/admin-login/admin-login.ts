@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Auth } from '../services/auth/auth';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Toastr } from '../../services/toast/toastr';
 
 @Component({
   selector: 'app-admin-login',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,RouterModule],
   templateUrl: './admin-login.html',
   styleUrl: './admin-login.css',
 })
@@ -33,7 +34,7 @@ export class AdminLogin implements OnInit {
   usernameRecoveryEmailError: string = '';
   usernameRecoveryEmailSent: boolean = false;
 
-  constructor(private authService: Auth, private router: Router) {}
+  constructor(private authService: Auth, private router: Router,private toastr:Toastr) {}
 
   ngOnInit() {
     this.checkAuthentication();
@@ -162,24 +163,31 @@ export class AdminLogin implements OnInit {
     });
   }
 
-  private handleResetSuccess(res: any): void {
-    this.isLoading = false;
+private handleResetSuccess(res: any): void {
+  this.isLoading = false;
 
-    if (res.status === 'success') {
-      this.resetEmailSent = true;
-      this.successMessage =
-        res.message || 'Password reset instructions sent to your email';
-    } else {
-      this.errorMessage = res.message || 'Failed to send reset email';
-    }
+  if (res.status === 'success') {
+    this.resetEmailSent = true;
+    this.toastr.success(res.message || 'Password reset link sent to your email', 'Success');
+    
+  this.showForgotPassword = false;
+  } else {
+    this.toastr.error(res.message || 'Failed to send reset email', 'Error');
   }
+}
 
-  private handleResetError(err: any): void {
-    this.isLoading = false;
-    console.error('Forgot password error:', err);
-    this.errorMessage =
-      err.error?.message || 'Failed to send reset email. Please try again.';
-  }
+private handleResetError(err: any): void {
+  this.isLoading = false;
+  console.error('Forgot password error:', err);
+  this.toastr.error(
+    err.error?.message || 'Failed to send reset email. Please try again.',
+    'Error'
+  );
+
+
+}
+
+
 
   resetForgotPasswordForm(): void {
     this.resetEmail = '';
@@ -243,6 +251,8 @@ export class AdminLogin implements OnInit {
       this.usernameRecoveryEmailSent = true;
       this.successMessage =
         res.message || 'Your username has been sent to your email';
+        
+  this.showForgotUsername= false;
     } else {
       this.errorMessage =
         res.message || 'Failed to send username recovery email';
