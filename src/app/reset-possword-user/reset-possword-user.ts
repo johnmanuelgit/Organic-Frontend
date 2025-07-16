@@ -1,15 +1,23 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Auth } from '../admin/services/auth/auth';
 
 @Component({
   selector: 'app-reset-possword-user',
-  standalone: true,  // ✅ Required if using `imports` directly
+  standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './reset-possword-user.html',
-  styleUrls: ['./reset-possword-user.css']  // ✅ Should be plural `styleUrls`
+  styleUrls: ['./reset-possword-user.css'], 
 })
 export class ResetPosswordUser implements OnInit {
   token: string = '';
@@ -34,24 +42,22 @@ export class ResetPosswordUser implements OnInit {
     }
     this.token = tokenFromUrl;
 
-this.resetForm = this.fb.group({
-  newPassword: [
-    '',
-    [
-      Validators.required,
-      Validators.minLength(6),
-      Validators.maxLength(20),
-      ResetPosswordUser.uppercaseValidator,
-    ],
-  ],
-});
-
+    this.resetForm = this.fb.group({
+      newPassword: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(20),
+          ResetPosswordUser.uppercaseValidator,
+        ],
+      ],
+    });
   }
   static uppercaseValidator(control: AbstractControl): ValidationErrors | null {
-  const hasUppercase = /[A-Z]/.test(control.value);
-  return hasUppercase ? null : { uppercase: true };
-}
-
+    const hasUppercase = /[A-Z]/.test(control.value);
+    return hasUppercase ? null : { uppercase: true };
+  }
 
   onSubmit() {
     if (this.resetForm.invalid) return;

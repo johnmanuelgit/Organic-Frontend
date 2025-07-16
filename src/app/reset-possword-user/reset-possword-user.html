@@ -2,14 +2,15 @@
   class="min-h-screen bg-[url('assets/product/product-page-bg.png')] bg-cover bg-center flex items-center justify-center p-4"
 >
   <div class="w-full max-w-md">
-    <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-orange-200">
+    <div
+      class="bg-white rounded-2xl shadow-xl overflow-hidden border border-orange-200"
+    >
       <div class="p-8">
         <div class="text-center mb-8">
           <h1 class="text-3xl font-bold text-[#8b0000]">Reset Password</h1>
           <p class="mt-2 text-gray-600">Create a fresh, secure password</p>
         </div>
 
-        <!-- Error Message -->
         <div
           *ngIf="errorMessage"
           class="mb-6 bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded"
@@ -26,7 +27,6 @@
           </div>
         </div>
 
-        <!-- Success Message -->
         <div
           *ngIf="successMessage"
           class="mb-6 bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded"
@@ -43,7 +43,6 @@
           </div>
         </div>
 
-        <!-- Reset Password Form -->
         <div *ngIf="!successMessage && token">
           <form [formGroup]="resetForm" (ngSubmit)="onSubmit()">
             <div class="mb-6">
@@ -93,13 +92,19 @@
                 <div *ngIf="resetForm.get('newPassword')?.hasError('required')">
                   Password is required.
                 </div>
-                <div *ngIf="resetForm.get('newPassword')?.hasError('minlength')">
+                <div
+                  *ngIf="resetForm.get('newPassword')?.hasError('minlength')"
+                >
                   Password must be at least 6 characters long.
                 </div>
-                <div *ngIf="resetForm.get('newPassword')?.hasError('maxlength')">
+                <div
+                  *ngIf="resetForm.get('newPassword')?.hasError('maxlength')"
+                >
                   Password cannot exceed 20 characters.
                 </div>
-                <div *ngIf="resetForm.get('newPassword')?.hasError('uppercase')">
+                <div
+                  *ngIf="resetForm.get('newPassword')?.hasError('uppercase')"
+                >
                   Password must contain at least one uppercase letter.
                 </div>
               </div>

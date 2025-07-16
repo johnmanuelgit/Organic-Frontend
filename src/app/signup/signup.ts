@@ -29,7 +29,7 @@ export class Signup {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private toast:Toastr
+    private toast: Toastr
   ) {
     this.signupform = new FormGroup({
       name: new FormControl('', [Validators.required]),

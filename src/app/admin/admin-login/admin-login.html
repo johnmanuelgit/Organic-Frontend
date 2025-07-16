@@ -5,9 +5,8 @@
     <div
       class="overflow-hidden bg-white rounded-xl shadow-2xl border border-gray-100 transition duration-300 hover:shadow-lg"
     >
-      
       <div
-        class="p-2  text-center border-b border-gray-100 bg-gradient-to-r from-[#8b0000] to-[#a52a2a]"
+        class="p-2 text-center border-b border-gray-100 bg-gradient-to-r from-[#8b0000] to-[#a52a2a]"
       >
         <div class="flex justify-center mb-4">
           <div
@@ -35,13 +34,11 @@
         </p>
       </div>
 
-      
       <div
         class="p-6 sm:p-8"
         *ngIf="!showForgotPassword && !showForgotUsername"
       >
         <form #loginForm="ngForm" (ngSubmit)="login()">
-          
           <div class="mb-6">
             <label class="block text-sm font-medium text-gray-700 mb-1"
               >Username</label
@@ -68,7 +65,6 @@
             </button>
           </div>
 
-          
           <div class="mb-6">
             <label class="block text-sm font-medium text-gray-700 mb-1"
               >Password</label
@@ -96,7 +92,6 @@
             </button>
           </div>
 
-          
           <div class="flex items-center mb-6">
             <input
               type="checkbox"
@@ -110,7 +105,6 @@
             >
           </div>
 
-          
           <div
             *ngIf="errorMessage"
             class="p-3 mb-4 text-sm rounded bg-red-50 text-red-700 border border-red-200"
@@ -124,7 +118,6 @@
             {{ successMessage }}
           </div>
 
-          
           <button
             type="submit"
             [disabled]="isLoading"
@@ -157,7 +150,6 @@
         </form>
       </div>
 
-      
       <div class="p-6 sm:p-8" *ngIf="showForgotUsername">
         <button
           (click)="toggleForgotUsername()"
@@ -191,7 +183,6 @@
         </button>
       </div>
 
-      
       <div class="p-6 sm:p-8" *ngIf="showForgotPassword">
         <button
           (click)="toggleForgotPassword()"

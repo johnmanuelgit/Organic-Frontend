@@ -26,7 +26,7 @@ export class Login {
   loginForm: FormGroup;
   showForgotModal = false;
   forgotEmail = '';
-loading:boolean=false;
+  loading: boolean = false;
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }
@@ -35,7 +35,7 @@ loading:boolean=false;
     private http: HttpClient,
     private router: Router,
     private cartService: Cart,
-    private toast:Toastr
+    private toast: Toastr
   ) {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -90,18 +90,18 @@ loading:boolean=false;
       this.toast.warning('Please enter a valid email');
       return;
     }
-this.loading=true;
+    this.loading = true;
     this.http
       .post<any>('api/user/forgot-password', { email: this.forgotEmail })
       .subscribe({
         next: (res) => {
           this.toast.success('Reset link sent to your email');
           this.showForgotModal = false;
-          this.loading=false;
+          this.loading = false;
         },
         error: (err) => {
           this.toast.error('Email not found or failed to send');
-          this.loading=false;
+          this.loading = false;
         },
       });
   }

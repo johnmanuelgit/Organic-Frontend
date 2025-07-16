@@ -1,4 +1,3 @@
-// loader.service.ts
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -20,7 +19,7 @@ export class Loader {
       this._requestCount--;
     }
     if (this._requestCount === 0) {
-      setTimeout(()=>this._isLoading.next(false),300);
+      setTimeout(() => this._isLoading.next(false), 300);
     }
   }
 }

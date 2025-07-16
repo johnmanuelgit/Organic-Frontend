@@ -27,9 +27,9 @@ export class Header implements OnInit {
     });
   }
 
-    @HostListener('window:scroll', [])
+  @HostListener('window:scroll', [])
   onWindowScroll() {
-    this.isscrolled = window.scrollY > 100; 
+    this.isscrolled = window.scrollY > 100;
   }
   profile() {
     const token = localStorage.getItem('token');
@@ -40,7 +40,7 @@ export class Header implements OnInit {
       this.router.navigate(['/login']);
     }
   }
- 
+
   closeMenu(): void {
     this.isMenuOpen = false;
   }

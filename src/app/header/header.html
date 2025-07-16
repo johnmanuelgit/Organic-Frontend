@@ -1,15 +1,14 @@
 <div
-  class="flex absolute fixed items-center justify-between  px-4 w-full h-25 shadow-md z-50"
+  class="flex absolute fixed items-center justify-between px-4 w-full h-25 shadow-md z-50"
   [ngClass]="{'bg-[#f6f0e8] shadow-md':isscrolled}"
 >
-
   <div
-    class="flex items-end space-x-2 rounded-full w-70 h-70 lg:w-170 lg:h-170 bg-white  mb-50  lg:mb-70 lg:-mx-50 xl:-mx-60 -mx-20 lg:-my-60 lg:p-5 p-20 shadow-lg"
+    class="flex items-end space-x-2 rounded-full w-70 h-70 lg:w-170 lg:h-170 bg-white mb-50 lg:mb-70 lg:-mx-50 xl:-mx-60 -mx-20 lg:-my-60 lg:p-5 p-20 shadow-lg"
   >
     <img
       src="assets/nav-footer/home-logo.png"
       alt="Mango Basket Logo"
-      class="lg:-my-8 xl:-my-13 -my-23  mx-6 lg:mx-53 xl:mx-65 w-30  h-30  lg:w-45 lg:h-45  xl:w-50 xl:h-50 lg:py-2 hover:scale-105"
+      class="lg:-my-8 xl:-my-13 -my-23 mx-6 lg:mx-53 xl:mx-65 w-30 h-30 lg:w-45 lg:h-45 xl:w-50 xl:h-50 lg:py-2 hover:scale-105"
       [routerLink]="['/home']"
     />
   </div>
@@ -23,7 +22,7 @@
 
   <nav
     [ngClass]="{ 'flex': isMenuOpen, 'hidden': !isMenuOpen }"
-    class="flex-col items-center gap-y-4 md:ml-10 lg:ml-36  mt-120 lg:mr-15 md:mt-0 text-[#8b0000] font-small lg:text-xl lg:font-semibold p-10 md:flex md:flex-row md:gap-x-8 bg-white md:bg-transparent rounded-2xl flex-wrap"
+    class="flex-col items-center gap-y-4 md:ml-10 lg:ml-36 mt-120 lg:mr-15 md:mt-0 text-[#8b0000] font-small lg:text-xl lg:font-semibold p-10 md:flex md:flex-row md:gap-x-8 bg-white md:bg-transparent rounded-2xl flex-wrap"
   >
     <a
       [routerLink]="['/home']"

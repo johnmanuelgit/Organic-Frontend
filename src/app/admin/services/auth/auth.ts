@@ -283,18 +283,22 @@ export class Auth {
         })
       );
   }
-    userResetPassword(token: string, newPassword: string): Observable<ForgotPasswordResponse> {
-    return this.http.post<ForgotPasswordResponse>(`api/user/reset-password`, {
-      token,
-      password: newPassword, // Ensure backend expects "password" not "newPassword"
-    }).pipe(
-      tap((res) => console.log('User reset password success:', res)),
-      catchError(this.handleError('User password reset failed.'))
-    );
-
+  userResetPassword(
+    token: string,
+    newPassword: string
+  ): Observable<ForgotPasswordResponse> {
+    return this.http
+      .post<ForgotPasswordResponse>(`api/user/reset-password`, {
+        token,
+        password: newPassword,
+      })
+      .pipe(
+        tap((res) => console.log('User reset password success:', res)),
+        catchError(this.handleError('User password reset failed.'))
+      );
   }
 
-    private handleError(message: string) {
+  private handleError(message: string) {
     return (error: HttpErrorResponse) => {
       const errorMessage = error.error?.message || error.message || message;
       return throwError(() => new Error(errorMessage));

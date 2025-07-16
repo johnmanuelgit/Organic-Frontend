@@ -24,7 +24,7 @@ export class Profile implements OnInit {
     private http: HttpClient,
     private cartService: Cart,
     private serverlink: ServerLink,
-    private toast:Toastr
+    private toast: Toastr
   ) {
     this.server = this.serverlink.serverlinks;
   }
@@ -86,6 +86,6 @@ export class Profile implements OnInit {
     localStorage.clear();
     this.router.navigate(['/login']);
     this.cartService.clearCart();
-    this.toast.success('Logout Successfully')
+    this.toast.success('Logout Successfully');
   }
 }

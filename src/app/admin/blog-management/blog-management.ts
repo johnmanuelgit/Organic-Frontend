@@ -18,7 +18,7 @@ export class BlogManagement implements OnInit {
   isFormVisible = false;
   isEditMode = false;
   fullscreenDescription: boolean = false;
-
+  imagePreview: string | null = null;
   title = '';
   content = '';
   category = '';
@@ -74,7 +74,11 @@ export class BlogManagement implements OnInit {
   }
 
   onFileSelected(event: any) {
-    this.selectedFile = event.target.files[0];
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
+      this.imagePreview = URL.createObjectURL(file);
+    }
   }
 
   saveBlog() {

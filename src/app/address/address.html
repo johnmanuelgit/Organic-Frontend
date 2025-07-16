@@ -1,37 +1,41 @@
 <div
-  class="min-h-screen w-full bg-[url('assets/product/product-page-bg.png')] bg-cover bg-center flex justify-center items-center "
+  class="min-h-screen w-full bg-[url('assets/product/product-page-bg.png')] bg-cover bg-center flex justify-center items-center"
 >
-<div class="max-w-lg  mx-auto  md:mt-10 p-8 bg-[#fef6f0] border border-orange-200 shadow-lg rounded-xl">
-  <h2 class="text-3xl font-bold text-[#7d1300] mb-6 text-center">Shipping Address</h2>
+  <div
+    class="max-w-lg mx-auto md:mt-10 p-8 bg-[#fef6f0] border border-orange-200 shadow-lg rounded-xl"
+  >
+    <h2 class="text-3xl font-bold text-[#7d1300] mb-6 text-center">
+      Shipping Address
+    </h2>
 
-  <div class="space-y-5">
-    <input 
-      type="text" 
-      [(ngModel)]="name" 
-      placeholder="Full Name" 
-      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 outline-none"
-    />
+    <div class="space-y-5">
+      <input
+        type="text"
+        [(ngModel)]="name"
+        placeholder="Full Name"
+        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 outline-none"
+      />
 
-    <input 
-      type="text" 
-      [(ngModel)]="phone" 
-      placeholder="Phone Number" 
-      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 outline-none"
-    />
+      <input
+        type="text"
+        [(ngModel)]="phone"
+        placeholder="Phone Number"
+        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 outline-none"
+      />
 
-    <textarea 
-      [(ngModel)]="address" 
-      placeholder="Full Address (with Pincode)" 
-      class="w-full px-4 py-3 border border-gray-300 rounded-lg h-28 resize-none focus:ring-2 focus:ring-orange-400 outline-none"
-    ></textarea>
+      <textarea
+        [(ngModel)]="address"
+        placeholder="Full Address (with Pincode)"
+        class="w-full px-4 py-3 border border-gray-300 rounded-lg h-28 resize-none focus:ring-2 focus:ring-orange-400 outline-none"
+      ></textarea>
 
-    <button 
-      class="w-full py-3 text-white bg-[#ff6c00] hover:bg-orange-600 font-semibold rounded-lg transition duration-300"
-      [disabled]="loading"
-      (click)="submitAddress()"
-    >
-      {{ paymentMethod === 'cod' ? 'Place Order (Cash on Delivery)' : 'Proceed to Pay (Online)' }}
-    </button>
+      <button
+        class="w-full py-3 text-white bg-[#ff6c00] hover:bg-orange-600 font-semibold rounded-lg transition duration-300"
+        [disabled]="loading"
+        (click)="submitAddress()"
+      >
+        {{ paymentMethod === 'cod' ? 'Place Order (Cash on Delivery)' : 'Proceed to Pay (Online)' }}
+      </button>
+    </div>
   </div>
-</div>
 </div>

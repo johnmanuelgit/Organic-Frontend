@@ -1,5 +1,7 @@
 <div class="w-full h-full">
-  <div class="bg-[url('assets/product/product-page-bg.png')] bg-cover p-15 bg-center flex items-center justify-center h-screen">
+  <div
+    class="bg-[url('assets/product/product-page-bg.png')] bg-cover p-15 bg-center flex items-center justify-center h-screen"
+  >
     <div class="bg-white p-8 rounded-lg shadow-lg w-96">
       <h2 class="text-4xl font-bold text-center text-[#8b0000] mb-6">Login</h2>
 
@@ -112,7 +114,7 @@
 
             <div class="flex justify-end space-x-2">
               <button
-              *ngIf="!loading"
+                *ngIf="!loading"
                 (click)="sendForgotPasswordEmail()"
                 class="bg-orange-500 text-white px-4 py-1 rounded"
               >
@@ -121,7 +123,6 @@
               <button
                 *ngIf="loading"
                 class="bg-orange-500 text-white px-4 py-1 rounded"
-
               >
                 loading......
               </button>

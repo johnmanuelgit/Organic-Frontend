@@ -75,19 +75,17 @@ export class Product implements OnInit {
     this.toast.success(`${product.name} added to cart!`);
   }
 
-
   buyProduct() {
-     const iflogin=localStorage.getItem('token')
-    if (iflogin){
+    const iflogin = localStorage.getItem('token');
+    if (iflogin) {
       this.showPaymentOptions = true;
       return;
     }
-    if (!iflogin){
+    if (!iflogin) {
       this.showPaymentOptions = false;
-      this.toast.error('Please Register or Login to continue')
+      this.toast.error('Please Register or Login to continue');
       return;
     }
-    
   }
   selectPayment(method: 'cod' | 'online') {
     this.showPaymentOptions = false;

@@ -26,6 +26,7 @@ import { Address } from './address/address';
 import { AdminOrderComponent } from './admin/admin-order-component/admin-order-component';
 import { OrderlistUser } from './orderlist-user/orderlist-user';
 import { ResetPosswordUser } from './reset-possword-user/reset-possword-user';
+import { adminAuthGuard } from './authguard/admin-auth/admin-auth-guard';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -50,12 +51,12 @@ export const routes: Routes = [
   { path: 'profile', component: Profile, canActivate: [authGuard] },
 
   { path: 'admin-login', component: AdminLogin},
-  { path: 'admin-dash', component: Dashboard},
-  { path: 'shop-manage', component: ShopManagement},
-  { path: 'blog-manage', component: BlogManagement},
-  { path: 'admin-create', component: ManageUser},
+  { path: 'admin-dash', component: Dashboard,canActivate:[adminAuthGuard]},
+  { path: 'shop-manage', component: ShopManagement,canActivate:[adminAuthGuard]},
+  { path: 'blog-manage', component: BlogManagement,canActivate:[adminAuthGuard]},
+  { path: 'admin-create', component: ManageUser,canActivate:[adminAuthGuard]},
   { path: 'address', component: Address},
-  {path: 'order-manage',component: AdminOrderComponent},
+  {path: 'order-manage',component: AdminOrderComponent,canActivate:[adminAuthGuard]},
     { path: 'reset-password/:token', component: ResetPasswordComponent },
 
 ];

@@ -10,6 +10,7 @@ import { ProductService } from '../services/product-service/product-service';
 import { CommonModule } from '@angular/common';
 import { catchError, of, tap } from 'rxjs';
 import { ServerLink } from '../services/server-link/server-link';
+import { Toastr } from '../services/toast/toastr';
 
 interface Product {
   id: string;
@@ -25,7 +26,7 @@ interface Review {
   comment: string;
   date?: Date;
   userName?: string;
-  userImageUrl?: string; 
+  userImageUrl?: string;
 }
 
 @Component({
@@ -43,12 +44,14 @@ export class ProductReview implements OnInit {
   error: string | null = null;
   successMessage: string | null = null;
   server: string = '';
-isLoading:boolean=false;
+  isLoading: boolean = false;
+  write: boolean = false;
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
     private fb: FormBuilder,
-    private serverlink: ServerLink
+    private serverlink: ServerLink,
+    private toastr: Toastr
   ) {
     this.reviewForm = this.fb.group({
       rating: [
@@ -65,13 +68,12 @@ isLoading:boolean=false;
     if (this.productId) {
       this.loadData();
     }
+    this.writes();
   }
 
   private loadData(): void {
-
     this.error = null;
 
-    
     this.productService
       .getProductById(this.productId!)
       .pipe(
@@ -79,14 +81,13 @@ isLoading:boolean=false;
           this.product = product;
         }),
         catchError((error) => {
-          this.error = 'Failed to load product details';
+          this.toastr.error('Failed to load product details');
           console.error(error);
           return of(null);
         })
       )
       .subscribe();
 
-    
     this.getReviews();
   }
 
@@ -99,11 +100,10 @@ isLoading:boolean=false;
             ...review,
             date: review.date ? new Date(review.date) : new Date(),
           }));
-  
         }),
         catchError((error) => {
-          this.error = 'Failed to load reviews';
-      
+          this.toastr.error('Failed to load reviews');
+
           console.error(error);
           return of([]);
         })
@@ -130,12 +130,12 @@ isLoading:boolean=false;
       .addReview(this.productId, reviewData)
       .pipe(
         tap(() => {
-          this.successMessage = 'Thank you for your review!';
+          this.toastr.success('Thank you for your review!');
           this.reviewForm.reset();
           this.getReviews();
         }),
         catchError((error) => {
-          this.error = 'Failed to submit review. Please try again.';
+          this.toastr.error('Failed to submit review. Please try again.');
           console.error(error);
           return of(null);
         })
@@ -143,10 +143,16 @@ isLoading:boolean=false;
       .subscribe();
   }
 
-  
   getStars(rating: number): number[] {
     return Array(5)
       .fill(0)
       .map((_, i) => (i < rating ? 1 : 0));
+  }
+
+  writes() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.write = true;
+    }
   }
 }
