@@ -111,6 +111,7 @@ export class AdminLogin implements OnInit {
     this.isLoading = false;
 
     if (res.status === 'success') {
+      localStorage.setItem('user', JSON.stringify(res.user));
       this.successMessage = res.message || 'Login successful';
       setTimeout(() => this.router.navigate(['/admin-dash']), 1000);
     } else {

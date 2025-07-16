@@ -10,7 +10,7 @@ export const adminAuthGuard: CanActivateFn = (route, state) => {
 
   if (!user?.role) {
     toast.error('Please login or register to continue');
-    router.navigate(['/admin-login']);
+    router.navigate(['/home']);
     return false;
   }
 
