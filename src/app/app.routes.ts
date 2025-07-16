@@ -51,7 +51,7 @@ export const routes: Routes = [
   { path: 'profile', component: Profile, canActivate: [authGuard] },
 
   { path: 'admin-login', component: AdminLogin},
-  { path: 'admin-dash', component: Dashboard,canActivate:[adminAuthGuard]},
+  { path: 'admin-dash', component: Dashboard},
   { path: 'shop-manage', component: ShopManagement,canActivate:[adminAuthGuard]},
   { path: 'blog-manage', component: BlogManagement,canActivate:[adminAuthGuard]},
   { path: 'admin-create', component: ManageUser,canActivate:[adminAuthGuard]},
