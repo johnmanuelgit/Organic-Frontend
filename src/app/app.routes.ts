@@ -25,6 +25,7 @@ import { ResetPasswordComponent } from './admin/reset-password-component/reset-p
 import { Address } from './address/address';
 import { AdminOrderComponent } from './admin/admin-order-component/admin-order-component';
 import { OrderlistUser } from './orderlist-user/orderlist-user';
+import { ResetPosswordUser } from './reset-possword-user/reset-possword-user';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -42,16 +43,19 @@ export const routes: Routes = [
   { path: 'shop', component: Shop },
   { path: 'product/:id', component: Product },
   { path: 'blog/:id', component: BlogPage },
-  { path: 'reset-password/:token', component: ResetPasswordComponent },
+{ path: 'user-reset-password/:token', component: ResetPosswordUser },
 
-  { path: 'admin-login', component: AdminLogin, canActivate: [authGuard] },
-  { path: 'admin-dash', component: Dashboard, canActivate: [authGuard] },
-  { path: 'shop-manage', component: ShopManagement, canActivate: [authGuard] },
-  { path: 'blog-manage', component: BlogManagement, canActivate: [authGuard] },
-  { path: 'admin-create', component: ManageUser, canActivate: [authGuard] },
-  { path: 'address', component: Address, canActivate: [authGuard] },
-  {path: 'order-manage',component: AdminOrderComponent,canActivate: [authGuard]},
-  { path: 'order-list', component: OrderlistUser, canActivate: [authGuard] },
+    { path: 'order-list', component: OrderlistUser, canActivate: [authGuard] },
   { path: 'cart', component: Addtocart, canActivate: [authGuard] },
   { path: 'profile', component: Profile, canActivate: [authGuard] },
+
+  { path: 'admin-login', component: AdminLogin},
+  { path: 'admin-dash', component: Dashboard},
+  { path: 'shop-manage', component: ShopManagement},
+  { path: 'blog-manage', component: BlogManagement},
+  { path: 'admin-create', component: ManageUser},
+  { path: 'address', component: Address},
+  {path: 'order-manage',component: AdminOrderComponent},
+    { path: 'reset-password/:token', component: ResetPasswordComponent },
+
 ];

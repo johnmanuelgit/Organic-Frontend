@@ -6,5 +6,5 @@ import { Injectable } from '@angular/core';
 export class ServerLink {
   constructor() {}
 
-  serverlinks = 'https://organic-backend-33fm.onrender.com';
+  serverlinks = 'http://localhost:3000';
 }

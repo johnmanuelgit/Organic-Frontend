@@ -1,7 +1,7 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 
 export const httpInterceptor: HttpInterceptorFn = (req, next) => {
-  const backendUrl = 'https://organic-backend-33fm.onrender.com';
+  const backendUrl = 'http://localhost:3000';
 
   if (req.url.startsWith('http')) {
     return next(req);

@@ -25,6 +25,8 @@ export class ResetPasswordComponent implements OnInit {
   resetForm!: FormGroup;
   errorMessage: string = '';
   successMessage: string = '';
+  isSubmitting: boolean = false;
+  showPassword: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,7 +36,7 @@ export class ResetPasswordComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.token = this.route.snapshot.queryParamMap.get('token') || '';
+    this.token = this.route.snapshot.paramMap.get('token') || '';
 
     if (!this.token) {
       this.errorMessage = 'Invalid or missing reset token';
@@ -49,21 +51,21 @@ export class ResetPasswordComponent implements OnInit {
   onSubmit() {
     if (this.resetForm.invalid) return;
 
+    this.isSubmitting = true;
     const newPassword = this.resetForm.value.newPassword;
 
     this.authService.resetPassword(this.token, newPassword).subscribe({
-      next: (res) => {
+      next: () => {
         this.successMessage = 'Password reset successfully!';
-        this.router.navigate(['/login']);
+        this.isSubmitting = false;
+        setTimeout(() => this.router.navigate(['/login']), 2000);
       },
       error: (err) => {
         this.errorMessage = err.message || 'Failed to reset password';
+        this.isSubmitting = false;
       },
     });
   }
-
-  isSubmitting: boolean = false;
-  showPassword: boolean = false;
 
   togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
