@@ -1,5 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RouterModule, RouterOutlet } from '@angular/router';
 import { Header } from "./header/header";
 import { Footer } from "./footer/footer";
 import { CommonModule } from '@angular/common';
@@ -17,7 +17,23 @@ export class App {
 showbutton = false;
   isLoading$;
 
-constructor(private loader:Loader){this.isLoading$ = this.loader.isLoading;
+constructor(
+  private loader:Loader,
+  private router:Router
+)
+{
+  this.isLoading$ = this.loader.isLoading;
+  this.router.events.subscribe((event)=>{
+    if(event instanceof NavigationStart){
+      this.loader.show();
+    }
+    if(event instanceof NavigationEnd ||
+      event instanceof NavigationCancel ||
+      event instanceof NavigationError
+    ){
+loader.hide()
+    }
+  })
 }
   
   scrolltop() {

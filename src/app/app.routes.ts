@@ -42,7 +42,7 @@ export const routes: Routes = [
   { path: 'shop', component: Shop },
   { path: 'product/:id', component: Product },
   { path: 'blog/:id', component: BlogPage },
-  { path: 'reset-password', component: ResetPasswordComponent },
+  { path: '/reset-password', component: ResetPasswordComponent },
 
   { path: 'admin-login', component: AdminLogin, canActivate: [authGuard] },
   { path: 'admin-dash', component: Dashboard, canActivate: [authGuard] },

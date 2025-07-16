@@ -1,4 +1,3 @@
-// loader.interceptor.ts
 import { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { HttpRequest, HttpHandlerFn, HttpEvent, HttpResponse, HttpErrorResponse } from '@angular/common/http';
@@ -17,7 +16,7 @@ export const loaderInterceptor: HttpInterceptorFn = (
     tap({
       next: (event) => {
         if (event instanceof HttpResponse) {
-          // Success
+
         }
       },
       error: (error: HttpErrorResponse) => {

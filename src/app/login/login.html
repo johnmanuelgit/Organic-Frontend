@@ -95,7 +95,7 @@
 
         <div
           *ngIf="showForgotModal"
-          class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+          class="fixed inset-0 backdrop-blur-sm flex justify-center items-center z-50"
         >
           <div class="bg-white p-6 rounded-lg w-80">
             <h3 class="text-lg font-semibold mb-4 text-[#8b0000]">
@@ -112,10 +112,18 @@
 
             <div class="flex justify-end space-x-2">
               <button
+              *ngIf="!loading"
                 (click)="sendForgotPasswordEmail()"
                 class="bg-orange-500 text-white px-4 py-1 rounded"
               >
                 Send
+              </button>
+              <button
+                *ngIf="loading"
+                class="bg-orange-500 text-white px-4 py-1 rounded"
+
+              >
+                loading......
               </button>
               <button
                 (click)="showForgotModal = false"

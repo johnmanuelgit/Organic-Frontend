@@ -26,7 +26,7 @@ export class Login {
   loginForm: FormGroup;
   showForgotModal = false;
   forgotEmail = '';
-
+loading:boolean=false;
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }
@@ -90,16 +90,18 @@ export class Login {
       this.toast.warning('Please enter a valid email');
       return;
     }
-
+this.loading=true;
     this.http
       .post<any>('api/user/forgot-password', { email: this.forgotEmail })
       .subscribe({
         next: (res) => {
           this.toast.success('Reset link sent to your email');
           this.showForgotModal = false;
+          this.loading=false;
         },
         error: (err) => {
           this.toast.error('Email not found or failed to send');
+          this.loading=false;
         },
       });
   }
